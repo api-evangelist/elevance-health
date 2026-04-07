@@ -1,7 +1,12 @@
 aid: elevance-health
-url: https://raw.githubusercontent.com/api-evangelist/elevance-health/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/elevance-health/refs/heads/main/apis.yml
 modified: '2026-03-21'
 apis: []
 common:
   - type: Website
     url: https://www.elevance-health.com
+description: >-
+  Elevance Health (formerly Anthem) is a health benefits company that serves members
+  through Blue Cross and Blue Shield affiliated health plans across multiple states,
+  offering medical, pharmacy, dental, vision, and other specialty insurance.
