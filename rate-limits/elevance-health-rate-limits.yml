@@ -4,101 +4,56 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Elevance Health
 providerId: elevance-health
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Fortune 500
+  - Rate Limiting
   - Healthcare
-  - Health Insurance
   - FHIR
   - Interoperability
-  - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Elevance Health API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+description: Elevance Health does not publish a single canonical rate-limit specification for its CMS
+  Interoperability FHIR APIs. Limits are enforced at the FHIR gateway and applied per registered application;
+  member-app developers should follow CMS / CARIN guidance plus the developer-portal terms. 429 responses
+  with Retry-After are expected.
+notes: No public rate-limit numbers published. Confirm thresholds via the Anthem developer portal and
+  app registration agreement.
+sources:
+  - https://www.anthem.com/developers
+  - https://patient360c.anthem.com/P360Member/fhir/documentation
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
   retryAfter: Retry-After
-  policy: RateLimit-Policy
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Elevance Health Patient Access API
-      - Elevance Health Provider Directory API
-      - Elevance Health Formulary API
-      - Elevance Health Payer to Payer API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Elevance Health Patient Access API
-      - Elevance Health Provider Directory API
-      - Elevance Health Formulary API
-      - Elevance Health Payer to Payer API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Elevance Health Patient Access API
-      - Elevance Health Provider Directory API
-      - Elevance Health Formulary API
-      - Elevance Health Payer to Payer API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Elevance Health Patient Access API
-      - Elevance Health Provider Directory API
-      - Elevance Health Formulary API
-      - Elevance Health Payer to Payer API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Elevance Health Patient Access API
-      - Elevance Health Provider Directory API
-      - Elevance Health Formulary API
-      - Elevance Health Payer to Payer API
+  - name: Patient Access FHIR API
+    scope: app
+    metric: varies
+    limit: see Anthem developer portal
+  - name: Provider Directory FHIR API
+    scope: ip
+    metric: varies
+    limit: see Anthem developer portal
+  - name: Formulary FHIR API
+    scope: ip
+    metric: varies
+    limit: see Anthem developer portal
+  - name: Payer-to-Payer FHIR API
+    scope: partner
+    metric: varies
+    limit: per data-exchange agreement
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: SMART-on-FHIR scopes
+    description: Member-authorized endpoints require SMART-on-FHIR auth with member-consent scopes; tokens
+      are short-lived and refreshable.
+  - name: Backoff
+    description: Implement exponential backoff with jitter; honor 429 + Retry-After.
+  - name: Application registration
+    description: All apps calling Patient Access must be registered with Anthem; CMS rule prohibits
+      blocking access but allows rate-limiting and abuse mitigation.
+  - name: Public read-only endpoints
+    description: Provider Directory and Formulary are public read-only; cache aggressively to minimize
+      load.
 maintainers:
   - FN: API Evangelist
     email: info@apievangelist.com
