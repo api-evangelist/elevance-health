@@ -95,6 +95,8 @@ apis:
       - type: Documentation
         url: https://www.anthem.com/developers
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/elevance-health
   - type: Website
     url: https://www.elevancehealth.com
   - type: DeveloperPortal
