@@ -1,0 +1,260 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Elevance Health Patient Access FHIR API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://patient360c.anthem.com/P360Member/oauth2/authorize",
+      "accessTokenUrl": "https://patient360c.anthem.com/P360Member/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conformance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Capability statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/metadata"
+          },
+          "docs": "Capability statement"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Patient",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Read Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/Patient/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read Patient"
+        },
+        {
+          "info": {
+            "name": "Search Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/Patient",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "birthdate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "family",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "given",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search Patient"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Coverage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Coverage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/Coverage",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "beneficiary",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search Coverage"
+        },
+        {
+          "info": {
+            "name": "Read Coverage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/Coverage/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read Coverage"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Claims",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search ExplanationOfBenefit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/ExplanationOfBenefit",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_lastUpdated",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search ExplanationOfBenefit"
+        },
+        {
+          "info": {
+            "name": "Read ExplanationOfBenefit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/ExplanationOfBenefit/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read ExplanationOfBenefit"
+        },
+        {
+          "info": {
+            "name": "Search Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/Claim",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search Claim"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Provider Directory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Read Practitioner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/Practitioner/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read Practitioner"
+        },
+        {
+          "info": {
+            "name": "Read Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/Organization/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read Organization"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
