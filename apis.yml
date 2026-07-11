@@ -95,6 +95,8 @@ apis:
       - type: Documentation
         url: https://www.anthem.com/developers
 common:
+  - type: OAuthScopes
+    url: scopes/elevance-health-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/elevance-health
   - type: Website

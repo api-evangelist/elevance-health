@@ -1,0 +1,29 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/elevance-health-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/elevance-health-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://patient360c.anthem.com/P360Member/oauth2/authorize
+    tokenUrl: https://patient360c.anthem.com/P360Member/oauth2/token
+scopes:
+- scope: launch/patient
+  description: SMART on FHIR patient launch context
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/elevance-health-openapi.yml
+- scope: offline_access
+  description: Refresh token access
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/elevance-health-openapi.yml
+- scope: patient/*.read
+  description: Read patient-scoped resources
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/elevance-health-openapi.yml
