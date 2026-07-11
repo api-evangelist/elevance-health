@@ -95,6 +95,10 @@ apis:
       - type: Documentation
         url: https://www.anthem.com/developers
 common:
+  - type: DomainSecurity
+    url: security/elevance-health-domain-security.yml
+  - type: Authentication
+    url: authentication/elevance-health-authentication.yml
   - type: OAuthScopes
     url: scopes/elevance-health-scopes.yml
   - type: LinkedIn
