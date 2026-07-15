@@ -95,6 +95,8 @@ apis:
       - type: Documentation
         url: https://www.anthem.com/developers
 common:
+  - type: AgenticAccess
+    url: agentic-access/elevance-health-agentic-access.yml
   - type: DomainSecurity
     url: security/elevance-health-domain-security.yml
   - type: Authentication
