@@ -1,0 +1,42 @@
+openapi: 3.1.0
+info:
+  title: Elevance Health Patient Access FHIR Claims Conformance API
+  version: '1.0'
+  description: Elevance Health (Anthem) Patient Access API exposes FHIR resources aligned with the CMS Interoperability and Patient Access rule and the CARIN Consumer Directed Payer Data Exchange Implementation Guide. Authentication is via OAuth 2.0 / SMART on FHIR.
+  contact:
+    name: Elevance Health Developers
+    url: https://patient360c.anthem.com/P360Member/fhir/documentation
+servers:
+- url: https://patient360c.anthem.com/P360Member/api/fhir
+  description: Patient360 FHIR (DSTU2)
+security:
+- oauth2:
+  - patient/*.read
+tags:
+- name: Conformance
+paths:
+  /metadata:
+    get:
+      summary: Capability statement
+      operationId: getCapabilityStatement
+      tags:
+      - Conformance
+      responses:
+        '200':
+          description: CapabilityStatement
+          content:
+            application/fhir+json:
+              schema:
+                type: object
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://patient360c.anthem.com/P360Member/oauth2/authorize
+          tokenUrl: https://patient360c.anthem.com/P360Member/oauth2/token
+          scopes:
+            patient/*.read: Read patient-scoped resources
+            launch/patient: SMART on FHIR patient launch context
+            offline_access: Refresh token access
