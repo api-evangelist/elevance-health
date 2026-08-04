@@ -1,0 +1,22 @@
+{
+  "provider": "elevance-health",
+  "sources": [
+    "elevance-health-claims-api-openapi.yml",
+    "elevance-health-conformance-api-openapi.yml",
+    "elevance-health-coverage-api-openapi.yml",
+    "elevance-health-patient-api-openapi.yml",
+    "elevance-health-provider-directory-api-openapi.yml"
+  ],
+  "outputs": [
+    "elevance-health-claims-api-openapi.yml",
+    "elevance-health-conformance-api-openapi.yml",
+    "elevance-health-coverage-api-openapi.yml",
+    "elevance-health-patient-api-openapi.yml",
+    "elevance-health-provider-directory-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
