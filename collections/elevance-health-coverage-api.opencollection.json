@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Elevance Health Patient Access FHIR Claims Coverage API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://patient360c.anthem.com/P360Member/oauth2/authorize",
+      "accessTokenUrl": "https://patient360c.anthem.com/P360Member/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Coverage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Coverage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/Coverage",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "beneficiary",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search Coverage"
+        },
+        {
+          "info": {
+            "name": "Read Coverage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/Coverage/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read Coverage"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

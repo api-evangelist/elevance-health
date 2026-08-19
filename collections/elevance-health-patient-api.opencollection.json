@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Elevance Health Access FHIR Claims Patient API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://patient360c.anthem.com/P360Member/oauth2/authorize",
+      "accessTokenUrl": "https://patient360c.anthem.com/P360Member/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patient",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Read Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/Patient/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read Patient"
+        },
+        {
+          "info": {
+            "name": "Search Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/Patient",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "birthdate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "family",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "given",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search Patient"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,239 @@
+{
+  "item": [
+    {
+      "id": "dfdbd7b6-4503-4b7f-b53a-f18f7e0e7a77",
+      "name": "Provider Directory",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d84bc72f-99e9-4bc8-b48b-4bd7b38bf7b1",
+          "name": "Read Practitioner",
+          "request": {
+            "name": "Read Practitioner",
+            "description": {},
+            "url": {
+              "path": [
+                "Practitioner",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6026dcb-232f-4357-90ba-711feddb2f83",
+              "name": "Practitioner resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Practitioner",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88df9d0c-0dd6-482e-9bf5-6ec9c9d60b69",
+          "name": "Read Organization",
+          "request": {
+            "name": "Read Organization",
+            "description": {},
+            "url": {
+              "path": [
+                "Organization",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a92db798-6e3e-4455-a6aa-2eb0a8bd0000",
+              "name": "Organization resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Organization",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://patient360c.anthem.com/P360Member/api/fhir",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "patient/*.read launch/patient offline_access"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://patient360c.anthem.com/P360Member/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://patient360c.anthem.com/P360Member/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e83d4529-937a-4223-b4a9-bbafc70587f8",
+    "name": "Elevance Health Patient Access FHIR Claims Provider Directory API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Elevance Health (Anthem) Patient Access API exposes FHIR resources aligned with the CMS Interoperability and Patient Access rule and the CARIN Consumer Directed Payer Data Exchange Implementation Guide. Authentication is via OAuth 2.0 / SMART on FHIR.\n\nContact Support:\n Name: Elevance Health Developers",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Elevance Health Patient Access FHIR Claims API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://patient360c.anthem.com/P360Member/oauth2/authorize",
+      "accessTokenUrl": "https://patient360c.anthem.com/P360Member/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Claims",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search ExplanationOfBenefit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/ExplanationOfBenefit",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_lastUpdated",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search ExplanationOfBenefit"
+        },
+        {
+          "info": {
+            "name": "Read ExplanationOfBenefit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/ExplanationOfBenefit/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read ExplanationOfBenefit"
+        },
+        {
+          "info": {
+            "name": "Search Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://patient360c.anthem.com/P360Member/api/fhir/Claim",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search Claim"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
