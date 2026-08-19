@@ -16,7 +16,7 @@ accessModel:
   method: derived
 modified: '2026-04-28'
 created: '2026-03-21'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 type: Index
 position: Consuming
 access: 3rd-Party
