@@ -1,0 +1,24 @@
+slug: elevance-health
+provider: Elevance Health
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Coverage
+  spec_file: elevance-health-coverage-api-openapi.yml
+  capability_id: BC-2800.30
+  capability_id_l1: BC-2800
+  capability_name: Eligibility & Benefits Verification
+  confidence: 0.7
+  evidence: GET /Coverage  searchCoverage; GET /Coverage/{id}  readCoverage
+  reason: Exposes member insurance coverage/benefit information, which supports verification of insurance
+    coverage and benefits; only read access so somewhat thin.
