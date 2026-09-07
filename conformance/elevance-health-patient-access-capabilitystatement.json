@@ -1,0 +1,2192 @@
+{
+  "id": "8d507db6-f541-4edc-bcf1-24d265ca064b",
+  "date": "2024-04-08T02:13:41.381-04:00",
+  "kind": "instance",
+  "name": "RestServer",
+  "rest": [
+    {
+      "mode": "server",
+      "resource": [
+        {
+          "type": "AllergyIntolerance",
+          "profile": "http://hl7.org/fhir/StructureDefinition/AllergyIntolerance",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "clinical-status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/AllergyIntolerance-clinical-status",
+              "documentation": "active | inactive | resolved"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "AllergyIntolerance:patient"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Binary",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Binary",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "vread"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            }
+          ],
+          "searchInclude": [
+            "*"
+          ],
+          "searchRevInclude": [
+            "*"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "CarePlan",
+          "profile": "http://hl7.org/fhir/StructureDefinition/CarePlan",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-date",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Date first version of the resource instance was recorded\r\n* [CarePlan](careplan.html): Time period plan covers\r\n* [CareTeam](careteam.html): Time period team covers\r\n* [ClinicalImpression](clinicalimpression.html): When the assessment was documented\r\n* [Composition](composition.html): Composition editing time\r\n* [Consent](consent.html): When this Consent was created or indexed\r\n* [DiagnosticReport](diagnosticreport.html): The clinically relevant time of the report\r\n* [Encounter](encounter.html): A date within the period the Encounter lasted\r\n* [EpisodeOfCare](episodeofcare.html): The provided date search value falls within the episode of care's period\r\n* [FamilyMemberHistory](familymemberhistory.html): When history was recorded or last updated\r\n* [Flag](flag.html): Time period when flag is active\r\n* [Immunization](immunization.html): Vaccination  (non)-Administration Date\r\n* [List](list.html): When the list was prepared\r\n* [Observation](observation.html): Obtained date/time. If the obtained element is a period, a date that falls in the period\r\n* [Procedure](procedure.html): When the procedure was performed\r\n* [RiskAssessment](riskassessment.html): When was assessment made?\r\n* [SupplyRequest](supplyrequest.html): When the request was made\r\n"
+            },
+            {
+              "name": "category",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/CarePlan-category",
+              "documentation": "Type of plan"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/CarePlan-status",
+              "documentation": "draft | active | on-hold | revoked | completed | entered-in-error | unknown"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "CarePlan:patient"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "CareTeam",
+          "profile": "http://hl7.org/fhir/StructureDefinition/CareTeam",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "participant",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/CareTeam-participant",
+              "documentation": "Who is involved"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "role",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/us/core/SearchParameter/us-core-careteam-role",
+              "documentation": "Returns CareTeam resources with a participant role matching the specified code."
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/CareTeam-status",
+              "documentation": "proposed | active | suspended | inactive | entered-in-error"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "CareTeam:participant",
+            "CareTeam:patient"
+          ],
+          "searchRevInclude": [
+            "CareTeam:participant",
+            "DiagnosticReport:performer",
+            "Observation:performer",
+            "Provenance:target",
+            "ServiceRequest:performer"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Claim",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Claim",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "created",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Claim-created",
+              "documentation": "The creation date for the Claim"
+            },
+            {
+              "name": "identifier",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Claim-identifier",
+              "documentation": "The primary identifier of the financial resource"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Claim-patient",
+              "documentation": "Patient receiving the products or services"
+            },
+            {
+              "name": "provider",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Claim-provider",
+              "documentation": "Provider responsible for the Claim"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "Claim:patient",
+            "Claim:provider"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Condition",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Condition",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "abatement-date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Condition-abatement-date",
+              "documentation": "Date-related abatements (dateTime and period)"
+            },
+            {
+              "name": "category",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Condition-category",
+              "documentation": "The category of the condition"
+            },
+            {
+              "name": "clinical-status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Condition-clinical-status",
+              "documentation": "The clinical status of the condition"
+            },
+            {
+              "name": "code",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-code",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Code that identifies the allergy or intolerance\r\n* [Condition](condition.html): Code for the condition\r\n* [DeviceRequest](devicerequest.html): Code for what is being requested/ordered\r\n* [DiagnosticReport](diagnosticreport.html): The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a condition code\r\n* [List](list.html): What the purpose of this list is\r\n* [Medication](medication.html): Returns medications for a specific code\r\n* [MedicationAdministration](medicationadministration.html): Return administrations of this medication code\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses of this medicine code\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions of this medication code\r\n* [MedicationStatement](medicationstatement.html): Return statements of this medication code\r\n* [Observation](observation.html): The code of the observation type\r\n* [Procedure](procedure.html): A code to identify a  procedure\r\n* [ServiceRequest](servicerequest.html): What is being requested/ordered\r\n"
+            },
+            {
+              "name": "encounter",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Condition-encounter",
+              "documentation": "Encounter created as part of"
+            },
+            {
+              "name": "onset-date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Condition-onset-date",
+              "documentation": "Date related onsets (dateTime and Period)"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "recorded-date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Condition-recorded-date",
+              "documentation": "Date record was first recorded"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "Condition:encounter",
+            "Condition:patient"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Coverage",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Coverage",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "beneficiary",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Coverage-beneficiary",
+              "documentation": "Covered party"
+            },
+            {
+              "name": "identifier",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Coverage-identifier",
+              "documentation": "The primary identifier of the insured and the coverage"
+            },
+            {
+              "name": "payor",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Coverage-payor",
+              "documentation": "The identity of the insurer or party paying for services"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "Coverage:beneficiary",
+            "Coverage:payor"
+          ],
+          "searchRevInclude": [
+            "ExplanationOfBenefit:coverage",
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Device",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Device",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Device-patient",
+              "documentation": "Patient information, if the resource is affixed to a person"
+            },
+            {
+              "name": "type",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Device-type",
+              "documentation": "The type of the device"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "Device:patient"
+          ],
+          "searchRevInclude": [
+            "MedicationAdministration:performer",
+            "MedicationDispense:performer",
+            "Provenance:target",
+            "ServiceRequest:performer",
+            "ServiceRequest:requester"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "DiagnosticReport",
+          "profile": "http://hl7.org/fhir/StructureDefinition/DiagnosticReport",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-date",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Date first version of the resource instance was recorded\r\n* [CarePlan](careplan.html): Time period plan covers\r\n* [CareTeam](careteam.html): Time period team covers\r\n* [ClinicalImpression](clinicalimpression.html): When the assessment was documented\r\n* [Composition](composition.html): Composition editing time\r\n* [Consent](consent.html): When this Consent was created or indexed\r\n* [DiagnosticReport](diagnosticreport.html): The clinically relevant time of the report\r\n* [Encounter](encounter.html): A date within the period the Encounter lasted\r\n* [EpisodeOfCare](episodeofcare.html): The provided date search value falls within the episode of care's period\r\n* [FamilyMemberHistory](familymemberhistory.html): When history was recorded or last updated\r\n* [Flag](flag.html): Time period when flag is active\r\n* [Immunization](immunization.html): Vaccination  (non)-Administration Date\r\n* [List](list.html): When the list was prepared\r\n* [Observation](observation.html): Obtained date/time. If the obtained element is a period, a date that falls in the period\r\n* [Procedure](procedure.html): When the procedure was performed\r\n* [RiskAssessment](riskassessment.html): When was assessment made?\r\n* [SupplyRequest](supplyrequest.html): When the request was made\r\n"
+            },
+            {
+              "name": "category",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/DiagnosticReport-category",
+              "documentation": "Which diagnostic discipline/department created the report"
+            },
+            {
+              "name": "code",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-code",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Code that identifies the allergy or intolerance\r\n* [Condition](condition.html): Code for the condition\r\n* [DeviceRequest](devicerequest.html): Code for what is being requested/ordered\r\n* [DiagnosticReport](diagnosticreport.html): The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a condition code\r\n* [List](list.html): What the purpose of this list is\r\n* [Medication](medication.html): Returns medications for a specific code\r\n* [MedicationAdministration](medicationadministration.html): Return administrations of this medication code\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses of this medicine code\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions of this medication code\r\n* [MedicationStatement](medicationstatement.html): Return statements of this medication code\r\n* [Observation](observation.html): The code of the observation type\r\n* [Procedure](procedure.html): A code to identify a  procedure\r\n* [ServiceRequest](servicerequest.html): What is being requested/ordered\r\n"
+            },
+            {
+              "name": "encounter",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-encounter",
+              "documentation": "Multiple Resources: \r\n\r\n* [Composition](composition.html): Context of the Composition\r\n* [DeviceRequest](devicerequest.html): Encounter during which request was created\r\n* [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made\r\n* [DocumentReference](documentreference.html): Context of the document  content\r\n* [Flag](flag.html): Alert relevant during encounter\r\n* [List](list.html): Context in which list created\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier\r\n* [Observation](observation.html): Encounter related to the observation\r\n* [Procedure](procedure.html): Encounter created as part of\r\n* [RiskAssessment](riskassessment.html): Where was assessment performed?\r\n* [ServiceRequest](servicerequest.html): An encounter in which this request is made\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier\r\n"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "performer",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/DiagnosticReport-performer",
+              "documentation": "Who is responsible for the report"
+            },
+            {
+              "name": "result",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/DiagnosticReport-result",
+              "documentation": "Link to an atomic result (observation resource)"
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/DiagnosticReport-status",
+              "documentation": "The status of the report"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "DiagnosticReport:encounter",
+            "DiagnosticReport:patient",
+            "DiagnosticReport:performer",
+            "DiagnosticReport:result"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "DocumentReference",
+          "profile": "http://hl7.org/fhir/StructureDefinition/DocumentReference",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "category",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-category",
+              "documentation": "Categorization of document"
+            },
+            {
+              "name": "date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-date",
+              "documentation": "When this document reference was created"
+            },
+            {
+              "name": "encounter",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-encounter",
+              "documentation": "Multiple Resources: \r\n\r\n* [Composition](composition.html): Context of the Composition\r\n* [DeviceRequest](devicerequest.html): Encounter during which request was created\r\n* [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made\r\n* [DocumentReference](documentreference.html): Context of the document  content\r\n* [Flag](flag.html): Alert relevant during encounter\r\n* [List](list.html): Context in which list created\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier\r\n* [Observation](observation.html): Encounter related to the observation\r\n* [Procedure](procedure.html): Encounter created as part of\r\n* [RiskAssessment](riskassessment.html): Where was assessment performed?\r\n* [ServiceRequest](servicerequest.html): An encounter in which this request is made\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier\r\n"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "period",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-period",
+              "documentation": "Time of service that is being documented"
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-status",
+              "documentation": "current | superseded | entered-in-error"
+            },
+            {
+              "name": "type",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-type",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): allergy | intolerance - Underlying mechanism (if known)\r\n* [Composition](composition.html): Kind of composition (LOINC if possible)\r\n* [DocumentManifest](documentmanifest.html): Kind of document set\r\n* [DocumentReference](documentreference.html): Kind of document (LOINC if possible)\r\n* [Encounter](encounter.html): Specific type of encounter\r\n* [EpisodeOfCare](episodeofcare.html): Type/class  - e.g. specialist referral, disease management\r\n"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "DocumentReference:encounter",
+            "DocumentReference:patient"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Encounter",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Encounter",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "class",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Encounter-class",
+              "documentation": "Classification of patient encounter"
+            },
+            {
+              "name": "date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-date",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Date first version of the resource instance was recorded\r\n* [CarePlan](careplan.html): Time period plan covers\r\n* [CareTeam](careteam.html): Time period team covers\r\n* [ClinicalImpression](clinicalimpression.html): When the assessment was documented\r\n* [Composition](composition.html): Composition editing time\r\n* [Consent](consent.html): When this Consent was created or indexed\r\n* [DiagnosticReport](diagnosticreport.html): The clinically relevant time of the report\r\n* [Encounter](encounter.html): A date within the period the Encounter lasted\r\n* [EpisodeOfCare](episodeofcare.html): The provided date search value falls within the episode of care's period\r\n* [FamilyMemberHistory](familymemberhistory.html): When history was recorded or last updated\r\n* [Flag](flag.html): Time period when flag is active\r\n* [Immunization](immunization.html): Vaccination  (non)-Administration Date\r\n* [List](list.html): When the list was prepared\r\n* [Observation](observation.html): Obtained date/time. If the obtained element is a period, a date that falls in the period\r\n* [Procedure](procedure.html): When the procedure was performed\r\n* [RiskAssessment](riskassessment.html): When was assessment made?\r\n* [SupplyRequest](supplyrequest.html): When the request was made\r\n"
+            },
+            {
+              "name": "discharge-disposition",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/us/core/SearchParameter/us-core-encounter-discharge-disposition",
+              "documentation": "Returns encounters with an discharge-disposition matching the specified code."
+            },
+            {
+              "name": "identifier",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-identifier",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): External ids for this item\r\n* [CarePlan](careplan.html): External Ids for this plan\r\n* [CareTeam](careteam.html): External Ids for this team\r\n* [Composition](composition.html): Version-independent identifier for the Composition\r\n* [Condition](condition.html): A unique identifier of the condition record\r\n* [Consent](consent.html): Identifier for this record (external references)\r\n* [DetectedIssue](detectedissue.html): Unique id for the detected issue\r\n* [DeviceRequest](devicerequest.html): Business identifier for request/order\r\n* [DiagnosticReport](diagnosticreport.html): An identifier for the report\r\n* [DocumentManifest](documentmanifest.html): Unique Identifier for the set of documents\r\n* [DocumentReference](documentreference.html): Master Version Specific Identifier\r\n* [Encounter](encounter.html): Identifier(s) by which this encounter is known\r\n* [EpisodeOfCare](episodeofcare.html): Business Identifier(s) relevant for this EpisodeOfCare\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a record identifier\r\n* [Goal](goal.html): External Ids for this goal\r\n* [ImagingStudy](imagingstudy.html): Identifiers for the Study, such as DICOM Study Instance UID and Accession number\r\n* [Immunization](immunization.html): Business identifier\r\n* [List](list.html): Business identifier\r\n* [MedicationAdministration](medicationadministration.html): Return administrations with this external identifier\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses with this external identifier\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions with this external identifier\r\n* [MedicationStatement](medicationstatement.html): Return statements with this external identifier\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this external identifier\r\n* [Observation](observation.html): The unique id for a particular observation\r\n* [Procedure](procedure.html): A unique identifier for a procedure\r\n* [RiskAssessment](riskassessment.html): Unique identifier for the assessment\r\n* [ServiceRequest](servicerequest.html): Identifiers assigned to this order\r\n* [SupplyDelivery](supplydelivery.html): External identifier\r\n* [SupplyRequest](supplyrequest.html): Business Identifier for SupplyRequest\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this external identifier\r\n"
+            },
+            {
+              "name": "location",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Encounter-location",
+              "documentation": "Location the encounter takes place"
+            },
+            {
+              "name": "participant",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Encounter-participant",
+              "documentation": "Persons involved in the encounter other than the patient"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Encounter-status",
+              "documentation": "planned | arrived | triaged | in-progress | onleave | finished | cancelled +"
+            },
+            {
+              "name": "type",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-type",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): allergy | intolerance - Underlying mechanism (if known)\r\n* [Composition](composition.html): Kind of composition (LOINC if possible)\r\n* [DocumentManifest](documentmanifest.html): Kind of document set\r\n* [DocumentReference](documentreference.html): Kind of document (LOINC if possible)\r\n* [Encounter](encounter.html): Specific type of encounter\r\n* [EpisodeOfCare](episodeofcare.html): Type/class  - e.g. specialist referral, disease management\r\n"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "Encounter:location",
+            "Encounter:participant",
+            "Encounter:patient"
+          ],
+          "searchRevInclude": [
+            "Condition:encounter",
+            "DiagnosticReport:encounter",
+            "DocumentReference:encounter",
+            "MedicationRequest:encounter",
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "ExplanationOfBenefit",
+          "profile": "http://hl7.org/fhir/StructureDefinition/ExplanationOfBenefit",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "billable-period-start",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/us/carin-bb/SearchParameter/explanationofbenefit-billable-period-start",
+              "documentation": "Starting Date of the service for the EOB using billablePeriod.period.start. The billable-period-start search parameter using the billablePeriod.period.start provides results with the earliest billablePeriod.start from a professional and non-clinician EOB or an oral EOB."
+            },
+            {
+              "name": "care-team",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-care-team",
+              "documentation": "Member of the CareTeam"
+            },
+            {
+              "name": "coverage",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-coverage",
+              "documentation": "The plan under which the claim was adjudicated"
+            },
+            {
+              "name": "identifier",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-identifier",
+              "documentation": "The business identifier of the Explanation of Benefit"
+            },
+            {
+              "name": "insurer",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/us/carin-bb/SearchParameter/explanationofbenefit-insurer",
+              "documentation": "The party responsible for the claim"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-patient",
+              "documentation": "The reference to the patient"
+            },
+            {
+              "name": "payee",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-payee",
+              "documentation": "The party receiving any payment for the Claim"
+            },
+            {
+              "name": "provider",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-provider",
+              "documentation": "The reference to the provider"
+            },
+            {
+              "name": "service-date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/us/carin-bb/SearchParameter/explanationofbenefit-service-date",
+              "documentation": "Date of the service for the EOB. The service-date search parameter simplifies search, since a client doesn't need to know that for inpatient and outpatient institutional EOB dates they need to search by billablePeriod, for a pharmacy EOB by item.servicedDate, for a professional and non-clinician EOB - by item.servicedPeriod and for an oral EOB \u2013 by item.servicedPeriod."
+            },
+            {
+              "name": "service-start-date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/us/carin-bb/SearchParameter/explanationofbenefit-service-start-date",
+              "documentation": "Starting Date of the service for the EOB. The service-start-date search parameter simplifies search, since a client doesn't need to know that for inpatient and outpatient institutional EOB dates they need to search by billablePeriod.start, for a pharmacy EOB by item.servicedDate, for a professional and non-clinician EOB - by item.servicedPeriod.start and for an oral EOB \u2013 by item.servicedPeriod.start."
+            },
+            {
+              "name": "type",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/us/carin-bb/SearchParameter/explanationofbenefit-type",
+              "documentation": "The type of the ExplanationOfBenefit"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "ExplanationOfBenefit:care-team",
+            "ExplanationOfBenefit:coverage",
+            "ExplanationOfBenefit:insurer",
+            "ExplanationOfBenefit:patient",
+            "ExplanationOfBenefit:payee",
+            "ExplanationOfBenefit:provider"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Goal",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Goal",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "description",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/us/core/SearchParameter/us-core-goal-description",
+              "documentation": "**The code or text describing the goal**\n**NOTE**: This US Core SearchParameter definition extends the usage context of the\n[Conformance expectation extension](http://hl7.org/fhir/R4/extension-capabilitystatement-expectation.html)\n - multipleAnd\n - multipleOr\n - comparator\n - modifier\n - chain"
+            },
+            {
+              "name": "lifecycle-status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Goal-lifecycle-status",
+              "documentation": "proposed | planned | accepted | active | on-hold | completed | cancelled | entered-in-error | rejected"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "target-date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Goal-target-date",
+              "documentation": "Reach goal on or before"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "Goal:patient"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Immunization",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Immunization",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "covid19-group",
+              "type": "token",
+              "definition": "https://elevancehealth.com/fhirextensions#COVID19_GROUP",
+              "documentation": "The COVID19 group extension."
+            },
+            {
+              "name": "date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-date",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Date first version of the resource instance was recorded\r\n* [CarePlan](careplan.html): Time period plan covers\r\n* [CareTeam](careteam.html): Time period team covers\r\n* [ClinicalImpression](clinicalimpression.html): When the assessment was documented\r\n* [Composition](composition.html): Composition editing time\r\n* [Consent](consent.html): When this Consent was created or indexed\r\n* [DiagnosticReport](diagnosticreport.html): The clinically relevant time of the report\r\n* [Encounter](encounter.html): A date within the period the Encounter lasted\r\n* [EpisodeOfCare](episodeofcare.html): The provided date search value falls within the episode of care's period\r\n* [FamilyMemberHistory](familymemberhistory.html): When history was recorded or last updated\r\n* [Flag](flag.html): Time period when flag is active\r\n* [Immunization](immunization.html): Vaccination  (non)-Administration Date\r\n* [List](list.html): When the list was prepared\r\n* [Observation](observation.html): Obtained date/time. If the obtained element is a period, a date that falls in the period\r\n* [Procedure](procedure.html): When the procedure was performed\r\n* [RiskAssessment](riskassessment.html): When was assessment made?\r\n* [SupplyRequest](supplyrequest.html): When the request was made\r\n"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "performer",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Immunization-performer",
+              "documentation": "The practitioner or organization who played a role in the vaccination"
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Immunization-status",
+              "documentation": "Immunization event status"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "Immunization:patient",
+            "Immunization:performer"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Location",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Location",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "address",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/Location-address",
+              "documentation": "A (part of the) address of the location"
+            },
+            {
+              "name": "address-city",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/Location-address-city",
+              "documentation": "A city specified in an address"
+            },
+            {
+              "name": "address-state",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/Location-address-state",
+              "documentation": "A state specified in an address"
+            },
+            {
+              "name": "address-postalcode",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/Location-address-postalcode",
+              "documentation": "A postal code specified in an address"
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/Location-name",
+              "documentation": "A portion of the location's name or alias"
+            }
+          ],
+          "searchInclude": [
+            "*"
+          ],
+          "searchRevInclude": [
+            "Encounter:location",
+            "PractitionerRole:location",
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "MedicationAdministration",
+          "profile": "http://hl7.org/fhir/StructureDefinition/MedicationAdministration",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "effective-time",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/MedicationAdministration-effective-time",
+              "documentation": "Date administration happened (or did not happen)"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "performer",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/MedicationAdministration-performer",
+              "documentation": "The identity of the individual who administered the medication"
+            },
+            {
+              "name": "request",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/MedicationAdministration-request",
+              "documentation": "The identity of a request to list administrations from"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "MedicationAdministration:patient",
+            "MedicationAdministration:performer",
+            "MedicationAdministration:request"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "MedicationDispense",
+          "profile": "http://hl7.org/fhir/StructureDefinition/MedicationDispense",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "performer",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/MedicationDispense-performer",
+              "documentation": "Returns dispenses performed by a specific individual"
+            },
+            {
+              "name": "prescription",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/medications-prescription",
+              "documentation": "Multiple Resources: \r\n\r\n* [MedicationDispense](medicationdispense.html): The identity of a prescription to list dispenses from\r\n"
+            },
+            {
+              "name": "whenhandedover",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/MedicationDispense-whenhandedover",
+              "documentation": "Returns dispenses handed over on this date"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "MedicationDispense:patient",
+            "MedicationDispense:performer",
+            "MedicationDispense:prescription"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "MedicationRequest",
+          "profile": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "authoredon",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/MedicationRequest-authoredon",
+              "documentation": "Return prescriptions written on this date"
+            },
+            {
+              "name": "encounter",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/medications-encounter",
+              "documentation": "Multiple Resources: \r\n\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions with this encounter identifier\r\n"
+            },
+            {
+              "name": "intent",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/MedicationRequest-intent",
+              "documentation": "Returns prescriptions with different intents"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/medications-status",
+              "documentation": "Multiple Resources: \r\n\r\n* [MedicationAdministration](medicationadministration.html): MedicationAdministration event status (for example one of active/paused/completed/nullified)\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses with a specified dispense status\r\n* [MedicationRequest](medicationrequest.html): Status of the prescription\r\n* [MedicationStatement](medicationstatement.html): Return statements that match the given status\r\n"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "MedicationRequest:encounter",
+            "MedicationRequest:patient"
+          ],
+          "searchRevInclude": [
+            "MedicationAdministration:request",
+            "MedicationDispense:prescription",
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Observation",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Observation",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "category",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Observation-category",
+              "documentation": "The classification of the type of observation"
+            },
+            {
+              "name": "code",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-code",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Code that identifies the allergy or intolerance\r\n* [Condition](condition.html): Code for the condition\r\n* [DeviceRequest](devicerequest.html): Code for what is being requested/ordered\r\n* [DiagnosticReport](diagnosticreport.html): The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a condition code\r\n* [List](list.html): What the purpose of this list is\r\n* [Medication](medication.html): Returns medications for a specific code\r\n* [MedicationAdministration](medicationadministration.html): Return administrations of this medication code\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses of this medicine code\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions of this medication code\r\n* [MedicationStatement](medicationstatement.html): Return statements of this medication code\r\n* [Observation](observation.html): The code of the observation type\r\n* [Procedure](procedure.html): A code to identify a  procedure\r\n* [ServiceRequest](servicerequest.html): What is being requested/ordered\r\n"
+            },
+            {
+              "name": "date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-date",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Date first version of the resource instance was recorded\r\n* [CarePlan](careplan.html): Time period plan covers\r\n* [CareTeam](careteam.html): Time period team covers\r\n* [ClinicalImpression](clinicalimpression.html): When the assessment was documented\r\n* [Composition](composition.html): Composition editing time\r\n* [Consent](consent.html): When this Consent was created or indexed\r\n* [DiagnosticReport](diagnosticreport.html): The clinically relevant time of the report\r\n* [Encounter](encounter.html): A date within the period the Encounter lasted\r\n* [EpisodeOfCare](episodeofcare.html): The provided date search value falls within the episode of care's period\r\n* [FamilyMemberHistory](familymemberhistory.html): When history was recorded or last updated\r\n* [Flag](flag.html): Time period when flag is active\r\n* [Immunization](immunization.html): Vaccination  (non)-Administration Date\r\n* [List](list.html): When the list was prepared\r\n* [Observation](observation.html): Obtained date/time. If the obtained element is a period, a date that falls in the period\r\n* [Procedure](procedure.html): When the procedure was performed\r\n* [RiskAssessment](riskassessment.html): When was assessment made?\r\n* [SupplyRequest](supplyrequest.html): When the request was made\r\n"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "performer",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Observation-performer",
+              "documentation": "Who performed the observation"
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Observation-status",
+              "documentation": "The status of the observation"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "Observation:patient",
+            "Observation:performer"
+          ],
+          "searchRevInclude": [
+            "DiagnosticReport:result",
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Organization",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Organization",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "identifier",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Organization-identifier",
+              "documentation": "Any identifier for the organization (not the accreditation issuer's identifier)"
+            },
+            {
+              "name": "address",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/Organization-address",
+              "documentation": "A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text"
+            },
+            {
+              "name": "address-city",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/Organization-address-city",
+              "documentation": "A city specified in an address"
+            },
+            {
+              "name": "address-state",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/Organization-address-state",
+              "documentation": "A state specified in an address"
+            },
+            {
+              "name": "address-postalcode",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/Organization-address-postalcode",
+              "documentation": "A postal code specified in an address"
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/Organization-name",
+              "documentation": "A portion of the organization's name or alias"
+            }
+          ],
+          "searchInclude": [
+            "*"
+          ],
+          "searchRevInclude": [
+            "CareTeam:participant",
+            "Claim:provider",
+            "Coverage:payor",
+            "DiagnosticReport:performer",
+            "ExplanationOfBenefit:care-team",
+            "ExplanationOfBenefit:insurer",
+            "ExplanationOfBenefit:payee",
+            "ExplanationOfBenefit:provider",
+            "Immunization:performer",
+            "MedicationDispense:performer",
+            "Observation:performer",
+            "PractitionerRole:organization",
+            "Provenance:target",
+            "ServiceRequest:performer",
+            "ServiceRequest:requester"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Patient",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Patient",
+          "operation": [
+            {
+              "name": "everything",
+              "definition": "http://hl7.org/fhir/OperationDefinition/Patient-everything"
+            }
+          ],
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "birthdate",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/individual-birthdate",
+              "documentation": "Multiple Resources: \r\n\r\n* [Patient](patient.html): The patient's date of birth\r\n* [Person](person.html): The person's date of birth\r\n* [RelatedPerson](relatedperson.html): The Related Person's date of birth\r\n"
+            },
+            {
+              "name": "family",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/individual-family",
+              "documentation": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A portion of the family name of the patient\r\n* [Practitioner](practitioner.html): A portion of the family name\r\n"
+            },
+            {
+              "name": "gender",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/individual-gender",
+              "documentation": "Multiple Resources: \r\n\r\n* [Patient](patient.html): Gender of the patient\r\n* [Person](person.html): The gender of the person\r\n* [Practitioner](practitioner.html): Gender of the practitioner\r\n* [RelatedPerson](relatedperson.html): Gender of the related person\r\n"
+            },
+            {
+              "name": "given",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/individual-given",
+              "documentation": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A portion of the given name of the patient\r\n* [Practitioner](practitioner.html): A portion of the given name\r\n"
+            },
+            {
+              "name": "identifier",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Patient-identifier",
+              "documentation": "A patient identifier"
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/Patient-name",
+              "documentation": "A server defined search that may match any of the string fields in the HumanName, including family, give, prefix, suffix, suffix, and/or text"
+            }
+          ],
+          "searchInclude": [
+            "*"
+          ],
+          "searchRevInclude": [
+            "AllergyIntolerance:patient",
+            "CarePlan:patient",
+            "CareTeam:participant",
+            "CareTeam:patient",
+            "Claim:patient",
+            "Condition:patient",
+            "Coverage:beneficiary",
+            "Coverage:payor",
+            "Device:patient",
+            "DiagnosticReport:patient",
+            "DocumentReference:patient",
+            "Encounter:patient",
+            "ExplanationOfBenefit:patient",
+            "ExplanationOfBenefit:payee",
+            "Goal:patient",
+            "Immunization:patient",
+            "MedicationAdministration:patient",
+            "MedicationAdministration:performer",
+            "MedicationDispense:patient",
+            "MedicationDispense:performer",
+            "MedicationRequest:patient",
+            "Observation:patient",
+            "Observation:performer",
+            "Procedure:patient",
+            "Provenance:patient",
+            "Provenance:target",
+            "RelatedPerson:patient",
+            "ServiceRequest:patient",
+            "ServiceRequest:performer",
+            "ServiceRequest:requester"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Practitioner",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "family",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/individual-family",
+              "documentation": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A portion of the family name of the patient\r\n* [Practitioner](practitioner.html): A portion of the family name\r\n"
+            },
+            {
+              "name": "given",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/individual-given",
+              "documentation": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A portion of the given name of the patient\r\n* [Practitioner](practitioner.html): A portion of the given name\r\n"
+            },
+            {
+              "name": "identifier",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Practitioner-identifier",
+              "documentation": "A practitioner's Identifier"
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "definition": "http://hl7.org/fhir/SearchParameter/Practitioner-name",
+              "documentation": "A server defined search that may match any of the string fields in the HumanName, including family, give, prefix, suffix, suffix, and/or text"
+            }
+          ],
+          "searchInclude": [
+            "*"
+          ],
+          "searchRevInclude": [
+            "CareTeam:participant",
+            "Claim:provider",
+            "DiagnosticReport:performer",
+            "Encounter:participant",
+            "ExplanationOfBenefit:care-team",
+            "ExplanationOfBenefit:payee",
+            "ExplanationOfBenefit:provider",
+            "Immunization:performer",
+            "MedicationAdministration:performer",
+            "MedicationDispense:performer",
+            "Observation:performer",
+            "Provenance:target",
+            "ServiceRequest:performer",
+            "ServiceRequest:requester"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "PractitionerRole",
+          "profile": "http://hl7.org/fhir/StructureDefinition/PractitionerRole",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "location",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/PractitionerRole-location",
+              "documentation": "One of the locations at which this practitioner provides care"
+            },
+            {
+              "name": "organization",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/PractitionerRole-organization",
+              "documentation": "The identity of the organization the practitioner represents / acts on behalf of"
+            },
+            {
+              "name": "practitioner",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/PractitionerRole-practitioner",
+              "documentation": "Practitioner that is able to provide the defined services for the organization"
+            },
+            {
+              "name": "specialty",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/PractitionerRole-specialty",
+              "documentation": "The practitioner has this specialty at an organization"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "PractitionerRole:location",
+            "PractitionerRole:organization",
+            "PractitionerRole:practitioner"
+          ],
+          "searchRevInclude": [
+            "CareTeam:participant",
+            "Claim:care-team",
+            "Claim:provider",
+            "DiagnosticReport:performer",
+            "Encounter:participant",
+            "ExplanationOfBenefit:care-team",
+            "ExplanationOfBenefit:payee",
+            "ExplanationOfBenefit:provider",
+            "Immunization:performer",
+            "MedicationAdministration:performer",
+            "MedicationDispense:performer",
+            "Observation:performer",
+            "Provenance:target",
+            "ServiceRequest:performer",
+            "ServiceRequest:requester"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Procedure",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Procedure",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "code",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-code",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Code that identifies the allergy or intolerance\r\n* [Condition](condition.html): Code for the condition\r\n* [DeviceRequest](devicerequest.html): Code for what is being requested/ordered\r\n* [DiagnosticReport](diagnosticreport.html): The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a condition code\r\n* [List](list.html): What the purpose of this list is\r\n* [Medication](medication.html): Returns medications for a specific code\r\n* [MedicationAdministration](medicationadministration.html): Return administrations of this medication code\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses of this medicine code\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions of this medication code\r\n* [MedicationStatement](medicationstatement.html): Return statements of this medication code\r\n* [Observation](observation.html): The code of the observation type\r\n* [Procedure](procedure.html): A code to identify a  procedure\r\n* [ServiceRequest](servicerequest.html): What is being requested/ordered\r\n"
+            },
+            {
+              "name": "date",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-date",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Date first version of the resource instance was recorded\r\n* [CarePlan](careplan.html): Time period plan covers\r\n* [CareTeam](careteam.html): Time period team covers\r\n* [ClinicalImpression](clinicalimpression.html): When the assessment was documented\r\n* [Composition](composition.html): Composition editing time\r\n* [Consent](consent.html): When this Consent was created or indexed\r\n* [DiagnosticReport](diagnosticreport.html): The clinically relevant time of the report\r\n* [Encounter](encounter.html): A date within the period the Encounter lasted\r\n* [EpisodeOfCare](episodeofcare.html): The provided date search value falls within the episode of care's period\r\n* [FamilyMemberHistory](familymemberhistory.html): When history was recorded or last updated\r\n* [Flag](flag.html): Time period when flag is active\r\n* [Immunization](immunization.html): Vaccination  (non)-Administration Date\r\n* [List](list.html): When the list was prepared\r\n* [Observation](observation.html): Obtained date/time. If the obtained element is a period, a date that falls in the period\r\n* [Procedure](procedure.html): When the procedure was performed\r\n* [RiskAssessment](riskassessment.html): When was assessment made?\r\n* [SupplyRequest](supplyrequest.html): When the request was made\r\n"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Procedure-status",
+              "documentation": "preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "Procedure:patient"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "Provenance",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Provenance",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Provenance-patient",
+              "documentation": "Target Reference(s) (usually version specific)"
+            },
+            {
+              "name": "target",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Provenance-target",
+              "documentation": "Target Reference(s) (usually version specific)"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "Provenance:patient",
+            "Provenance:target"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "RelatedPerson",
+          "profile": "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/RelatedPerson-patient",
+              "documentation": "The patient this related person is related to"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "RelatedPerson:patient"
+          ],
+          "searchRevInclude": [
+            "CareTeam:participant",
+            "Coverage:payor",
+            "Encounter:participant",
+            "ExplanationOfBenefit:payee",
+            "MedicationAdministration:performer",
+            "MedicationDispense:performer",
+            "Observation:performer",
+            "Provenance:target",
+            "ServiceRequest:performer",
+            "ServiceRequest:requester"
+          ],
+          "conditionalDelete": "single"
+        },
+        {
+          "type": "ServiceRequest",
+          "profile": "http://hl7.org/fhir/StructureDefinition/ServiceRequest",
+          "versioning": "versioned-update",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "vread"
+            },
+            {
+              "code": "read"
+            },
+            {
+              "code": "history-instance"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "_source",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+              "documentation": "Identifies where the resource comes from"
+            },
+            {
+              "name": "authored",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/ServiceRequest-authored",
+              "documentation": "Date request signed"
+            },
+            {
+              "name": "category",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/ServiceRequest-category",
+              "documentation": "Classification of service"
+            },
+            {
+              "name": "code",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-code",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Code that identifies the allergy or intolerance\r\n* [Condition](condition.html): Code for the condition\r\n* [DeviceRequest](devicerequest.html): Code for what is being requested/ordered\r\n* [DiagnosticReport](diagnosticreport.html): The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a condition code\r\n* [List](list.html): What the purpose of this list is\r\n* [Medication](medication.html): Returns medications for a specific code\r\n* [MedicationAdministration](medicationadministration.html): Return administrations of this medication code\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses of this medicine code\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions of this medication code\r\n* [MedicationStatement](medicationstatement.html): Return statements of this medication code\r\n* [Observation](observation.html): The code of the observation type\r\n* [Procedure](procedure.html): A code to identify a  procedure\r\n* [ServiceRequest](servicerequest.html): What is being requested/ordered\r\n"
+            },
+            {
+              "name": "occurrence",
+              "type": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/ServiceRequest-occurrence",
+              "documentation": "When service should occur"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "documentation": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+            },
+            {
+              "name": "performer",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/ServiceRequest-performer",
+              "documentation": "Requested performer"
+            },
+            {
+              "name": "requester",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/ServiceRequest-requester",
+              "documentation": "Who/what is requesting service"
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/ServiceRequest-status",
+              "documentation": "draft | active | on-hold | revoked | completed | entered-in-error | unknown"
+            }
+          ],
+          "searchInclude": [
+            "*",
+            "ServiceRequest:patient",
+            "ServiceRequest:performer",
+            "ServiceRequest:requester"
+          ],
+          "searchRevInclude": [
+            "Provenance:target"
+          ],
+          "conditionalDelete": "single"
+        }
+      ]
+    }
+  ],
+  "format": [
+    "application/fhir+xml",
+    "xml",
+    "application/fhir+json",
+    "json",
+    "application/x-turtle",
+    "ttl",
+    "html/json",
+    "html/xml",
+    "html/turtle"
+  ],
+  "status": "active",
+  "software": {
+    "name": "hos-fhir-server",
+    "version": "1.0.0"
+  },
+  "publisher": "Elevance Health, Inc",
+  "fhirVersion": "4.0.1",
+  "resourceType": "CapabilityStatement",
+  "implementation": {
+    "url": "https://totalview.healthos.elevancehealth.com/resources/registered/BCBS/api/v1/fhir",
+    "description": "R4 FHIR Server"
+  }
+}

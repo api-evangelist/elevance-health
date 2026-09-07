@@ -1,0 +1,101 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  The first-party "Interoperability API Endpoint Support Document" (IO105 v15.0, effective
+  2025-11-18) at
+  https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf,
+  the Anthem developer portal at https://www.anthem.com/developers, and the live FHIR
+  CapabilityStatements in conformance/.
+description: >-
+  Elevance Health's API lifecycle is driven by CMS rulemaking rather than by a product roadmap, and
+  the company publishes its dates. The governing document is versioned (v15.0) and carries an
+  effective date, which is the closest thing to a changelog in this estate.
+versioning:
+  scheme: FHIR specification release, plus a /api/v1/ path segment on the TotalView estate
+  current:
+    cms_interoperability_surfaces: FHIR R4 (4.0.1)
+    legacy_patient360: FHIR DSTU2 (1.0.2)
+  policy_published: false
+  detail: >-
+    No written versioning or breaking-change policy is published. Version is discoverable at
+    runtime — GET <base>/metadata states fhirVersion — but nothing tells a consumer how much notice
+    they would get before it changed.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  detail: >-
+    No deprecation policy, no Sunset or Deprecation response headers, and no published retirement
+    schedule. Probed for RFC 8594 headers on live responses; none present.
+  observed_deprecation:
+  - surface: Patient360 FHIR (DSTU2, CareEvolution HIEBus)
+    signal: >-
+      Superseded in practice rather than by announcement. Its conformance statement was last dated
+      2024-10-25 and it implements FHIR DSTU2 with the Argonaut implementation guide, while every
+      CMS Interoperability surface Elevance now documents is FHIR R4 on a different host
+      (totalview.healthos.elevancehealth.com). Elevance has published no statement that Patient360
+      is deprecated, and it still answers requests, so this is recorded as an observation, not a
+      provider claim.
+    evidence: https://patient360.anthem.com/P360Member/api/fhir/metadata
+  deprecated_operations: []
+roadmap:
+  published: true
+  source: IO105 v15.0
+  detail: Elevance states three unbuilt APIs and one extension with a hard date, driven by CMS-0057-F.
+  entries:
+  - item: Payer-to-Payer API
+    status: not-implemented
+    committed_date: '2027-01-01'
+    statement: Will be implemented as required in the CMS-0057 final rule by 1/1/27.
+  - item: Prior Authorization API
+    status: not-implemented
+    committed_date: '2027-01-01'
+    statement: Will be implemented as required in the CMS-0057 final rule by 1/1/27.
+  - item: Provider Access API
+    status: not-implemented
+    committed_date: '2027-01-01'
+    statement: Will be implemented as required in the CMS-0057 final rule by 1/1/27.
+  - item: Prior-authorization data in the Patient Access API
+    status: not-implemented
+    committed_date: '2027-01-01'
+    statement: Prior Authorization data required by CMS-0057 final rule will be added to the Patient Access API by 1/1/27.
+sla:
+  published: false
+  detail: No uptime or latency commitment is published for any endpoint.
+status_page:
+  published: false
+  detail: >-
+    No status page exists. https://elevancehealth.statuspage.io returns HTTP 200 but redirects to
+    Atlassian's Statuspage marketing site — an unclaimed subdomain, not a status page. Probed
+    status.elevancehealth.com and status.anthem.com: both fail DNS resolution.
+  probed:
+  - url: https://elevancehealth.statuspage.io
+    status: 200
+    verdict: soft-200, redirects to https://www.atlassian.com/software/statuspage
+  - url: https://status.elevancehealth.com
+    status: 0
+    verdict: NXDOMAIN
+  - url: https://status.anthem.com
+    status: 0
+    verdict: NXDOMAIN
+  - url: https://www.anthem.com/developers/api-status
+    status: 404
+support:
+  channel: email
+  contact: InteroperabilityWorkgroup@anthem.com
+  detail: >-
+    The developer portal names an Interoperability Workgroup mailbox for API questions and feedback.
+    There is no developer forum, ticketing system or community channel.
+  notifications: https://www.anthem.com/developers/get-notifications
+onboarding_latency:
+  sandbox: self-service, immediate on registration
+  production: >-
+    "This process can take several weeks, depending on the API" — Anthem developer portal. Patient
+    Access production additionally requires a documented security risk analysis and acceptance of
+    the Exhibit A terms of service.
+token_lifecycle:
+  patient_access_consent_token_days: 90
+  detail: >-
+    IO105 v15.0: once member consent is received a token is issued valid for 90 days; ongoing access
+    requires renewed consent.

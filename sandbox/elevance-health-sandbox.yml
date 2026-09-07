@@ -1,0 +1,67 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  https://www.anthem.com/developers and the first-party "Interoperability API Endpoint Support
+  Document" (IO105 v15.0, effective 2025-11-18) at
+  https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+description: >-
+  Elevance Health publishes a real, self-service sandbox for the Patient Access API, containing
+  synthetic data and supporting the full SMART on FHIR authorization flow. It is the only part of
+  this estate a developer can reach without a multi-week approval, and it is the intended rehearsal
+  path before production credentials are requested.
+available: true
+environments:
+- id: sandbox
+  name: Patient Access API Sandbox
+  purpose: FHIR functional testing with synthetic data
+  host: sbx.totalview.healthos.elevancehealth.com
+  registration_url: https://sbx.totalview.healthos.elevancehealth.com/registration/sandbox/login
+  registration_status: 200
+  self_service: true
+  synthetic_data: true
+  auth: SMART on FHIR authorization, same shape as production
+  detail: >-
+    IO105 v15.0: "This is a public environment for FHIR functional testing containing synthetic
+    data. It is available for Application Developers upon registration and supports the HL7 FHIR
+    standard with SMART authorization." Users self-register for sandbox accounts.
+  docs: https://sbx.totalview.healthos.elevancehealth.com/fhir/documentation
+- id: production
+  name: Patient Access API Production
+  purpose: Live member data
+  host: totalview.healthos.elevancehealth.com
+  self_service: false
+  registration_url: https://www.anthem.com/developers/request-anthem-io
+  detail: >-
+    Requires the Patient Access API Production Environment request form, a documented security risk
+    analysis, acceptance of the Exhibit A terms of service, and member consent at call time.
+    Approval can take several weeks.
+client_registration:
+  url: https://fhir.careevolution.com/Master.Adapter1.WebClient/oauthclients
+  detail: >-
+    IO105 v15.0 states SMART clients "can be registered and maintained here", linking a CareEvolution
+    host. Registration for the legacy Patient360 (DSTU2) SMART surface is therefore administered on
+    the vendor's platform rather than on an Elevance domain. Recorded as published, not verified —
+    the page requires an account.
+test_credentials:
+  published: false
+  detail: >-
+    No test keys, test member identifiers, fixture patients or seeded synthetic record ids are
+    published anywhere. A developer must register for a sandbox account to receive them. Nothing is
+    invented here.
+test_key_prefixes:
+  published: false
+time_simulation:
+  supported: false
+  detail: No test clocks or time-travel facilities are documented.
+fixtures_and_triggers:
+  published: false
+validation_tooling:
+  supported: true
+  detail: >-
+    FHIR $validate is declared as a resource interaction on 25 DSTU2 resource types and as a system
+    operation on the Patient360 server, which lets a client validate a resource against the server's
+    profiles before writing it.
+  evidence: conformance/elevance-health-patient360-dstu2-conformance.xml
+notes:
+- The sandbox covers Patient Access only. Provider Directory and Formulary have no sandbox; a developer registers straight for production.
+- The sandbox FHIR base itself answers 403 anonymously, which is expected — registration gates it.

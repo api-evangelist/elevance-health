@@ -7,11 +7,14 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   authentication/elevance-health-authentication.yml:
-    method: derived
-    evidence: declared in the artifact
+    method: unknown
+    evidence: no authorship recorded
   capabilities/elevance-health-capability-edges.yml:
     method: unknown
     evidence: no authorship recorded
+  changelog/elevance-health-changelog.yml:
+    method: searched
+    evidence: declared in the artifact
   collections/elevance-health-claims-api.opencollection.json:
     method: derived
     evidence: openapi/elevance-health-claims-api
@@ -48,76 +51,37 @@ artifacts:
   collections/elevance-health.postman_collection.json:
     method: derived
     evidence: openapi/elevance-health
+  conformance/elevance-health-conformance.yml:
+    method: unknown
+    evidence: no authorship recorded
+  conformance/elevance-health-fhir-extensions.json:
+    method: unknown
+    evidence: no authorship recorded
+  conformance/elevance-health-patient-access-capabilitystatement.json:
+    method: unknown
+    evidence: no authorship recorded
+  conformance/elevance-health-patient360-dstu2-conformance.xml:
+    method: unknown
+    evidence: no authorship recorded
+  conformance/elevance-health-provider-directory-capabilitystatement.json:
+    method: unknown
+    evidence: no authorship recorded
+  conformance/elevance-health-totalview-capabilitystatement.json:
+    method: unknown
+    evidence: no authorship recorded
+  conventions/elevance-health-conventions.yml:
+    method: unknown
+    evidence: no authorship recorded
+  data-model/elevance-health-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  errors/elevance-health-problem-types.yml:
+    method: unknown
+    evidence: no authorship recorded
   finops/elevance-health-finops.yml:
     method: generated
     evidence: declared in the artifact
-  kin/checks-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-23T094130.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-23T182523.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-26T223651.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-27T083119.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-27T190208.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T115055.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T170848.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T172558.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T192327.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T200725.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T133250.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T151044.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T162206.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T202106.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-01T163141.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-01T163302.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-01T171935.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-03T113057.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-03T161012.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-04T083143.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-05T153418.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-06T210741.yml:
+  kin/checks-2026-09-06T224210.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-08-07T135032.yml:
@@ -198,30 +162,159 @@ artifacts:
   kin/score-2026-08-28T221322.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  openapi/elevance-health-claims-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/elevance-health-conformance-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/elevance-health-coverage-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/elevance-health-patient-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/elevance-health-provider-directory-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  plans/elevance-health-plans-pricing.yml:
+  kin/score-2026-08-29T213958.yml:
     method: generated
-    evidence: declared in the artifact
-  rate-limits/elevance-health-rate-limits.yml:
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-29T230545.yml:
     method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-30T203505.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-30T220315.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-31T223420.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-01T063623.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-01T210448.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-01T222808.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-02T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-02T224043.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-03T161828.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-03T174231.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-04T062714.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-04T212454.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-04T224856.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T055819.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T072335.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T144739.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T195450.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T211839.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T011047.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T224210.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  lifecycle/elevance-health-lifecycle.yml:
+    method: searched
     evidence: declared in the artifact
-  scopes/elevance-health-scopes.yml:
+  llms/elevance-health-llms.txt:
+    method: generated
+    evidence: carries an API Evangelist house phrase
+  mcp/elevance-health-mcp.yml:
     method: derived
     evidence: declared in the artifact
+  openapi/_original/elevance-health-openapi.yml:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/elevance-health-claims-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/elevance-health-conformance-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/elevance-health-coverage-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/elevance-health-patient-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/elevance-health-provider-directory-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  overlays/elevance-health-claims-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/elevance-health-conformance-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/elevance-health-coverage-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/elevance-health-patient-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/elevance-health-provider-directory-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  packages/elevance-health-packages.yml:
+    method: searched
+    evidence: declared in the artifact
+  plans/elevance-health-plans-pricing.yml:
+    method: searched
+    evidence: declared in the artifact
+  rate-limits/elevance-health-rate-limits.yml:
+    method: searched
+    evidence: declared in the artifact
+  sandbox/elevance-health-sandbox.yml:
+    method: searched
+    evidence: declared in the artifact
+  scopes/elevance-health-scopes.yml:
+    method: unknown
+    evidence: no authorship recorded
   security/elevance-health-domain-security.yml:
+    method: unknown
+    evidence: no authorship recorded
+  skills/_index.yml:
+    method: generated
+    evidence: declared in the artifact
+  skills/elevance-health-discover-fhir-capabilities.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/elevance-health-retrieve-member-claims.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/elevance-health-search-provider-directory.md:
+    method: generated
+    evidence: declared in the artifact
+  well-known/elevance-health-patient360-smart-configuration.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/elevance-health-patient360c-openid-configuration.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/elevance-health-patient360c-smart-configuration.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/elevance-health-totalview-smart-configuration.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/elevance-health-well-known.yml:
     method: unknown
     evidence: no authorship recorded

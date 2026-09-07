@@ -1,0 +1,1449 @@
+{
+  "Goal": [
+    {
+      "source": "Goal [EDW]",
+      "ValueSource": "MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "Claim": [
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "(PractitionerRole Reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitionerrole-id",
+      "FHIRPathExtensionType": "provider.extension.valueReference"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "(PractitionerRole Reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitionerrole-id",
+      "FHIRPathExtensionType": "careTeam.extension.URL"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "'E','I'",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-externalloadcode",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "CLM_MAX_RVSN.MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "MDM_PPLTN_XWALK.MCID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-masterconsumerid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "CLM_LINE.SRC_SRVC_DNL_RSN_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-claimdenialreason",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": [
+        "CLM_LINE_STTS_CD",
+        "CLM_DISP_CD",
+        "ADJDCTN_STTS_CD"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-claimlinestatus",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "CLM_LINE_PAID.CHK_DT, ADJDCTN_DT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-claimpaiddate",
+      "FHIRPathExtensionType": "extension.valueDateTime"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "CLM_SOR_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-claimsystemofrecord",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "DSCHRG_STTS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-dischargestatus",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "FCLTY_CLM.LOS_CNT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-lengthofstaycount",
+      "FHIRPathExtensionType": "extension.valueInteger"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "CLM_LINE.PLACE_OF_SRVC_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-placeofservice",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "FCLTY_CLM.PPS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-ppscode",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "CLM.SRC_BILLG_PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-sourcebillingproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "SRC_PROV_NATL_PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-sourcenationalproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Claim [EDW]",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-totaldiagcodecount",
+      "FHIRPathExtensionType": "extension.valueInteger"
+    },
+    {
+      "source": "Claim [EDW]",
+      "ValueSource": "PAID_AMT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-totalpaidamount",
+      "FHIRPathExtensionType": "extension.valueDecimal"
+    }
+  ],
+  "Device": [
+    {
+      "source": "Device [CDA]",
+      "ValueSource": "DVC_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/dvc_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "Patient": [
+    {
+      "source": "Patient [EDW]",
+      "ValueSource": "ETHNCTY_CD",
+      "extensionURL": "http://hl7.org/fhir/us/core/structuredefinition/us-core-ethnicity",
+      "FHIRPathExtensionType": "extension.extension"
+    },
+    {
+      "source": "Patient [EDW]",
+      "ValueSource": "RACE_CD",
+      "extensionURL": "http://hl7.org/fhir/us/core/structuredefinition/us-core-race",
+      "FHIRPathExtensionType": "extension.extension"
+    },
+    {
+      "source": "Patient [EDW]",
+      "ValueSource": "LANG_FUNC_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-languagespokenorwritten",
+      "FHIRPathExtensionType": "Communication.extension.valueCodeableConcept"
+    },
+    {
+      "source": "Patient [EDW]",
+      "ValueSource": "LATD_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-latitudenumber",
+      "FHIRPathExtensionType": "extension.valueCodeableConcept"
+    },
+    {
+      "source": "Patient [EDW]",
+      "ValueSource": "LNGTD_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-longitudenumber",
+      "FHIRPathExtensionType": "extension.valueCodeableConcept"
+    },
+    {
+      "source": "Patient [EDW]",
+      "ValueSource": "MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "CarePlan": [
+    {
+      "source": "CarePlan [CDA]",
+      "ValueSource": "OBSRVTN.OBSRVTN_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/obsrvtn_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "CareTeam": [
+    {
+      "source": "CareTeam [CDA]",
+      "ValueSource": "crgvr_rltnshp_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/crgvr_rltnshp_guid",
+      "FHIRPathExtensionType": "participant.extension.url"
+    }
+  ],
+  "Coverage": [
+    {
+      "source": "Coverage [EDW]",
+      "ValueSource": "MDM_PPLTN_XWALK.MCID",
+      "extensionURL": "https://elevancehealth.com/cdl/fhirextensions#patient-masterconsumerid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Coverage [EDW]",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#coverage-detaillineofbusiness",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "Coverage [EDW]",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#coverage-detaillineofbusiness2",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "Coverage [EDW]",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#coverage-lineofbusiness",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "Coverage [EDW]",
+      "ValueSource": "(InsurancePlan reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#insuranceplan_id",
+      "FHIRPathExtensionType": "extension.valueReference"
+    },
+    {
+      "source": "Coverage [EDW]",
+      "ValueSource": "MDM_PPLTN_XWALK.MCID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#mcid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Coverage [EDW]",
+      "ValueSource": "CLM_MAX_RVSN.MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "Location": [
+    {
+      "source": "Location [CDA]",
+      "ValueSource": "LCTN_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/lctn_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Location [EDW]",
+      "ValueSource": "PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-edwardproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Location [EDW]",
+      "ValueSource": "PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-externalproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Location [EDW]",
+      "ValueSource": [
+        "SPS_PROV.MSTR_PROV_ID  --org",
+        "SPS_RLTD_PADRS.MSTR_PROV_ID --indiv"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-masterproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Location [EDW]",
+      "ValueSource": "NPI",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-nationalproviderid",
+      "FHIRPathExtensionType": "extension.valueIdentifier"
+    }
+  ],
+  "Specimen": [
+    {
+      "source": "Specimen [CDA]",
+      "ValueSource": "(encounter reference)",
+      "extensionURL": "https://elevancehealth.com/cda/encounter",
+      "FHIRPathExtensionType": "extension.valueReference"
+    },
+    {
+      "source": "Specimen [CDA]",
+      "ValueSource": "lab_rpt_spcmn_guid",
+      "extensionURL": "https://elevancehealth.com/cda/lab_rpt_spcmn_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "Condition": [
+    {
+      "source": "Condition [CDA]",
+      "ValueSource": "PRBLM_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/prblm_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Condition [CDA, EDW]",
+      "ValueSource": "'CHRONIC'",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#chronic_indicator",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "Condition [CDA, EDW]",
+      "ValueSource": "SNSITV_SRVC_CTGRY_CD:STD,HIV,ABS,BEH,SUD,REP HLTH,GENITL,ABRTN,GENE,LAB",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#sensitive_category)",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "Condition [EDW]",
+      "ValueSource": "CLM_ADJSTMNT_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-claimadjustmentkey",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Condition [EDW]",
+      "ValueSource": "CLM_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-clm_nbr",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Condition [EDW]",
+      "ValueSource": "CLM_LINE.CLM_LINE_STTS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-deniedreason",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "Condition [EDW]",
+      "ValueSource": "CLM_LINE.INPAT_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-inpatientind",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "Condition [EDW]",
+      "ValueSource": [
+        "CLM_LINE.CLM_LINE_STTS_CD",
+        "CLM_PAID.CHK_AMT"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-paidstatus",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Condition [EDW]",
+      "ValueSource": "(claim reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim.id",
+      "FHIRPathExtensionType": "extension.valueReference"
+    },
+    {
+      "source": "Condition [EDW]",
+      "ValueSource": "CLM_LINE_DIAG.DIAG_CD_ORDR_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#condition-diagcodeordernumber",
+      "FHIRPathExtensionType": "extension.valueInteger"
+    },
+    {
+      "source": "Condition [EDW]",
+      "ValueSource": "lab_rqst.LAB_RQST_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-labrequestkey",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Condition [EDW]",
+      "ValueSource": "CLM_MAX_RVSN.MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Condition [EDW]",
+      "ValueSource": "MDM_PPLTN_XWALK.MCID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mcid",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "Encounter": [
+    {
+      "source": "Encounter [CDA]",
+      "ValueSource": "ENCNTR_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/encntr_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "Procedure": [
+    {
+      "source": "Procedure [CDA]",
+      "ValueSource": "PROC_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/proc_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "(claim reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim_id",
+      "FHIRPathExtensionType": "extension.valueReference"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "CLM_ADJSTMNT_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-claimadjustmentkey",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "CLM_LINE_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-claimlinenumber",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "CLM_LINE.INPAT_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-inpatientind",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": [
+        "CLM_LINE.CLM_LINE_STTS_CD",
+        "CLM_PAID.CHK_AMT"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-paidstatusflag",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "CLM.CLM_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#clm_nbr",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "(Location Reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#location-locationid",
+      "FHIRPathExtensionType": "extension.valueReference"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "MDM_PPLTN_XWALK.MCID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mcid",
+      "FHIRPathExtensionType": "extension.valueInteger"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "(PractitionerRole Reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitionerrole-id",
+      "FHIRPathExtensionType": "preformer.extension.valueReference"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "CLM_LINE.CLM_LINE_STTS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#procedure-deniedreasoncode",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "CLM_ICD_PROC.ICD_PROC_CD_ORDR_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#procedure-icdprocedurecodeordernumber",
+      "FHIRPathExtensionType": "extension.valueInteger"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "CLM_ICD_PROD.ICD_PROC_QLFR_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#procedure-isprincipal",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "Procedure [EDW]",
+      "ValueSource": "CLM_LINE_HCS_MDFR.PROC_MDFR_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#procedure-proceduremodifiercode",
+      "FHIRPathExtensionType": "extension.valueCodeableConcept"
+    }
+  ],
+  "Observation": [
+    {
+      "source": "Observation [CDA lab]",
+      "ValueSource": "LAB_OBSRVTN_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/lab_obsrvtn_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [CDA lab]",
+      "ValueSource": "(DiagnosticReport reference)",
+      "extensionURL": "https://elevancehealth.com/cda/lab_rpt",
+      "FHIRPathExtensionType": "extension.valueReference"
+    },
+    {
+      "source": "Observation [CDA lab]",
+      "ValueSource": [
+        "C19.GROUPING_TYPE",
+        "C19.GROUPING_DESCRIPTION"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#covid19_group",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "Observation [CDA lab]",
+      "ValueSource": "LAB_OBSRVTN_VAL_TXT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-valuequantitytext",
+      "FHIRPathExtensionType": "valueQuantity.extension.valueString"
+    },
+    {
+      "source": "Observation [CDA]",
+      "ValueSource": "OBSRVTN_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/obsrvtn_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [CDA]",
+      "ValueSource": [
+        "C19.GROUPING_TYPE",
+        "C19.GROUPING_DESCRIPTION"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#covid19_group",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "Observation [CDA]",
+      "ValueSource": "OBSRVTN_VAL_TXT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-valuequantitytext",
+      "FHIRPathExtensionType": "valueQuantity.extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "(DiagnosticReport reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#diagnosticreport-id",
+      "FHIRPathExtensionType": "extension.valueReference"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": [
+        "CMS.PROV_MAILG_ADRS_LINE_1_TXT",
+        "CMS.PROV_MAILG_CITY_NM",
+        "CMS.PROV_MAILG_ST_PRVNC_NM",
+        "CMS.PROV_MAILG_ZIP_CD",
+        "CMS.PROV_MAILG_CNTRY_CD"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#location-address",
+      "FHIRPathExtensionType": "Performer.extension.valueAddress"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "EXTRNL_LOAD_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-externalloadcode",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "LAB_ALT_RSLT_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-labalternateresultid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "LAB_ALT_RSLT_NM",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-labalternateresultname",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "LAB_RQST_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-labrequestkey",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "LAB_RSLT_SQNC_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-labresultsqncnbr",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "LAB_RSLT_VAL_TXT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-labresultvaltext",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "LAB_RSLT_VAL_TYPE_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-labresultvaltypename",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "LAB_VNDR_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-labvendorid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "RQST_SQNC_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-requestsqncnbr",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "LAB_RSLT_VAL_TXT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-valuequantitytext (? Not implemented, redundant)",
+      "FHIRPathExtensionType": "valueQuantity.extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "MDM_PPLTN_XWALK.MCID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-masterconsumerid (? Not implemented, redundant)",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Observation [EDW lab]",
+      "ValueSource": "MDM_PPLTN_XWALK.MCID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mcid",
+      "FHIRPathExtensionType": "extension.valueInteger"
+    }
+  ],
+  "Immunization": [
+    {
+      "source": "Immunization [CDA]",
+      "ValueSource": "MDCTN_ADMNSTRN_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/mdctn_admnstrn_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Immunization [CDA, EDW]",
+      "ValueSource": [
+        "C19.GROUPING_TYPE",
+        "C19.GROUPING_DESCRIPTION"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#covid19_group",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "Immunization [EDW]",
+      "ValueSource": "(claim reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim_id",
+      "FHIRPathExtensionType": "extension.valueReference"
+    },
+    {
+      "source": "Immunization [EDW]",
+      "ValueSource": "CLM_ADJSTMNT_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-claimadjustmentkey",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Immunization [EDW]",
+      "ValueSource": "MDM_PPLTN_XWALK.MCID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-masterconsumerid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Immunization [EDW]",
+      "ValueSource": "MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Immunization [EDW]",
+      "ValueSource": "(PractitionerRole Reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitionerrole-id",
+      "FHIRPathExtensionType": "performer.extension.valueReference"
+    }
+  ],
+  "Organization": [
+    {
+      "source": "Organization [CDA reporting]",
+      "ValueSource": "RCRD_AUTHRTY_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/rcrd_authrty_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Organization [EDW]",
+      "ValueSource": "PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#organization-externalproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Organization [EDW]",
+      "ValueSource": [
+        "CP.SPCLTY_CD",
+        "CMS_SPCLTY_CD"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#organization-specialty",
+      "FHIRPathExtensionType": "extension.valueCodeableConcept"
+    },
+    {
+      "source": "Organization [EDW]",
+      "ValueSource": "TXNMY_1_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#organization-specialty_taxonomy",
+      "FHIRPathExtensionType": "extension.valueCodeableConcept"
+    },
+    {
+      "source": "Organization [EDW]",
+      "ValueSource": "PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-edwardproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Organization [EDW]",
+      "ValueSource": "PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-masterproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Organization [EDW]",
+      "ValueSource": "PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-nationalproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Organization [EDW]",
+      "ValueSource": [
+        "PROV_SOR_CD",
+        "LOAD_SOR_CD"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-providersystemofrecord",
+      "FHIRPathExtensionType": "extension.valueCode"
+    }
+  ],
+  "Practitioner": [
+    {
+      "source": "Practitioner [CDA]",
+      "ValueSource": "CRGVR_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/crgvr_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Practitioner [CDA]",
+      "ValueSource": "RLTNSHP_TYPE_CD",
+      "extensionURL": "https://elevancehealth.com/cda/practitioner-role",
+      "FHIRPathExtensionType": "extension.valueCodeableConcept"
+    },
+    {
+      "source": "Practitioner [EDW]",
+      "ValueSource": "PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-edwardproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Practitioner [EDW]",
+      "ValueSource": "PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-externalproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Practitioner [EDW]",
+      "ValueSource": "PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-masterproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Practitioner [EDW]",
+      "ValueSource": "SRC_CMS_NPPES.NPI",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-nationalproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "Practitioner [EDW]",
+      "ValueSource": [
+        "PROV_SOR_CD",
+        "LOAD_SOR_CD"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-providersystemofrecord",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "Practitioner [EDW]",
+      "ValueSource": [
+        "CP.SPCLTY_CD",
+        "CMS_SPCLTY_CD"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-specialty",
+      "FHIRPathExtensionType": "extension.valueCodeableConcept"
+    },
+    {
+      "source": "Practitioner [EDW]",
+      "ValueSource": "TXNMY_1_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-specialty_taxonomy",
+      "FHIRPathExtensionType": "extension.valueCodeableConcept"
+    }
+  ],
+  "ClaimResponse": [
+    {
+      "source": "ClaimResponse [EDW]",
+      "ValueSource": "(condition reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#condition_id",
+      "FHIRPathExtensionType": "addItem.extension.reference"
+    },
+    {
+      "source": "ClaimResponse [EDW]",
+      "ValueSource": "CLM_MAX_RVSN.MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ClaimResponse [EDW]",
+      "ValueSource": "MDM_PPLTN_XWALK.MCID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-masterconsumerid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ClaimResponse [EDW]",
+      "ValueSource": "CLM_LINE.CLM_LINE_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-claimlinenumber",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ClaimResponse [EDW]",
+      "ValueSource": "CLM.CLM_ITS_HOST_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claimresponse-interplanteleprocessingr",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ClaimResponse [EDW]",
+      "ValueSource": "CLM_LINE.INN_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claimresponse-innetwork",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ClaimResponse [EDW]",
+      "ValueSource": "CLM_LINE.CLM_LINE_STTS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claimresponse-claimlinestatus",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "ClaimResponse [EDW]",
+      "ValueSource": "CLM.CLM_SOR_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claimresponse-claimsystemofrecord",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "ClaimResponse [EDW]",
+      "ValueSource": "CLM_LINE.SRC_SRVC_DNL_RSN_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claimresponse-sourceservicedenialreason",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "ClaimResponse [EDW]",
+      "ValueSource": "CLM_LINE.PLACE_OF_SRVC_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-placeofservice",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "ClaimResponse [EDW]",
+      "ValueSource": "'E','I'",
+      "extensionURL": "https://elevancehealth.com/cdl/externalload",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "InsurancePlan": [
+    {
+      "source": "InsurancePlan [EDW]",
+      "ValueSource": "PROD_SOR_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#insuranceplan-prodsor",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "Questionnaire": [
+    {
+      "source": "Questionnaire [EDW]",
+      "ValueSource": "QSTN_TYPE_CD_TXT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#question_type",
+      "FHIRPathExtensionType": "item.answerOption.extension.valueString"
+    }
+  ],
+  "ServiceRequest": [
+    {
+      "source": "ServiceRequest [CDA]",
+      "ValueSource": "ORDR_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/ordr_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW Lab]",
+      "ValueSource": "MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "um_rqst.ADMT_DT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#admit_date",
+      "FHIRPathExtensionType": "extension.valueDate"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "um_rqst.ADMT_DT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-admitdate",
+      "FHIRPathExtensionType": "extension.valueDate"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "um_rqst.um_evnt_clsfctn_cd",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#classification",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "um_rqst.um_evnt_clsfctn_cd",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-classification",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "um_rqst.DSCHRG_DT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#discharge_date",
+      "FHIRPathExtensionType": "extension.valueDate"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "um_rqst.DSCHRG_DT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-dischargedate",
+      "FHIRPathExtensionType": "extension.valueDate"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": [
+        "CLNCL_UM_CASE.HLTH_ADVSR_FRST_NM",
+        "HLTH_ADVSR_LAST_NM"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#health_advisor",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": [
+        "CLNCL_UM_CASE.HLTH_ADVSR_FRST_NM",
+        "HLTH_ADVSR_LAST_NM"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-healthadvisorname (? Redundant)",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "MCID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-masterconsumerid",
+      "FHIRPathExtensionType": "extension.valueInteger"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "UP.SPCLTY_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-specialty",
+      "FHIRPathExtensionType": "contained.extension.valueCodeableConcept"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": [
+        "UP.TXNMY_LVL_II_CD",
+        "CMS.TXNMY_1_CD"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-specialty_taxonomy",
+      "FHIRPathExtensionType": "contained.extension.valueCodeableConcept"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "um_rqst.AUTHRZN_STTS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#request_status",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "um_rqst.AUTHRZN_STTS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-requeststatus (? Redundant)",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "CLNCL_UM_CASE.PA_RQST_TYPE_TXT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#request_type",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "CLNCL_UM_CASE.PA_RQST_TYPE_TXT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-priorauthorizationrequesttype (? Redundant)",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "CLNCL_UM_INPAT_SRVC.DCSN_RVW_DT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#review_date",
+      "FHIRPathExtensionType": "extension.valueDate"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "CLNCL_UM_INPAT_SRVC.DCSN_RVW_DT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-decisionreviewdate (? Redundant)",
+      "FHIRPathExtensionType": "extension.valueDate"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "UM_SRVC_STTS.UM_SRVC_STTS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#service_status",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "UM_SRVC_STTS.UM_SRVC_STTS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-servicestatus (? Redundant)",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-assignedservicestatus",
+      "FHIRPathExtensionType": "extension.extension"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "UM_SRVC.AUTHRZD_PROC_SRVC_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-assignedservicestatus_servicedisplay",
+      "FHIRPathExtensionType": "extension.extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": [
+        "UM_SRVC.AUTHRZD_SRVC_FROM_DT",
+        "AUTHRZD_SRVC_TO_DT"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-assignedservicestatus_serviceperiod",
+      "FHIRPathExtensionType": "extension.extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": [
+        "UM_SRVC.TOTL_AUTHRZD_QTY",
+        "AUTHRZD_QTY_TYPE_CD"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-assignedservicestatus_servicequantity",
+      "FHIRPathExtensionType": "extension.extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "UM_SRVC_STTS.UM_SRVC_STTS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-assignedservicestatus_servicestatus",
+      "FHIRPathExtensionType": "extension.extension.valueString"
+    },
+    {
+      "source": "ServiceRequest [EDW UM]",
+      "ValueSource": "CLNCL_SOR_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#servicerequest-clinicalsystemofrecord",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "DiagnosticReport": [
+    {
+      "source": "DiagnosticReport [CDA lab]",
+      "ValueSource": "LAB_RPT_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/lab_rpt_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "DiagnosticReport [CDA notes]",
+      "ValueSource": "RPT_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/rpt_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "DiagnosticReport [EDW]",
+      "ValueSource": [
+        "CMS .PROV_MAILG_ADRS_LINE_1_TXT",
+        "CMS .PROV_MAILG_CITY_NM",
+        "CMS.PROV_MAILG_ST_PRVNC_NM",
+        "CMS .PROV_MAILG_ZIP_CD",
+        "CMS .PROV_MAILG_CNTRY_CD"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#location-address",
+      "FHIRPathExtensionType": "performer.extension.valueAddress"
+    },
+    {
+      "source": "DiagnosticReport [EDW]",
+      "ValueSource": "MDM_PPLTN_XWALK.MCID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-masterconsumerid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "DiagnosticReport [EDW]",
+      "ValueSource": "CLM_MAX_RVSN.MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "DiagnosticReport [EDW]",
+      "ValueSource": "LAB_RQST_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-labrequestkey",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "DiagnosticReport [EDW]",
+      "ValueSource": "RQST_SQNC_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#observation-requestsqncnbr",
+      "FHIRPathExtensionType": "extensions.valueInteger"
+    }
+  ],
+  "PractitionerRole": [
+    {
+      "source": "PractitionerRole [EDW]",
+      "ValueSource": "PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-edwardproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "PractitionerRole [EDW]",
+      "ValueSource": "PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-externalproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "PractitionerRole [EDW]",
+      "ValueSource": "PROV_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-masterproviderid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "PractitionerRole [EDW]",
+      "ValueSource": [
+        "PROV_SOR_CD",
+        "LOAD_SOR_CD"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-providersystemofrecord",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "PractitionerRole [EDW]",
+      "ValueSource": [
+        "PDC_CMNCTN_CMNCTN_TYPE_CD",
+        "PDC_CMNCTN_CMNCTN_TYPE_VAL",
+        "PROV_PRCTC_ADRS_FAX_NBR",
+        "PROV_PRCTC_ADRS_PHONE_NBR",
+        "PROV_MAILG_ADRS_PHONE_NBR"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitionerrole-telecom",
+      "FHIRPathExtensionType": "extension.valueContactPoint"
+    }
+  ],
+  "DocumentReference": [
+    {
+      "source": "DocumentReference [CDA]",
+      "ValueSource": "RPT_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/rpt_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "MedicationRequest": [
+    {
+      "source": "MedicationRequest [CDA]",
+      "ValueSource": "ORDR_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/ordr_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationRequest [EDW]",
+      "ValueSource": "CLM_ADJSTMNT_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-claimadjustmentkey",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationRequest [EDW]",
+      "ValueSource": "CML_PROV:PROV_ADRS_LINE_1_TXT,PROV_CITY_NM,PROV_ST_NM,PROV_ZIP_CD,PROV_ZIP_PLUS_4_CD,PROV_CNTRY_NM",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#location-address",
+      "FHIRPathExtensionType": "requester.extension:location.valueAddress"
+    },
+    {
+      "source": "MedicationRequest [EDW]",
+      "ValueSource": "CLM_ADJSTMNT_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationrequest-nonfinancialclaimadjustmentkey",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationRequest [EDW]",
+      "ValueSource": [
+        "PCL.ADJDCTN_STTS_CD",
+        "PCL.CLM_DISP_CD"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationrequest-status",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationRequest [EDW]",
+      "ValueSource": "THRPTC_AHFS_CLS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-therapeuticclass",
+      "FHIRPathExtensionType": "medication.extension.valueCodeableConcept"
+    },
+    {
+      "source": "MedicationRequest [EDW]",
+      "ValueSource": "MDM_PPLTN_XWALK.MCID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-masterconsumerid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationRequest [EDW]",
+      "ValueSource": "MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "AllergyIntolerance": [
+    {
+      "source": "AllergyIntolerance [CDA]",
+      "ValueSource": "ALRGY.ALRGY_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/alrgy_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "MedicationDispense": [
+    {
+      "source": "MedicationDispense [CDA]",
+      "ValueSource": "MDCTN_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/mdctn_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationDispense [CDA]",
+      "ValueSource": "MDCTN_ALT_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions/cda/alternateidentifier",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationDispense [CDA]",
+      "ValueSource": "CRGVR_GUID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions/cda/caregiver",
+      "FHIRPathExtensionType": "extension.valueReference"
+    },
+    {
+      "source": "MedicationDispense [CDA]",
+      "ValueSource": "MDCTN_IS_GNRC_CDD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions/cda/is_generic",
+      "FHIRPathExtensionType": "extension.valueBoolean"
+    },
+    {
+      "source": "MedicationDispense [CDA]",
+      "ValueSource": "REFIL_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions/cda/refill_number",
+      "FHIRPathExtensionType": "extension.valueInteger"
+    },
+    {
+      "source": "MedicationDispense [CDA]",
+      "ValueSource": "MDCTN_REFILS_CNT",
+      "extensionURL": "https://elevancehealth.com/fhirextensions/cda/refills",
+      "FHIRPathExtensionType": "extension.valueInteger"
+    },
+    {
+      "source": "MedicationDispense [CDA]",
+      "ValueSource": [
+        "C19.GROUPING_TYPE",
+        "C19.GROUPING_DESCRIPTION"
+      ],
+      "extensionURL": "https://elevancehealth.com/fhirextensions#covid19_group",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "(claim reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim_id",
+      "FHIRPathExtensionType": "extension.valueReference"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "CLM_ADJSTMNT_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-claimadjustmentkey",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "CLM_LINE_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#claim-claimlinenumber",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#location-brandedpharmacyname"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "PHRMCY_CLM.BRNDD_PHRMCY_NM",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-brandedpharmacyname",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "LOAD_SOR_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-datasource",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "PHRMCY_CLM_LINE.FRMLRY_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-dispensedasformulary",
+      "FHIRPathExtensionType": "extension.valueBoolean"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "PHRMCY_CLM_LINE.MAIL_ORDR_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-dispensedasmailorder",
+      "FHIRPathExtensionType": "extension.valueBoolean"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "DSPNSD_BRND_GNRC_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-dispensedbrandgenericcodename",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "MEDCR_PART_D.DCV_STTS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-drugcoveragestatus",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "CLM.FILLED_REFILS_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-filledrefillsnumber",
+      "FHIRPathExtensionType": "extension.valueInteger"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "PHRMCY_CLM_LINE.FRMLRY_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-formularyid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "OTC_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-overthecounter",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "PHRMCY_CLM_LINE.MDCD_SWCH_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-paidbymedicaid",
+      "FHIRPathExtensionType": "extension.valueCoding"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "PHRMCY_CLM_LINE.REFILS_AUTHRZD_NBR",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-refillsauthorizednumber",
+      "FHIRPathExtensionType": "extension.valueInteger"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "PHRMCY_CLM_LINE.SPCLTY_DRUG_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-specialtydrug",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "THRPTC_AHFS_CLS_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#medicationdispense-therapeuticclass",
+      "FHIRPathExtensionType": "medication.extension.valueCodeableConcept"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "MDM_PPLTN_XWALK.MCID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-masterconsumerid",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "(Practitioner Reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner_id",
+      "FHIRPathExtensionType": "extension.valueReference"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "NPI (CLM_PROV.SRC_CLM_PROV_ID)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-prescribingprovidernpi",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "(PractitionerRole Reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitionerrole_id",
+      "FHIRPathExtensionType": "performer.actor.extension.valueReference"
+    },
+    {
+      "source": "MedicationDispense [EDW]",
+      "ValueSource": "(PractitionerRole Reference)",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitionerrole_id",
+      "FHIRPathExtensionType": "extension.valueReference"
+    }
+  ],
+  "ExplanationOfBenefit": [
+    {
+      "source": "ExplanationOfBenefit [EDW]",
+      "ValueSource": "spclty_cd",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#practitioner-specialty",
+      "FHIRPathExtensionType": "contained.extension.valueString"
+    },
+    {
+      "source": "ExplanationOfBenefit [EDW]",
+      "ValueSource": "CLM_MAX_RVSN.MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "ExplanationOfBenefit [EDW]",
+      "ValueSource": "CLM.CLM_ITS_HOST_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#eob_inst_outpat-interplanteleprocessing",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "ExplanationOfBenefit [EDW]",
+      "ValueSource": "CLM.CLM_SOR_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#eob_inst_outpat-claimsystemofrecord",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "ExplanationOfBenefit [EDW]",
+      "ValueSource": "CLM.CLM_ITS_HOST_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#eob_oral_base-interplanteleprocessing",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "ExplanationOfBenefit [EDW]",
+      "ValueSource": "CLM.CLM_SOR_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#eob_oral_base-claimsystemofrecord",
+      "FHIRPathExtensionType": "extension.valueCode"
+    },
+    {
+      "source": "ExplanationOfBenefit [EDW]",
+      "ValueSource": "CLM.CLM_SOR_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#eob_prfsnl-claimsystemofrecord",
+      "FHIRPathExtensionType": "extension.valueCode"
+    }
+  ],
+  "QuestionnaireResponse": [
+    {
+      "source": "QuestionnaireResponse [EDW]",
+      "ValueSource": "MBR_KEY",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#patient-mbr_key",
+      "FHIRPathExtensionType": "extension.valueString"
+    },
+    {
+      "source": "QuestionnaireResponse [EDW]",
+      "ValueSource": "QSTNR_ID",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#questionnaire_id",
+      "FHIRPathExtensionType": "_questionnaire.extension.valueString"
+    },
+    {
+      "source": "QuestionnaireResponse [EDW]",
+      "ValueSource": "CLNCL_SOR_CD",
+      "extensionURL": "https://elevancehealth.com/fhirextensions#sor",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ],
+  "MedicationAdministration": [
+    {
+      "source": "MedicationAdministration [CDA]",
+      "ValueSource": "MDCTN_ADMNSTRN_GUID",
+      "extensionURL": "https://elevancehealth.com/cda/mdctn_admnstrn_guid",
+      "FHIRPathExtensionType": "extension.valueString"
+    }
+  ]
+}

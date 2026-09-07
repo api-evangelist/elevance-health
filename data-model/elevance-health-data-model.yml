@@ -1,0 +1,702 @@
+generated: '2026-09-07'
+method: derived
+source: conformance/elevance-health-totalview-capabilitystatement.json and conformance/elevance-health-provider-directory-capabilitystatement.json
+  — the provider's own live FHIR CapabilityStatements
+description: Entity graph for the Elevance Health FHIR estate, derived from the resource and searchParam
+  declarations in the live CapabilityStatements rather than from prose. Every entity below is a standard
+  HL7 FHIR R4 resource, so its full field-level schema is the FHIR StructureDefinition at hl7.org/fhir/R4/<resource>.html;
+  what is provider-specific is WHICH resources Elevance exposes, which interactions it allows on each,
+  and which reference edges it lets you traverse. Relationship targets are inferred from FHIR search-parameter
+  naming where the capability statement does not name a target type, and are marked where uncertain.
+model: HL7 FHIR R4 (4.0.1)
+id_scheme:
+  style: FHIR logical id
+  detail: Opaque server-assigned string in Resource.id; references take the form <ResourceType>/<id>.
+    No human-readable prefixes.
+schema_reference: https://hl7.org/fhir/R4/resourcelist.html
+custom_extensions:
+  file: conformance/elevance-health-fhir-extensions.json
+  detail: Elevance publishes its own FHIR extensions for 29 resource types; that document is the authoritative
+    list of the non-standard fields on these resources.
+summary:
+  entities: 36
+  read_only_entities: 36
+  provider_directory_entities: 8
+  relationship_edges: 77
+surfaces:
+- id: provider-directory
+  base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  entities:
+  - HealthcareService
+  - InsurancePlan
+  - Location
+  - Organization
+  - OrganizationAffiliation
+  - Practitioner
+  - PractitionerRole
+  - Specimen
+  auth: oauth2 client credentials
+  read_only: true
+  ig: Da Vinci PDEX Plan Net 1.1.0
+- id: formulary
+  base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/frmlry
+  entities:
+  - InsurancePlan
+  - Basic
+  - MedicationKnowledge
+  auth: oauth2 client credentials
+  read_only: true
+  ig: Da Vinci PDEX US Drug Formulary 2.0.1 STU2
+  note: Entities taken from the covered-searches table in IO105 v15.0; the capability statement is auth-gated
+    (403).
+- id: patient-access
+  base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  entities:
+  - AllergyIntolerance
+  - Basic
+  - Binary
+  - CarePlan
+  - CareTeam
+  - Claim
+  - ClaimResponse
+  - Condition
+  - Coverage
+  - Device
+  - DiagnosticReport
+  - DocumentReference
+  - Encounter
+  - ExplanationOfBenefit
+  - Goal
+  - HealthcareService
+  - Immunization
+  - InsurancePlan
+  - Location
+  - MedicationAdministration
+  - MedicationDispense
+  - MedicationKnowledge
+  - MedicationRequest
+  - Observation
+  - Organization
+  - OrganizationAffiliation
+  - Patient
+  - Practitioner
+  - PractitionerRole
+  - Procedure
+  - Provenance
+  - Questionnaire
+  - QuestionnaireResponse
+  - RelatedPerson
+  - ServiceRequest
+  - Specimen
+  auth: SMART on FHIR authorization code
+  read_only: true
+  ig: CARIN IG for Blue Button STU 2.1.0 / US Core 6.1.0
+entities:
+- name: AllergyIntolerance
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 5
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+- name: Basic
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 12
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: formulary
+    kind: belongs_to
+    target: InsurancePlan
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: subject
+    kind: belongs_to
+    target: Patient
+- name: Binary
+  interactions:
+  - read
+  - vread
+  search_param_count: 1
+  read_only: true
+  surface: patient-access-and-cms
+- name: CarePlan
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 7
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+- name: CareTeam
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 7
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: participant
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+  - via: patient
+    kind: belongs_to
+    target: Patient
+- name: Claim
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 11
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: care-team
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+  - via: diagnosis
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: payee
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+  - via: procedure
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+  - via: provider
+    kind: belongs_to
+    target: Organization
+- name: ClaimResponse
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 5
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+- name: Condition
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 11
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: encounter
+    kind: belongs_to
+    target: Encounter
+  - via: patient
+    kind: belongs_to
+    target: Patient
+- name: Coverage
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 9
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: beneficiary
+    kind: belongs_to
+    target: Patient
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: payor
+    kind: belongs_to
+    target: Organization
+  - via: plan
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+- name: Device
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 5
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+- name: DiagnosticReport
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 9
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: result
+    kind: belongs_to
+    target: Observation
+- name: DocumentReference
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 10
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: encounter
+    kind: belongs_to
+    target: Encounter
+  - via: patient
+    kind: belongs_to
+    target: Patient
+- name: Encounter
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 12
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: location
+    kind: belongs_to
+    target: Location
+  - via: participant
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+  - via: patient
+    kind: belongs_to
+    target: Patient
+- name: ExplanationOfBenefit
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 14
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: care-team
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+  - via: coverage
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+  - via: insurer
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: payee
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+  - via: provider
+    kind: belongs_to
+    target: Organization
+- name: Goal
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 7
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+- name: HealthcareService
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 10
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: coverage-area
+    kind: belongs_to
+    target: Location
+  - via: location
+    kind: belongs_to
+    target: Location
+  - via: organization
+    kind: belongs_to
+    target: Organization
+- name: Immunization
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 8
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: performer
+    kind: belongs_to
+    target: Practitioner
+- name: InsurancePlan
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 11
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: coverage-area
+    kind: belongs_to
+    target: Location
+  - via: formulary-coverage
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+- name: Location
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 8
+  read_only: true
+  surface: patient-access-and-cms
+- name: MedicationAdministration
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 7
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: performer
+    kind: belongs_to
+    target: Practitioner
+  - via: request
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+- name: MedicationDispense
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 8
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: claim
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: performer
+    kind: belongs_to
+    target: Practitioner
+  - via: prescription
+    kind: belongs_to
+    target: MedicationRequest
+- name: MedicationKnowledge
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 6
+  read_only: true
+  surface: patient-access-and-cms
+- name: MedicationRequest
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 10
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: claim
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+  - via: encounter
+    kind: belongs_to
+    target: Encounter
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: requester
+    kind: belongs_to
+    target: Practitioner
+- name: Observation
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 9
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: performer
+    kind: belongs_to
+    target: Practitioner
+- name: Organization
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 11
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: coverage-area
+    kind: belongs_to
+    target: Location
+- name: OrganizationAffiliation
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 10
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: location
+    kind: belongs_to
+    target: Location
+  - via: network
+    kind: belongs_to
+    target: Organization
+  - via: participating-organization
+    kind: belongs_to
+    target: Organization
+  - via: primary-organization
+    kind: belongs_to
+    target: Organization
+  - via: service
+    kind: belongs_to
+    target: HealthcareService
+- name: Patient
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 10
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: general-practitioner
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+- name: Practitioner
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 7
+  read_only: true
+  surface: patient-access-and-cms
+- name: PractitionerRole
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 9
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: location
+    kind: belongs_to
+    target: Location
+  - via: network
+    kind: belongs_to
+    target: Organization
+  - via: organization
+    kind: belongs_to
+    target: Organization
+  - via: practitioner
+    kind: belongs_to
+    target: Practitioner
+  - via: service
+    kind: belongs_to
+    target: HealthcareService
+- name: Procedure
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 7
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+- name: Provenance
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 5
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: target
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+- name: Questionnaire
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 3
+  read_only: true
+  surface: patient-access-and-cms
+- name: QuestionnaireResponse
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 5
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: questionnaire
+    kind: belongs_to
+    target: null
+    note: target resource type not declared in the capability statement
+- name: RelatedPerson
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 4
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+- name: ServiceRequest
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 12
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+  - via: performer
+    kind: belongs_to
+    target: Practitioner
+  - via: requester
+    kind: belongs_to
+    target: Practitioner
+- name: Specimen
+  interactions:
+  - search-type
+  - vread
+  - read
+  - history-instance
+  search_param_count: 4
+  read_only: true
+  surface: patient-access-and-cms
+  relationships:
+  - via: patient
+    kind: belongs_to
+    target: Patient
+notes:
+- Basic is the FHIR resource Da Vinci uses to carry a FormularyItem; MedicationKnowledge carries a FormularyDrug.
+- Patient.$everything is the only instance-level operation exposed, and it is the closest thing to a bulk
+  read on this estate. No $export is declared.
+- Every entity on every CMS surface is read-only. The write surface in this estate is the legacy Patient360
+  DSTU2 server, whose resource set is documented in conformance/elevance-health-patient360-dstu2-conformance.xml.

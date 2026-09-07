@@ -1,0 +1,35 @@
+generated: '2026-09-07'
+method: searched
+source: https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+description: >-
+  Elevance Health publishes no dated API changelog or release-notes page. The developer portal says
+  to "visit our Developer Portal often for the latest API release notes", but no such page is served —
+  probed https://www.anthem.com/developers and its sitemap entries, and no release-notes URL exists.
+  The only versioned, dated record of change Elevance publishes about its API estate is the
+  controlled document that governs the endpoints, so that is what is recorded here.
+scheme: controlled-document revision (Document ID IO105, integer major versions)
+current_version: '15.0'
+entries_are_complete: false
+entry_count: 1
+entries:
+- version: '15.0'
+  date: '2025-11-18'
+  label: Interoperability API Endpoints (IO105), Effective 2025-11-18, Status Active
+  breaking: unknown
+  additions:
+  - Thirteen brand-specific Patient Access production FHIR base URLs enumerated under totalview.healthos.elevancehealth.com.
+  - Provider Directory production endpoint documented with the OAuth 2.0 client-credentials flow and supported search parameters.
+  - Formulary production endpoint documented with covered searches for InsurancePlan, Basic (FormularyItem) and MedicationKnowledge (FormularyDrug).
+  - CMS-0057 commitments dated 1/1/27 for the Payer-to-Payer, Prior Authorization and Provider Access APIs.
+  highlights:
+  - Patient Access declared against US Core 6.1.0, CARIN IG for Blue Button STU 2.1.0, FHIR R4 4.0.1 and SMART App Launch 2.2.0.
+  - Provider Directory declared against Da Vinci PDEX Plan Net 1.1.0 and US Core STU 3.1.1.
+  - Formulary declared against Da Vinci PDEX US Drug Formulary IG 2.0.1 STU2.
+notes:
+- >-
+  Prior revisions of IO105 (v1.0 through v14.0) are referenced by the version number but are not
+  published; only the current revision is downloadable. A consumer cannot diff what changed.
+- >-
+  The FHIR CapabilityStatements are themselves dated and regenerate on request, so they record the
+  current state of the contract but not its history. The Patient360 DSTU2 conformance statement is
+  frozen at 2024-10-25.

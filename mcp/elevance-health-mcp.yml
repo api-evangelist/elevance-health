@@ -1,0 +1,915 @@
+generated: '2026-09-07'
+method: derived
+status: candidate
+source: Derived from the live FHIR CapabilityStatements in conformance/. Elevance Health does not ship
+  an MCP server.
+description: Elevance Health publishes no MCP server. This is a CANDIDATE tool surface derived from the
+  read operations the provider's own capability statements declare, showing what an MCP server over this
+  estate would expose if one existed. Nothing here is offered by Elevance Health and no endpoint below
+  is callable as MCP.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: oauth
+  verified: derived
+  note: Probed https://totalview.healthos.elevancehealth.com/mcp (404) and https://www.elevancehealth.com/mcp
+    (403); mcp.elevancehealth.com does not resolve. No MCP server, hosted or stdio, is published or referenced
+    anywhere on the developer surface. auth is recorded as oauth because that is what the underlying APIs
+    require, not because an MCP server negotiates it.
+probes:
+- url: https://totalview.healthos.elevancehealth.com/mcp
+  method: POST tools/list
+  status: 404
+- url: https://www.elevancehealth.com/mcp
+  method: POST tools/list
+  status: 403
+- url: https://mcp.elevancehealth.com/mcp
+  method: POST tools/list
+  status: 0
+  note: NXDOMAIN
+summary:
+  tool_count: 51
+  provider_directory_tools: 16
+  patient_access_tools: 35
+  all_read_only: true
+tools:
+- name: provider_directory_search_healthcareservice
+  category: provider-directory
+  description: Search Elevance Health network HealthcareService records in the Da Vinci PDEX Plan Net
+    provider directory.
+  backing:
+    method: GET
+    path: /HealthcareService
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  input_schema_source: searchParam[] declared for HealthcareService in conformance/elevance-health-provider-directory-capabilitystatement.json
+  parameters:
+  - _id
+  - _lastUpdated
+  - location
+  - name
+  - organization
+  - service-category
+  - service-type
+  - specialty
+- name: provider_directory_read_healthcareservice
+  category: provider-directory
+  description: Read one HealthcareService resource by id from the Elevance Health provider directory.
+  backing:
+    method: GET
+    path: /HealthcareService/{id}
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  parameters:
+  - id
+- name: provider_directory_search_insuranceplan
+  category: provider-directory
+  description: Search Elevance Health network InsurancePlan records in the Da Vinci PDEX Plan Net provider
+    directory.
+  backing:
+    method: GET
+    path: /InsurancePlan
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  input_schema_source: searchParam[] declared for InsurancePlan in conformance/elevance-health-provider-directory-capabilitystatement.json
+  parameters:
+  - _id
+  - _lastUpdated
+  - coverage-area
+  - identifier
+  - name
+  - type
+- name: provider_directory_read_insuranceplan
+  category: provider-directory
+  description: Read one InsurancePlan resource by id from the Elevance Health provider directory.
+  backing:
+    method: GET
+    path: /InsurancePlan/{id}
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  parameters:
+  - id
+- name: provider_directory_search_location
+  category: provider-directory
+  description: Search Elevance Health network Location records in the Da Vinci PDEX Plan Net provider
+    directory.
+  backing:
+    method: GET
+    path: /Location
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  input_schema_source: searchParam[] declared for Location in conformance/elevance-health-provider-directory-capabilitystatement.json
+  parameters:
+  - _id
+  - _lastUpdated
+  - address
+  - address-city
+  - address-state
+  - address-postalcode
+- name: provider_directory_read_location
+  category: provider-directory
+  description: Read one Location resource by id from the Elevance Health provider directory.
+  backing:
+    method: GET
+    path: /Location/{id}
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  parameters:
+  - id
+- name: provider_directory_search_organization
+  category: provider-directory
+  description: Search Elevance Health network Organization records in the Da Vinci PDEX Plan Net provider
+    directory.
+  backing:
+    method: GET
+    path: /Organization
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  input_schema_source: searchParam[] declared for Organization in conformance/elevance-health-provider-directory-capabilitystatement.json
+  parameters:
+  - _id
+  - _lastUpdated
+  - address
+  - address-city
+  - address-state
+  - address-postalcode
+  - name
+  - type
+- name: provider_directory_read_organization
+  category: provider-directory
+  description: Read one Organization resource by id from the Elevance Health provider directory.
+  backing:
+    method: GET
+    path: /Organization/{id}
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  parameters:
+  - id
+- name: provider_directory_search_organizationaffiliation
+  category: provider-directory
+  description: Search Elevance Health network OrganizationAffiliation records in the Da Vinci PDEX Plan
+    Net provider directory.
+  backing:
+    method: GET
+    path: /OrganizationAffiliation
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  input_schema_source: searchParam[] declared for OrganizationAffiliation in conformance/elevance-health-provider-directory-capabilitystatement.json
+  parameters:
+  - _id
+  - _lastUpdated
+  - location
+  - network
+  - participating-organization
+  - primary-organization
+  - service
+  - specialty
+  - role
+- name: provider_directory_read_organizationaffiliation
+  category: provider-directory
+  description: Read one OrganizationAffiliation resource by id from the Elevance Health provider directory.
+  backing:
+    method: GET
+    path: /OrganizationAffiliation/{id}
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  parameters:
+  - id
+- name: provider_directory_search_practitioner
+  category: provider-directory
+  description: Search Elevance Health network Practitioner records in the Da Vinci PDEX Plan Net provider
+    directory.
+  backing:
+    method: GET
+    path: /Practitioner
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  input_schema_source: searchParam[] declared for Practitioner in conformance/elevance-health-provider-directory-capabilitystatement.json
+  parameters:
+  - _id
+  - _lastUpdated
+  - family
+  - given
+  - name
+- name: provider_directory_read_practitioner
+  category: provider-directory
+  description: Read one Practitioner resource by id from the Elevance Health provider directory.
+  backing:
+    method: GET
+    path: /Practitioner/{id}
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  parameters:
+  - id
+- name: provider_directory_search_practitionerrole
+  category: provider-directory
+  description: Search Elevance Health network PractitionerRole records in the Da Vinci PDEX Plan Net provider
+    directory.
+  backing:
+    method: GET
+    path: /PractitionerRole
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  input_schema_source: searchParam[] declared for PractitionerRole in conformance/elevance-health-provider-directory-capabilitystatement.json
+  parameters:
+  - _id
+  - _lastUpdated
+  - location
+  - network
+  - organization
+  - practitioner
+  - service
+  - specialty
+  - role
+- name: provider_directory_read_practitionerrole
+  category: provider-directory
+  description: Read one PractitionerRole resource by id from the Elevance Health provider directory.
+  backing:
+    method: GET
+    path: /PractitionerRole/{id}
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  parameters:
+  - id
+- name: provider_directory_search_specimen
+  category: provider-directory
+  description: Search Elevance Health network Specimen records in the Da Vinci PDEX Plan Net provider
+    directory.
+  backing:
+    method: GET
+    path: /Specimen
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  input_schema_source: searchParam[] declared for Specimen in conformance/elevance-health-provider-directory-capabilitystatement.json
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - patient
+- name: provider_directory_read_specimen
+  category: provider-directory
+  description: Read one Specimen resource by id from the Elevance Health provider directory.
+  backing:
+    method: GET
+    path: /Specimen/{id}
+    base: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  parameters:
+  - id
+- name: patient_access_search_allergyintolerance
+  category: patient-access
+  description: Search a consenting member's AllergyIntolerance resources on the Elevance Health Patient
+    Access API.
+  backing:
+    method: GET
+    path: /AllergyIntolerance
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for AllergyIntolerance in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/AllergyIntolerance.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - clinical-status
+  - patient
+- name: patient_access_search_basic
+  category: patient-access
+  description: Search a consenting member's Basic resources on the Elevance Health Patient Access API.
+  backing:
+    method: GET
+    path: /Basic
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Basic in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Basic.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - code
+  - created
+  - drug-tier
+  - formulary
+  - patient
+  - period
+  - pharmacy-benefit-type
+  - subject
+  - status
+- name: patient_access_search_careplan
+  category: patient-access
+  description: Search a consenting member's CarePlan resources on the Elevance Health Patient Access API.
+  backing:
+    method: GET
+    path: /CarePlan
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for CarePlan in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/CarePlan.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - date
+  - category
+  - patient
+  - status
+- name: patient_access_search_careteam
+  category: patient-access
+  description: Search a consenting member's CareTeam resources on the Elevance Health Patient Access API.
+  backing:
+    method: GET
+    path: /CareTeam
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for CareTeam in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/CareTeam.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - participant
+  - patient
+  - role
+  - status
+- name: patient_access_search_claim
+  category: patient-access
+  description: Search a consenting member's Claim resources on the Elevance Health Patient Access API.
+  backing:
+    method: GET
+    path: /Claim
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Claim in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Claim.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - care-team
+  - created
+  - diagnosis
+  - identifier
+  - patient
+  - payee
+  - procedure
+  - provider
+- name: patient_access_search_claimresponse
+  category: patient-access
+  description: Search a consenting member's ClaimResponse resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /ClaimResponse
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for ClaimResponse in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/ClaimResponse.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - created
+  - patient
+- name: patient_access_search_condition
+  category: patient-access
+  description: Search a consenting member's Condition resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /Condition
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Condition in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Condition.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - abatement-date
+  - category
+  - clinical-status
+  - code
+  - encounter
+  - onset-date
+  - patient
+  - recorded-date
+- name: patient_access_search_coverage
+  category: patient-access
+  description: Search a consenting member's Coverage resources on the Elevance Health Patient Access API.
+  backing:
+    method: GET
+    path: /Coverage
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Coverage in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Coverage.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - beneficiary
+  - date
+  - identifier
+  - patient
+  - payor
+  - plan
+- name: patient_access_search_device
+  category: patient-access
+  description: Search a consenting member's Device resources on the Elevance Health Patient Access API.
+  backing:
+    method: GET
+    path: /Device
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Device in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Device.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - patient
+  - type
+- name: patient_access_search_diagnosticreport
+  category: patient-access
+  description: Search a consenting member's DiagnosticReport resources on the Elevance Health Patient
+    Access API.
+  backing:
+    method: GET
+    path: /DiagnosticReport
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for DiagnosticReport in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/DiagnosticReport.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - date
+  - category
+  - code
+  - patient
+  - result
+  - status
+- name: patient_access_search_documentreference
+  category: patient-access
+  description: Search a consenting member's DocumentReference resources on the Elevance Health Patient
+    Access API.
+  backing:
+    method: GET
+    path: /DocumentReference
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for DocumentReference in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/DocumentReference.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - category
+  - date
+  - encounter
+  - patient
+  - period
+  - status
+  - type
+- name: patient_access_search_encounter
+  category: patient-access
+  description: Search a consenting member's Encounter resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /Encounter
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Encounter in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Encounter.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - class
+  - date
+  - discharge-disposition
+  - identifier
+  - location
+  - participant
+  - patient
+  - status
+  - type
+- name: patient_access_search_explanationofbenefit
+  category: patient-access
+  description: Search a consenting member's ExplanationOfBenefit resources on the Elevance Health Patient
+    Access API.
+  backing:
+    method: GET
+    path: /ExplanationOfBenefit
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for ExplanationOfBenefit in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/ExplanationOfBenefit.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - billable-period-start
+  - care-team
+  - coverage
+  - identifier
+  - insurer
+  - patient
+  - payee
+  - provider
+  - service-date
+  - service-start-date
+  - type
+- name: patient_access_search_goal
+  category: patient-access
+  description: Search a consenting member's Goal resources on the Elevance Health Patient Access API.
+  backing:
+    method: GET
+    path: /Goal
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Goal in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Goal.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - description
+  - lifecycle-status
+  - patient
+  - target-date
+- name: patient_access_search_healthcareservice
+  category: patient-access
+  description: Search a consenting member's HealthcareService resources on the Elevance Health Patient
+    Access API.
+  backing:
+    method: GET
+    path: /HealthcareService
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for HealthcareService in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/HealthcareService.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - coverage-area
+  - location
+  - name
+  - organization
+  - service-category
+  - service-type
+  - specialty
+- name: patient_access_search_immunization
+  category: patient-access
+  description: Search a consenting member's Immunization resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /Immunization
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Immunization in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Immunization.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - covid19-group
+  - date
+  - patient
+  - performer
+  - status
+- name: patient_access_search_insuranceplan
+  category: patient-access
+  description: Search a consenting member's InsurancePlan resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /InsurancePlan
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for InsurancePlan in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/InsurancePlan.read
+  parameters:
+  - _id
+  - _source
+  - _lastUpdated
+  - coverage-area
+  - coverage-type
+  - formulary-coverage
+  - identifier
+  - name
+  - period
+  - status
+  - type
+- name: patient_access_search_location
+  category: patient-access
+  description: Search a consenting member's Location resources on the Elevance Health Patient Access API.
+  backing:
+    method: GET
+    path: /Location
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Location in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Location.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - address
+  - address-city
+  - address-state
+  - address-postalcode
+  - name
+- name: patient_access_search_medicationadministration
+  category: patient-access
+  description: Search a consenting member's MedicationAdministration resources on the Elevance Health
+    Patient Access API.
+  backing:
+    method: GET
+    path: /MedicationAdministration
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for MedicationAdministration in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/MedicationAdministration.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - effective-time
+  - patient
+  - performer
+  - request
+- name: patient_access_search_medicationdispense
+  category: patient-access
+  description: Search a consenting member's MedicationDispense resources on the Elevance Health Patient
+    Access API.
+  backing:
+    method: GET
+    path: /MedicationDispense
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for MedicationDispense in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/MedicationDispense.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - claim
+  - patient
+  - performer
+  - prescription
+  - whenhandedover
+- name: patient_access_search_medicationknowledge
+  category: patient-access
+  description: Search a consenting member's MedicationKnowledge resources on the Elevance Health Patient
+    Access API.
+  backing:
+    method: GET
+    path: /MedicationKnowledge
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for MedicationKnowledge in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/MedicationKnowledge.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - code
+  - drug-name
+  - status
+- name: patient_access_search_medicationrequest
+  category: patient-access
+  description: Search a consenting member's MedicationRequest resources on the Elevance Health Patient
+    Access API.
+  backing:
+    method: GET
+    path: /MedicationRequest
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for MedicationRequest in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/MedicationRequest.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - authoredon
+  - claim
+  - encounter
+  - intent
+  - patient
+  - requester
+  - status
+- name: patient_access_search_observation
+  category: patient-access
+  description: Search a consenting member's Observation resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /Observation
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Observation in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Observation.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - category
+  - code
+  - date
+  - patient
+  - performer
+  - status
+- name: patient_access_search_organization
+  category: patient-access
+  description: Search a consenting member's Organization resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /Organization
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Organization in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Organization.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - identifier
+  - address
+  - address-city
+  - address-state
+  - address-postalcode
+  - coverage-area
+  - name
+  - type
+- name: patient_access_search_organizationaffiliation
+  category: patient-access
+  description: Search a consenting member's OrganizationAffiliation resources on the Elevance Health Patient
+    Access API.
+  backing:
+    method: GET
+    path: /OrganizationAffiliation
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for OrganizationAffiliation in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/OrganizationAffiliation.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - location
+  - network
+  - participating-organization
+  - primary-organization
+  - service
+  - specialty
+  - role
+- name: patient_access_search_patient
+  category: patient-access
+  description: Search a consenting member's Patient resources on the Elevance Health Patient Access API.
+  backing:
+    method: GET
+    path: /Patient
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Patient in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Patient.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - birthdate
+  - family
+  - gender
+  - general-practitioner
+  - given
+  - identifier
+  - name
+- name: patient_access_search_practitioner
+  category: patient-access
+  description: Search a consenting member's Practitioner resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /Practitioner
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Practitioner in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Practitioner.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - family
+  - given
+  - identifier
+  - name
+- name: patient_access_search_practitionerrole
+  category: patient-access
+  description: Search a consenting member's PractitionerRole resources on the Elevance Health Patient
+    Access API.
+  backing:
+    method: GET
+    path: /PractitionerRole
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for PractitionerRole in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/PractitionerRole.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - location
+  - network
+  - organization
+  - practitioner
+  - service
+  - specialty
+- name: patient_access_search_procedure
+  category: patient-access
+  description: Search a consenting member's Procedure resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /Procedure
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Procedure in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Procedure.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - code
+  - date
+  - patient
+  - status
+- name: patient_access_search_provenance
+  category: patient-access
+  description: Search a consenting member's Provenance resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /Provenance
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Provenance in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Provenance.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - patient
+  - target
+- name: patient_access_search_questionnaire
+  category: patient-access
+  description: Search a consenting member's Questionnaire resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /Questionnaire
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Questionnaire in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Questionnaire.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+- name: patient_access_search_questionnaireresponse
+  category: patient-access
+  description: Search a consenting member's QuestionnaireResponse resources on the Elevance Health Patient
+    Access API.
+  backing:
+    method: GET
+    path: /QuestionnaireResponse
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for QuestionnaireResponse in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/QuestionnaireResponse.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - patient
+  - questionnaire
+- name: patient_access_search_relatedperson
+  category: patient-access
+  description: Search a consenting member's RelatedPerson resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /RelatedPerson
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for RelatedPerson in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/RelatedPerson.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - patient
+- name: patient_access_search_servicerequest
+  category: patient-access
+  description: Search a consenting member's ServiceRequest resources on the Elevance Health Patient Access
+    API.
+  backing:
+    method: GET
+    path: /ServiceRequest
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for ServiceRequest in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/ServiceRequest.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - authored
+  - category
+  - code
+  - occurrence
+  - patient
+  - performer
+  - requester
+  - requisition
+  - status
+- name: patient_access_search_specimen
+  category: patient-access
+  description: Search a consenting member's Specimen resources on the Elevance Health Patient Access API.
+  backing:
+    method: GET
+    path: /Specimen
+    base: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir
+  input_schema_source: searchParam[] declared for Specimen in conformance/elevance-health-totalview-capabilitystatement.json
+  scope: patient/Specimen.read
+  parameters:
+  - _id
+  - _lastUpdated
+  - _source
+  - patient
+notes:
+- Every candidate tool is read-only, because every CMS Interoperability surface Elevance publishes is
+  read-only.
+- 'The provider-directory tools are the only ones that could plausibly serve an unattended agent: they
+  carry no member PHI and need only a client-credentials token. The patient-access tools require an individual
+  member to complete a SMART consent flow, which an agent cannot do on its own behalf.'
+- 'Real input schemas are available without invention: each tool inherits the searchParam list the capability
+  statement declares for its resource.'

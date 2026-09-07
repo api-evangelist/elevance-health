@@ -1,0 +1,52 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  Searched registry.npmjs.org, pypi.org, the GitHub organizations ElevanceHealth and Anthem-Inc,
+  the Anthem developer portal, the TotalView documentation site and IO105 v15.0.
+description: >-
+  Elevance Health publishes no client libraries, SDKs or CLI for any of its APIs. This is not a gap
+  in our search; it is the posture. The APIs are standard HL7 FHIR, and the company's integration
+  guidance is raw curl against a FHIR base, which is a defensible choice for a FHIR-native estate
+  where off-the-shelf third-party FHIR clients already work.
+package_count: 0
+official_package_count: 0
+packages: []
+searched:
+- registry: npm
+  query: elevance, elevance health
+  result: >-
+    No first-party package. The nearest matches — lean-ids-tokens and
+    @ajaysoni7832/lean-ids-tokens ("Design tokens for Lean IDS (Carelon & Elevance themes)") — are
+    published by a personal npm account, are design tokens rather than an API client, and carry no
+    Elevance Health ownership signal. Not recorded as official.
+  version: null
+  published: null
+- registry: pypi
+  query: elevance-health
+  result: HTTP 404 — no package.
+  version: null
+  published: null
+- registry: github
+  query: github.com/ElevanceHealth
+  result: Organization exists (created 2022-03-21) with 0 public repositories.
+  version: null
+  published: null
+- registry: github
+  query: github.com/Anthem-Inc
+  result: Organization exists (created 2020-02-05) with 0 public repositories.
+  version: null
+  published: null
+- registry: docs
+  query: Anthem developer portal, TotalView documentation site, IO105 v15.0
+  result: >-
+    No SDK, client library or CLI is offered or referenced. Integration examples in IO105 v15.0 are
+    curl commands against the FHIR base.
+  version: null
+  published: null
+notes:
+- >-
+  No SDKs pointer is emitted in apis.yml, because there is no official SDK to point at. An
+  unofficial design-token package is not an API client.
+- >-
+  For a FHIR estate the practical client is a general-purpose FHIR library (HAPI FHIR, fhirclient,
+  firely-net-sdk) rather than a vendor SDK. Those are third-party and are not recorded as Elevance packages.

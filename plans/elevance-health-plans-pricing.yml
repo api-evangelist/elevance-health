@@ -4,103 +4,65 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Elevance Health
 providerId: elevance-health
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-09-07'
+generated: '2026-09-07'
+method: searched
+source: >-
+  https://www.anthem.com/developers and the first-party "Interoperability API Endpoint Support
+  Document" (IO105 v15.0, effective 2025-11-18) at
+  https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+reconciled: true
 tags:
   - Healthcare
   - Health Insurance
   - FHIR
   - Interoperability
-description: Elevance Health (formerly Anthem) exposes CMS Interoperability and Patient Access FHIR APIs.
-  Per the CMS Interoperability and Patient Access Final Rule, member access to claims and clinical data
-  must be free of charge to members and to consumer-direction app developers; provider directory and
-  formulary endpoints are publicly readable. There is no per-call price list. Plans capture the access
-  channels.
-notes: Public per-call pricing for Elevance Health FHIR APIs is not published; CMS rules require free
-  patient access. Replace with provider-confirmed values if Elevance later monetizes a non-CMS API surface.
-sources:
-  - https://www.anthem.com/developers
-  - https://patient360c.anthem.com/P360Member/fhir/documentation
-  - https://www.cms.gov/Regulations-and-Guidance/Guidance/Interoperability/index
-plans:
-  - id: elevance-health-patient-access
-    name: Patient Access (CMS-Mandated)
-    type: freemium
-    description: Free, member-authorized FHIR access to claims, clinical, pharmacy, dental, and vision
-      data. Up to five years of historical data per CARIN BB IG.
-    entries:
-      - label: Member-authorized FHIR access
-        name: patient_access_calls
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: US
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: HL7 FHIR R4
-      - name: CARIN Consumer-Directed Payer Data Exchange IG
-      - name: SMART-on-FHIR member auth
-  - id: elevance-health-provider-directory
-    name: Provider Directory (Public)
-    type: freemium
-    description: Publicly readable FHIR Provider Directory; no authentication required.
-    entries:
-      - label: Provider directory access
-        name: provider_directory_calls
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: US
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: DaVinci PDEX Plan Net IG
-      - name: Practitioner / PractitionerRole / Organization / Location / InsurancePlan
-  - id: elevance-health-formulary
-    name: Drug Formulary (Public)
-    type: freemium
-    description: Publicly readable drug-formulary FHIR API.
-    entries:
-      - label: Formulary access
-        name: formulary_calls
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: US
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: DaVinci PDEX US Drug Formulary IG
-      - name: Tier placement and prior-auth flags
-  - id: elevance-health-payer-to-payer
-    name: Payer to Payer
-    type: enterprise
-    description: Inter-payer FHIR exchange under the CMS Interoperability and Prior Authorization rule.
-      Available to other payers under data-exchange agreements.
-    entries:
-      - label: Payer-to-payer exchange
-        name: payer_to_payer_calls
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: US
-        unit: 1
-        price: contact partner
-        userMultiplied: false
-    elements:
-      - name: Member coverage and clinical exchange
-      - name: HL7 FHIR R4
-maintainers:
-  - FN: API Evangelist
-    email: info@apievangelist.com
+description: >-
+  Elevance Health publishes no price list, no plan tiers and no quotas for any of its APIs, and
+  charges nothing. Every published API exists to satisfy the CMS Interoperability and Patient Access
+  Final Rule (CMS-9115-F), which requires payers to make this data available to members and to
+  third-party applications without charge. The gate on these APIs is registration and approval, not
+  money. That is the finding: plan_count is 0 because there are no plans, not because none were found.
+plan_count: 0
+pricing_published: false
+free_of_charge: true
+currency: null
+access_gates:
+- api: Patient Access API
+  gate: registration and member consent
+  cost: none
+  self_serve: false
+  detail: >-
+    Sandbox access is self-service on registration. Production requires the Patient Access API
+    Production Environment request form, a documented security risk analysis, and acceptance of the
+    Exhibit A terms of service; approval can take several weeks. At call time each member must
+    consent, and the resulting token is valid for 90 days.
+  registration_url: https://www.anthem.com/developers/request-anthem-io
+  registration_status: 200
+- api: Provider Directory API
+  gate: registration
+  cost: none
+  self_serve: false
+  detail: >-
+    Described by Elevance as a public production environment that nonetheless requires registration.
+    Client id, client secret and the access-token URL are delivered by secure email after the
+    Provider Directory API Production Environment request form is approved.
+  registration_url: https://www.anthem.com/developers/provider-directory-api-request
+  registration_status: 200
+- api: Formulary API
+  gate: registration
+  cost: none
+  self_serve: false
+  detail: Same client-credentials registration path as Provider Directory. Contract endpoints answer 403 until credentials are issued.
+- api: Payer-to-Payer API
+  gate: not yet available
+  cost: none
+  detail: Committed for 1/1/2027 under CMS-0057-F. No access path exists today.
+notes:
+- >-
+  Supersedes the 2026-05-04 generated file, which invented four freemium/enterprise "plans" with
+  quota entries and a "contact partner" price. Elevance publishes no such structure. The four
+  entries above are access gates, not commercial plans, and are labelled as such.
+- >-
+  Elevance Health sells health insurance, not API access. There is no developer-facing commercial
+  relationship to price, and no evidence of any paid or metered API product.

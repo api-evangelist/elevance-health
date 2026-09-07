@@ -1,0 +1,162 @@
+generated: '2026-09-07'
+method: probed
+source: live HTTP probes of every host named in apis.yml, the OpenAPI servers[] blocks, the
+  Anthem developer portal, and the first-party "Interoperability API Endpoint Support Document"
+  (IO105 v15.0, effective 2025-11-18).
+description: >-
+  Well-known discovery documents published by Elevance Health. The registrable domains
+  (elevancehealth.com, anthem.com) serve NO /.well-known documents at their roots — every
+  root path 404s or is refused by the edge. The real discovery documents live where the
+  FHIR/SMART specifications put them: under each FHIR base URL. Three SMART App Launch
+  configurations and one full OpenID Connect discovery document were retrieved anonymously.
+notes:
+  - The SMART configurations are served at <fhir-base>/.well-known/smart-configuration, which
+    is the location the SMART App Launch IG mandates. They are genuine documents, not SPA shells.
+  - No security.txt, api-catalog, ai-plugin.json, agent-card.json or agent.json was served on
+    any host. No llms.txt on any host.
+  - www.elevancehealth.com answers 403 (edge bot policy) rather than 404 for the
+    /.well-known/*.json paths; recorded as probed-403, not as a served document.
+hosts:
+- host: patient360.anthem.com
+  note: Patient360 production FHIR host (CareEvolution HIEBus, DSTU2).
+  documents:
+  - path: /P360Member/api/fhir/.well-known/smart-configuration
+    status: 200
+    content_type: application/json
+    file: elevance-health-patient360-smart-configuration.json
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: patient360c.anthem.com
+  note: Patient360 FHIR host serving the public API documentation page.
+  documents:
+  - path: /P360Member/api/fhir/.well-known/smart-configuration
+    status: 200
+    content_type: application/json
+    file: elevance-health-patient360c-smart-configuration.json
+  - path: /P360Member/identityserver/.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: elevance-health-patient360c-openid-configuration.json
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: totalview.healthos.elevancehealth.com
+  note: >-
+    Production CMS Interoperability FHIR host (hos-fhir-server, FHIR R4). The SMART
+    configuration is served per brand tenant; AnthemBlueCross probed as the representative.
+  documents:
+  - path: /resources/registered/AnthemBlueCross/api/v1/fhir/.well-known/smart-configuration
+    status: 200
+    content_type: application/json
+    file: elevance-health-totalview-smart-configuration.json
+  - path: /resources/unregistered/api/v1/fhir/cms_mandate/frmlry/.well-known/smart-configuration
+    status: 403
+    note: Formulary API discovery is gated; client credentials are issued by secure email after registration.
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: sbx.totalview.healthos.elevancehealth.com
+  note: Patient Access sandbox host (synthetic data, self-registration).
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: www.elevancehealth.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+- host: elevancehealth.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 403
+- host: www.anthem.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: anthem.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404

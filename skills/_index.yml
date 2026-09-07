@@ -1,0 +1,39 @@
+generated: '2026-09-07'
+method: generated
+source: >-
+  Grounded in the operationIds present in openapi/elevance-health-*-openapi.yml and cross-checked
+  against the live FHIR contracts in conformance/ retrieved on 2026-09-07. No operation is named in
+  a skill unless it appears in a spec in this repository.
+description: >-
+  Packaged Agent Skills for the Elevance Health FHIR estate. Elevance publishes no skills,
+  AGENTS.md or agent documentation of its own — these are ours, and they encode the three things
+  that are easy to get wrong here: choosing the right base URL out of sixteen, knowing which of the
+  four surfaces an agent may actually operate on unattended, and not assuming a FHIR resource
+  exists just because FHIR defines it.
+provider_published_skills: false
+skills:
+- name: elevance-health-discover-fhir-capabilities
+  file: elevance-health-discover-fhir-capabilities.md
+  api: elevance-health:elevance-health-conformance-api
+  operations: [getCapabilityStatement]
+  summary: Read the server's own FHIR CapabilityStatement before calling anything. Do this first.
+- name: elevance-health-search-provider-directory
+  file: elevance-health-search-provider-directory.md
+  api: elevance-health:elevance-health-provider-directory-api
+  operations: [getCapabilityStatement, readPractitioner, readOrganization]
+  summary: >-
+    In-network provider lookup over the public CMS Provider Directory API. The only Elevance
+    surface an unattended agent can legitimately use — no PHI, no member consent, client-credentials auth.
+  agent_suitable: true
+- name: elevance-health-retrieve-member-claims
+  file: elevance-health-retrieve-member-claims.md
+  api: elevance-health:elevance-health-claims-api
+  operations: [getCapabilityStatement, searchPatient, readPatient, searchCoverage, readCoverage, searchClaim]
+  summary: >-
+    Member coverage and claims history over SMART on FHIR. Requires an individual member to complete
+    a browser consent flow; there is no unattended path.
+  agent_suitable: false
+  reason: Requires interactive member consent and returns PHI.
+notes:
+- Formulary has no skill because its contract is auth-gated (403) and cannot be verified without credentials; writing steps against an unread contract would be guessing.
+- The Payer-to-Payer, Prior Authorization and Provider Access APIs have no skills because they do not exist yet — Elevance commits to 1 January 2027 under CMS-0057-F.

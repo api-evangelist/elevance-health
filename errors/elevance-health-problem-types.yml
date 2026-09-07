@@ -1,0 +1,113 @@
+generated: '2026-09-07'
+method: probed
+source: >-
+  Live anonymous requests against the Elevance Health FHIR hosts on 2026-09-07 (status codes and
+  response bodies recorded verbatim), the FHIR CapabilityStatements in conformance/, and the
+  Patient360 API documentation page at https://patient360c.anthem.com/P360Member/fhir/documentation.
+format: fhir-operationoutcome
+rfc9457: false
+description: >-
+  Elevance Health publishes no error reference page. This catalog is built from the error shapes
+  actually observed on the wire plus the FHIR OperationOutcome contract the servers implement.
+  Two distinct envelopes are in play, which is the single most important thing for a client to
+  know: the FHIR servers return OperationOutcome, but the TotalView API gateway in front of them
+  answers with its own JSON envelope and never reaches FHIR at all.
+envelopes:
+- id: fhir-operationoutcome
+  media_type: application/fhir+json
+  detail: >-
+    The standard FHIR error resource. issue[] entries carry severity (fatal|error|warning|information),
+    code (a value from the FHIR issue-type value set, e.g. not-found, invalid, security, processing),
+    details.text and optionally expression pointing at the offending element.
+  scope: All FHIR resource paths on patient360.anthem.com and the TotalView FHIR bases.
+  reference: https://hl7.org/fhir/R4/operationoutcome.html
+- id: totalview-gateway-envelope
+  media_type: application/json
+  observed: true
+  shape:
+    status_code: integer, repeats the HTTP status
+    status: string, observed value "failed"
+    error: string, short label
+    error_description: string, human sentence
+  example_observed: >-
+    {"status_code":500,"status":"failed","error":"Internal server error",
+    "error_description":"An unexpected error occurred. Please try again later."}
+  scope: totalview.healthos.elevancehealth.com gateway paths.
+  note: Verbatim body observed 2026-09-07 on GET /resources/unregistered/api/v1/fhir/cms_mandate/mcd/InsurancePlan?_count=1.
+problem_types:
+- id: unauthorized
+  status: 401
+  envelope: totalview-gateway-envelope
+  title: Missing or invalid access token
+  observed_at: https://patient360c.anthem.com/P360Member/api/fhir?wsdl
+  remediation: >-
+    Obtain a token. Patient Access requires the SMART authorization-code flow with member consent;
+    Provider Directory and Formulary require OAuth 2.0 client credentials against the token endpoint
+    issued to your registered application by secure email.
+- id: forbidden
+  status: 403
+  envelope: none
+  title: Registration required for this surface
+  detail: >-
+    Returned with an empty body. Observed on every Formulary path
+    (/resources/unregistered/api/v1/fhir/cms_mandate/frmlry/*) and on the sandbox FHIR base. The
+    path exists; the caller is not a registered third-party application.
+  observed_at: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/frmlry/metadata
+  remediation: Complete the Formulary API Production Environment request form on the Anthem developer portal.
+- id: not-found
+  status: 404
+  envelope: fhir-operationoutcome
+  title: Unknown resource, unknown id, or wrong FHIR base
+  detail: >-
+    Commonly a wrong base URL rather than a missing record. The historical base
+    https://patient360.anthem.com/P360Member/fhir returns 404; the correct base is
+    https://patient360.anthem.com/P360Member/api/fhir.
+  observed_at: https://patient360.anthem.com/P360Member/fhir/metadata
+  remediation: Confirm the base URL against GET <base>/metadata, which must return a CapabilityStatement.
+- id: invalid-search
+  status: 400
+  envelope: fhir-operationoutcome
+  title: Unsupported or malformed search parameter
+  detail: >-
+    Each resource declares the exact searchParam names it accepts in the CapabilityStatement.
+    Parameters outside that list are rejected rather than ignored.
+  remediation: Read searchParam[] for the resource in conformance/elevance-health-totalview-capabilitystatement.json before constructing a query.
+- id: unsupported-interaction
+  status: 405
+  envelope: fhir-operationoutcome
+  title: Interaction not supported on this resource
+  detail: >-
+    The CMS surfaces are read-only. A create, update or delete against Patient Access, Provider
+    Directory or Formulary is not a permissions problem, it is an interaction the server does not
+    implement — the capability statements declare only search-type, read, vread and history-instance.
+  evidence: conformance/elevance-health-provider-directory-capabilitystatement.json
+  remediation: Restrict clients to read and search on all CMS Interoperability endpoints.
+- id: unsupported-media-type
+  status: 415
+  envelope: fhir-operationoutcome
+  title: Unsupported representation
+  detail: Accepted formats are application/fhir+json, application/fhir+xml and application/x-turtle.
+  remediation: Set Accept to application/fhir+json.
+- id: internal-error
+  status: 500
+  envelope: totalview-gateway-envelope
+  title: Internal server error
+  detail: >-
+    Observed on live Provider Directory data queries on 2026-09-07 while the /metadata endpoint on
+    the same base answered 200. The contract is readable while the data plane behind it is not.
+  observed_at: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/InsurancePlan?_count=1
+  remediation: Retry with backoff. There is no published status page to check, and no Retry-After header is returned.
+- id: gateway-timeout
+  status: null
+  envelope: none
+  title: No response
+  detail: >-
+    The registered-tenant metadata paths
+    (/resources/registered/{Brand}/api/v1/fhir/metadata) did not respond within 25 seconds
+    anonymously, while the sibling .well-known/smart-configuration on the same base returned 200.
+  observed_at: https://totalview.healthos.elevancehealth.com/resources/registered/AnthemBlueCross/api/v1/fhir/metadata
+  remediation: Use the documentation feed at /api/v1/fhir/docs to read the capability statement for registered tenants.
+notes:
+- No published error reference exists on the Anthem developer portal or the TotalView documentation site.
+- No error codes are enumerated by the provider; the identifiers above are ours, derived from observed status codes.
+- Rate limiting is not represented here because no 429 behaviour is documented or was observed.

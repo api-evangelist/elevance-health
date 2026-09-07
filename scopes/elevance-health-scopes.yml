@@ -1,29 +1,1408 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/elevance-health-openapi.yml
+generated: '2026-09-07'
+method: probed
+source: Anonymous GET of the SMART App Launch and OpenID Connect discovery documents on each Elevance
+  Health FHIR host
+docs: https://patient360c.anthem.com/P360Member/fhir/documentation
+description: OAuth 2.0 / SMART on FHIR scopes actually advertised by Elevance Health, read from the providers
+  own discovery documents rather than inferred. Supersedes the 2026-07-11 derived file, which listed three
+  scopes taken from a hand-written scaffold spec.
+summary:
+  schemes: 3
+  scopes_total: 272
+  patient360_smart_scopes: 205
+  totalview_patient_access_scopes: 67
+  patient360_identityserver_oidc_scopes: 1048
+notes:
+- The Patient360 IdentityServer OpenID Connect discovery document advertises 1048 scopes, a superset that
+  covers the whole CareEvolution HIEBus resource surface. Only the 205 scopes the SMART configuration
+  advertises for the FHIR base are enumerated here; the full list is in well-known/elevance-health-patient360c-openid-configuration.json.
+- The Provider Directory and Formulary APIs use OAuth 2.0 client credentials and publish no scope list;
+  their token endpoint is issued privately by secure email after registration.
 schemes:
-- name: oauth2
-  source: openapi/elevance-health-openapi.yml
+- name: totalview-patient-access
+  api: Patient Access API (production, FHIR R4)
+  source: well-known/elevance-health-totalview-smart-configuration.json
   flows:
   - flow: authorizationCode
-    authorizationUrl: https://patient360c.anthem.com/P360Member/oauth2/authorize
-    tokenUrl: https://patient360c.anthem.com/P360Member/oauth2/token
+    authorizationUrl: https://totalview.healthos.elevancehealth.com/oauth2.code/registered/api/v1/authorize
+    tokenUrl: https://totalview.healthos.elevancehealth.com/client.oauth2/registered/api/v1/token
+  - flow: clientCredentials
+    tokenUrl: https://totalview.healthos.elevancehealth.com/client.oauth2/registered/api/v1/token
+- name: patient360-smart
+  api: Patient360 FHIR (DSTU2)
+  source: well-known/elevance-health-patient360-smart-configuration.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://patient360.anthem.com/P360Member/identityserver/connect/authorize
+    tokenUrl: https://patient360.anthem.com/P360Member/identityserver/connect/token
+- name: provider-directory-and-formulary
+  api: Provider Directory API and Formulary API
+  source: https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+  flows:
+  - flow: clientCredentials
+    tokenUrl: null
+    note: Token endpoint issued per registered application by secure email; not published.
 scopes:
-- scope: launch/patient
-  description: SMART on FHIR patient launch context
-  flows:
+- scope: patient/AllergyIntolerance.*
+  flows: &id001
   - authorizationCode
+  - clientCredentials
   sources:
-  - openapi/elevance-health-openapi.yml
-- scope: offline_access
-  description: Refresh token access
-  flows:
-  - authorizationCode
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to AllergyIntolerance resources
+- scope: patient/AllergyIntolerance.read
+  flows: *id001
   sources:
-  - openapi/elevance-health-openapi.yml
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to AllergyIntolerance resources
+- scope: patient/AuditEvent.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to AuditEvent resources
+- scope: patient/AuditEvent.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to AuditEvent resources
+- scope: patient/Basic.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Basic resources
+- scope: patient/Basic.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Basic resources
+- scope: patient/Binary.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Binary resources
+- scope: patient/Binary.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Binary resources
+- scope: patient/CarePlan.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to CarePlan resources
+- scope: patient/CarePlan.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to CarePlan resources
+- scope: patient/CareTeam.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to CareTeam resources
+- scope: patient/CareTeam.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to CareTeam resources
+- scope: patient/Claim.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Claim resources
+- scope: patient/Claim.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Claim resources
+- scope: patient/Condition.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Condition resources
+- scope: patient/Condition.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Condition resources
+- scope: patient/Coverage.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Coverage resources
+- scope: patient/Coverage.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Coverage resources
+- scope: patient/Device.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Device resources
+- scope: patient/Device.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Device resources
+- scope: patient/DiagnosticReport.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to DiagnosticReport resources
+- scope: patient/DiagnosticReport.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to DiagnosticReport resources
+- scope: patient/DocumentReference.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to DocumentReference resources
+- scope: patient/DocumentReference.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to DocumentReference resources
+- scope: patient/Encounter.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Encounter resources
+- scope: patient/Encounter.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Encounter resources
+- scope: patient/ExplanationOfBenefit.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to ExplanationOfBenefit resources
+- scope: patient/ExplanationOfBenefit.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to ExplanationOfBenefit resources
+- scope: patient/Goal.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Goal resources
+- scope: patient/Goal.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Goal resources
+- scope: patient/Immunization.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Immunization resources
+- scope: patient/Immunization.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Immunization resources
+- scope: patient/Location.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Location resources
+- scope: patient/Location.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Location resources
+- scope: patient/MedicationDispense.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to MedicationDispense resources
+- scope: patient/MedicationDispense.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to MedicationDispense resources
+- scope: patient/MedicationRequest.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to MedicationRequest resources
+- scope: patient/MedicationRequest.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to MedicationRequest resources
+- scope: patient/Observation.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Observation resources
+- scope: patient/Observation.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Observation resources
+- scope: patient/Organization.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Organization resources
+- scope: patient/Organization.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Organization resources
+- scope: patient/Patient.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Patient resources
+- scope: patient/Patient.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Patient resources
+- scope: patient/Practitioner.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Practitioner resources
+- scope: patient/Practitioner.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Practitioner resources
+- scope: patient/Procedure.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Procedure resources
+- scope: patient/Procedure.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Procedure resources
+- scope: patient/Provenance.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Provenance resources
+- scope: patient/Provenance.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Provenance resources
+- scope: patient/QuestionnaireResponse.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to QuestionnaireResponse resources
+- scope: patient/QuestionnaireResponse.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to QuestionnaireResponse resources
+- scope: patient/RelatedPerson.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to RelatedPerson resources
+- scope: patient/RelatedPerson.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to RelatedPerson resources
+- scope: patient/ServiceRequest.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to ServiceRequest resources
+- scope: patient/ServiceRequest.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to ServiceRequest resources
+- scope: patient/Specimen.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to Specimen resources
+- scope: patient/Specimen.read
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to Specimen resources
+- scope: patient/*.*
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read and write access to all resources
 - scope: patient/*.read
-  description: Read patient-scoped resources
-  flows:
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: patient-scoped read access to all resources
+- scope: launch
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: SMART EHR launch context
+- scope: launch/patient
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: SMART standalone patient launch context
+- scope: openid
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: OpenID Connect authentication
+- scope: profile
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: Basic profile claims
+- scope: fhirUser
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: Identity of the authorizing FHIR user
+- scope: offline_access
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: Refresh token / offline access
+- scope: online_access
+  flows: *id001
+  sources:
+  - well-known/elevance-health-totalview-smart-configuration.json
+  description: Refresh token valid only while the user is online
+- scope: patient/AllergyIntolerance.*
+  flows: &id002
   - authorizationCode
   sources:
-  - openapi/elevance-health-openapi.yml
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to AllergyIntolerance resources
+- scope: patient/AllergyIntolerance.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to AllergyIntolerance resources
+- scope: patient/AuditEvent.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to AuditEvent resources
+- scope: patient/AuditEvent.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to AuditEvent resources
+- scope: patient/Binary.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Binary resources
+- scope: patient/Binary.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Binary resources
+- scope: patient/CarePlan.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to CarePlan resources
+- scope: patient/CarePlan.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to CarePlan resources
+- scope: patient/Claim.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Claim resources
+- scope: patient/Claim.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Claim resources
+- scope: patient/Condition.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Condition resources
+- scope: patient/Condition.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Condition resources
+- scope: patient/Coverage.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Coverage resources
+- scope: patient/Coverage.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Coverage resources
+- scope: patient/Device.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Device resources
+- scope: patient/Device.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Device resources
+- scope: patient/DiagnosticOrder.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to DiagnosticOrder resources
+- scope: patient/DiagnosticOrder.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to DiagnosticOrder resources
+- scope: patient/DiagnosticReport.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to DiagnosticReport resources
+- scope: patient/DiagnosticReport.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to DiagnosticReport resources
+- scope: patient/Encounter.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Encounter resources
+- scope: patient/Encounter.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Encounter resources
+- scope: patient/Goal.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Goal resources
+- scope: patient/Goal.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Goal resources
+- scope: patient/Group.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Group resources
+- scope: patient/Group.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Group resources
+- scope: patient/Immunization.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Immunization resources
+- scope: patient/Immunization.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Immunization resources
+- scope: patient/Location.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Location resources
+- scope: patient/Location.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Location resources
+- scope: patient/MedicationAdministration.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to MedicationAdministration resources
+- scope: patient/MedicationAdministration.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to MedicationAdministration resources
+- scope: patient/MedicationDispense.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to MedicationDispense resources
+- scope: patient/MedicationDispense.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to MedicationDispense resources
+- scope: patient/MedicationOrder.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to MedicationOrder resources
+- scope: patient/MedicationOrder.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to MedicationOrder resources
+- scope: patient/MedicationStatement.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to MedicationStatement resources
+- scope: patient/MedicationStatement.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to MedicationStatement resources
+- scope: patient/Observation.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Observation resources
+- scope: patient/Observation.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Observation resources
+- scope: patient/OperationDefinition.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to OperationDefinition resources
+- scope: patient/OperationDefinition.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to OperationDefinition resources
+- scope: patient/Organization.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Organization resources
+- scope: patient/Organization.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Organization resources
+- scope: patient/Patient.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Patient resources
+- scope: patient/Patient.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Patient resources
+- scope: patient/Person.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Person resources
+- scope: patient/Person.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Person resources
+- scope: patient/Practitioner.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Practitioner resources
+- scope: patient/Practitioner.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Practitioner resources
+- scope: patient/Procedure.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Procedure resources
+- scope: patient/Procedure.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Procedure resources
+- scope: patient/ProcedureRequest.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to ProcedureRequest resources
+- scope: patient/ProcedureRequest.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to ProcedureRequest resources
+- scope: patient/Provenance.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Provenance resources
+- scope: patient/Provenance.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Provenance resources
+- scope: patient/ReferralRequest.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to ReferralRequest resources
+- scope: patient/ReferralRequest.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to ReferralRequest resources
+- scope: patient/RelatedPerson.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to RelatedPerson resources
+- scope: patient/RelatedPerson.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to RelatedPerson resources
+- scope: patient/Specimen.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to Specimen resources
+- scope: patient/Specimen.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to Specimen resources
+- scope: patient/ValueSet.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to ValueSet resources
+- scope: patient/ValueSet.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to ValueSet resources
+- scope: patient/*.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read and write access to all resources
+- scope: patient/*.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: patient-scoped read access to all resources
+- scope: user/AllergyIntolerance.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to AllergyIntolerance resources
+- scope: user/AllergyIntolerance.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to AllergyIntolerance resources
+- scope: user/AuditEvent.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to AuditEvent resources
+- scope: user/AuditEvent.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to AuditEvent resources
+- scope: user/Binary.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Binary resources
+- scope: user/Binary.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Binary resources
+- scope: user/CarePlan.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to CarePlan resources
+- scope: user/CarePlan.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to CarePlan resources
+- scope: user/Claim.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Claim resources
+- scope: user/Claim.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Claim resources
+- scope: user/Condition.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Condition resources
+- scope: user/Condition.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Condition resources
+- scope: user/Coverage.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Coverage resources
+- scope: user/Coverage.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Coverage resources
+- scope: user/Device.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Device resources
+- scope: user/Device.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Device resources
+- scope: user/DiagnosticOrder.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to DiagnosticOrder resources
+- scope: user/DiagnosticOrder.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to DiagnosticOrder resources
+- scope: user/DiagnosticReport.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to DiagnosticReport resources
+- scope: user/DiagnosticReport.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to DiagnosticReport resources
+- scope: user/Encounter.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Encounter resources
+- scope: user/Encounter.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Encounter resources
+- scope: user/Goal.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Goal resources
+- scope: user/Goal.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Goal resources
+- scope: user/Group.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Group resources
+- scope: user/Group.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Group resources
+- scope: user/Immunization.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Immunization resources
+- scope: user/Immunization.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Immunization resources
+- scope: user/Location.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Location resources
+- scope: user/Location.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Location resources
+- scope: user/MedicationAdministration.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to MedicationAdministration resources
+- scope: user/MedicationAdministration.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to MedicationAdministration resources
+- scope: user/MedicationDispense.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to MedicationDispense resources
+- scope: user/MedicationDispense.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to MedicationDispense resources
+- scope: user/MedicationOrder.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to MedicationOrder resources
+- scope: user/MedicationOrder.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to MedicationOrder resources
+- scope: user/MedicationStatement.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to MedicationStatement resources
+- scope: user/MedicationStatement.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to MedicationStatement resources
+- scope: user/Observation.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Observation resources
+- scope: user/Observation.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Observation resources
+- scope: user/OperationDefinition.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to OperationDefinition resources
+- scope: user/OperationDefinition.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to OperationDefinition resources
+- scope: user/Organization.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Organization resources
+- scope: user/Organization.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Organization resources
+- scope: user/Patient.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Patient resources
+- scope: user/Patient.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Patient resources
+- scope: user/Person.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Person resources
+- scope: user/Person.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Person resources
+- scope: user/Practitioner.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Practitioner resources
+- scope: user/Practitioner.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Practitioner resources
+- scope: user/Procedure.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Procedure resources
+- scope: user/Procedure.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Procedure resources
+- scope: user/ProcedureRequest.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to ProcedureRequest resources
+- scope: user/ProcedureRequest.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to ProcedureRequest resources
+- scope: user/Provenance.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Provenance resources
+- scope: user/Provenance.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Provenance resources
+- scope: user/ReferralRequest.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to ReferralRequest resources
+- scope: user/ReferralRequest.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to ReferralRequest resources
+- scope: user/RelatedPerson.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to RelatedPerson resources
+- scope: user/RelatedPerson.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to RelatedPerson resources
+- scope: user/Specimen.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to Specimen resources
+- scope: user/Specimen.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to Specimen resources
+- scope: user/ValueSet.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to ValueSet resources
+- scope: user/ValueSet.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to ValueSet resources
+- scope: user/*.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read and write access to all resources
+- scope: user/*.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: user-scoped read access to all resources
+- scope: system/AllergyIntolerance.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to AllergyIntolerance resources
+- scope: system/AllergyIntolerance.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to AllergyIntolerance resources
+- scope: system/AuditEvent.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to AuditEvent resources
+- scope: system/AuditEvent.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to AuditEvent resources
+- scope: system/Binary.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Binary resources
+- scope: system/Binary.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Binary resources
+- scope: system/CarePlan.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to CarePlan resources
+- scope: system/CarePlan.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to CarePlan resources
+- scope: system/Claim.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Claim resources
+- scope: system/Claim.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Claim resources
+- scope: system/Condition.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Condition resources
+- scope: system/Condition.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Condition resources
+- scope: system/Coverage.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Coverage resources
+- scope: system/Coverage.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Coverage resources
+- scope: system/Device.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Device resources
+- scope: system/Device.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Device resources
+- scope: system/DiagnosticOrder.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to DiagnosticOrder resources
+- scope: system/DiagnosticOrder.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to DiagnosticOrder resources
+- scope: system/DiagnosticReport.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to DiagnosticReport resources
+- scope: system/DiagnosticReport.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to DiagnosticReport resources
+- scope: system/Encounter.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Encounter resources
+- scope: system/Encounter.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Encounter resources
+- scope: system/Goal.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Goal resources
+- scope: system/Goal.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Goal resources
+- scope: system/Group.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Group resources
+- scope: system/Group.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Group resources
+- scope: system/Immunization.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Immunization resources
+- scope: system/Immunization.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Immunization resources
+- scope: system/Location.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Location resources
+- scope: system/Location.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Location resources
+- scope: system/MedicationAdministration.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to MedicationAdministration resources
+- scope: system/MedicationAdministration.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to MedicationAdministration resources
+- scope: system/MedicationDispense.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to MedicationDispense resources
+- scope: system/MedicationDispense.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to MedicationDispense resources
+- scope: system/MedicationOrder.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to MedicationOrder resources
+- scope: system/MedicationOrder.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to MedicationOrder resources
+- scope: system/MedicationStatement.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to MedicationStatement resources
+- scope: system/MedicationStatement.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to MedicationStatement resources
+- scope: system/Observation.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Observation resources
+- scope: system/Observation.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Observation resources
+- scope: system/OperationDefinition.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to OperationDefinition resources
+- scope: system/OperationDefinition.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to OperationDefinition resources
+- scope: system/Organization.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Organization resources
+- scope: system/Organization.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Organization resources
+- scope: system/Patient.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Patient resources
+- scope: system/Patient.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Patient resources
+- scope: system/Person.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Person resources
+- scope: system/Person.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Person resources
+- scope: system/Practitioner.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Practitioner resources
+- scope: system/Practitioner.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Practitioner resources
+- scope: system/Procedure.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Procedure resources
+- scope: system/Procedure.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Procedure resources
+- scope: system/ProcedureRequest.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to ProcedureRequest resources
+- scope: system/ProcedureRequest.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to ProcedureRequest resources
+- scope: system/Provenance.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Provenance resources
+- scope: system/Provenance.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Provenance resources
+- scope: system/ReferralRequest.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to ReferralRequest resources
+- scope: system/ReferralRequest.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to ReferralRequest resources
+- scope: system/RelatedPerson.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to RelatedPerson resources
+- scope: system/RelatedPerson.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to RelatedPerson resources
+- scope: system/Specimen.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to Specimen resources
+- scope: system/Specimen.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to Specimen resources
+- scope: system/ValueSet.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to ValueSet resources
+- scope: system/ValueSet.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to ValueSet resources
+- scope: system/*.*
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read and write access to all resources
+- scope: system/*.read
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: system-scoped read access to all resources
+- scope: launch
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: SMART EHR launch context
+- scope: launch/patient
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: SMART standalone patient launch context
+- scope: openid
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: OpenID Connect authentication
+- scope: profile
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: Basic profile claims
+- scope: fhirUser
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: Identity of the authorizing FHIR user
+- scope: offline_access
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: Refresh token / offline access
+- scope: online_access
+  flows: *id002
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  description: Refresh token valid only while the user is online

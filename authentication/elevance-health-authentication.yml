@@ -1,18 +1,128 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/elevance-health-openapi.yml
+generated: '2026-09-07'
+method: probed
+source: >-
+  Anonymous GET of the SMART App Launch configurations at
+  https://patient360.anthem.com/P360Member/api/fhir/.well-known/smart-configuration,
+  https://patient360c.anthem.com/P360Member/api/fhir/.well-known/smart-configuration and
+  https://totalview.healthos.elevancehealth.com/resources/registered/AnthemBlueCross/api/v1/fhir/.well-known/smart-configuration,
+  the OpenID Connect discovery document at
+  https://patient360c.anthem.com/P360Member/identityserver/.well-known/openid-configuration,
+  the FHIR conformance/capability statements on each host, and the first-party
+  "Interoperability API Endpoint Support Document" (IO105 v15.0, effective 2025-11-18) at
+  https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+description: >-
+  Elevance Health runs three distinct authorization surfaces across its FHIR estate. Member-facing
+  Patient Access uses SMART on FHIR / OAuth 2.0 authorization code with PKCE and member consent.
+  The public CMS Provider Directory and Formulary APIs use OAuth 2.0 client credentials, with the
+  client id, client secret and token endpoint delivered by secure email after a registration form
+  is approved. The legacy Patient360 (DSTU2) surface uses an IdentityServer-backed SMART/OIDC stack.
+correction: >-
+  Supersedes the 2026-07-11 derived profile, which carried OAuth endpoints
+  (/P360Member/oauth2/authorize, /P360Member/oauth2/token) that do not exist. The real
+  Patient360 endpoints are under /P360Member/identityserver/connect/. The prior values came from a
+  hand-written scaffold spec in openapi/_original/, not from the provider.
 summary:
   types:
   - oauth2
+  - openIdConnect
   oauth2_flows:
   - authorizationCode
+  - clientCredentials
+  surfaces: 3
+  pkce: S256
+  member_consent_required: true
+  token_lifetime_note: Patient Access production consent tokens are valid for 90 days; continued access requires renewed member consent (IO105 v15.0).
 schemes:
-- name: oauth2
+- name: patient-access-production
+  api: Patient Access API (production, CMS Interoperability)
   type: oauth2
+  standard: SMART App Launch Framework 2.2.0
+  discovery: https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir/.well-known/smart-configuration
   flows:
   - flow: authorizationCode
-    authorizationUrl: https://patient360c.anthem.com/P360Member/oauth2/authorize
-    tokenUrl: https://patient360c.anthem.com/P360Member/oauth2/token
-    scopes: 3
+    authorizationUrl: https://totalview.healthos.elevancehealth.com/oauth2.code/registered/api/v1/authorize
+    tokenUrl: https://totalview.healthos.elevancehealth.com/client.oauth2/registered/api/v1/token
+    scopes: 67
+  - flow: clientCredentials
+    tokenUrl: https://totalview.healthos.elevancehealth.com/client.oauth2/registered/api/v1/token
+  token_endpoint_auth_methods:
+  - client_secret_post
+  - client_secret_basic
+  - private_key_jwt
+  token_endpoint_auth_signing_alg_values_supported: [RS256, RS384, RS512, ES384, ES512]
+  code_challenge_methods_supported: [S256]
+  smart_capabilities:
+  - launch-standalone
+  - client-public
+  - context-standalone-patient
+  - permission-offline
+  - permission-patient
+  onboarding: Registration form at https://www.anthem.com/developers/request-anthem-io; production approval can take several weeks.
   sources:
-  - openapi/elevance-health-openapi.yml
+  - well-known/elevance-health-totalview-smart-configuration.json
+- name: provider-directory-and-formulary
+  api: Provider Directory API and Formulary API (public CMS surfaces)
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: null
+    note: >-
+      The token endpoint URL is not published. IO105 v15.0 states it is issued to each registered
+      third-party application by secure email along with the client id and client secret. Requests
+      use grant_type=client_credentials with HTTP Basic authentication of the client credentials.
+  data_endpoints:
+  - https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  - https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/frmlry
+  onboarding: Provider Directory API / Formulary API Production Environment request forms on the Anthem developer portal.
+  sources:
+  - https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+  - conformance/elevance-health-provider-directory-capabilitystatement.json
+- name: patient360-dstu2
+  api: Patient360 FHIR (DSTU2, CareEvolution HIEBus)
+  type: oauth2
+  standard: SMART on FHIR (restful-security-service code SMART-on-FHIR in the conformance statement)
+  discovery: https://patient360.anthem.com/P360Member/api/fhir/.well-known/smart-configuration
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://patient360c.anthem.com/P360Member/identityserver/connect/authorize
+    tokenUrl: https://patient360c.anthem.com/P360Member/identityserver/connect/token
+    scopes: 205
+  introspection_endpoint: https://patient360c.anthem.com/P360Member/api/tokenintrospection
+  token_endpoint_auth_methods:
+  - client_secret_post
+  - client_secret_basic
+  - private_key_jwt
+  smart_capabilities:
+  - launch-ehr
+  - launch-standalone
+  - client-public
+  - client-confidential-symmetric
+  - sso-openid-connect
+  - context-banner
+  - context-ehr-patient
+  - context-standalone-patient
+  - permission-offline
+  - permission-patient
+  - permission-user
+  cors: true
+  sources:
+  - well-known/elevance-health-patient360-smart-configuration.json
+  - well-known/elevance-health-patient360c-smart-configuration.json
+  - conformance/elevance-health-patient360-dstu2-conformance.xml
+- name: patient360-openid-connect
+  api: Patient360 IdentityServer
+  type: openIdConnect
+  openIdConnectUrl: https://patient360c.anthem.com/P360Member/identityserver/.well-known/openid-configuration
+  issuer: https://patient360.anthem.com/P360Member/identityserver
+  jwks_uri: https://patient360c.anthem.com/P360Member/identityserver/.well-known/jwks
+  userinfo_endpoint: https://patient360c.anthem.com/P360Member/identityserver/connect/userinfo
+  revocation_endpoint: https://patient360c.anthem.com/P360Member/identityserver/connect/revocation
+  introspection_endpoint: https://patient360c.anthem.com/P360Member/identityserver/connect/introspect
+  end_session_endpoint: https://patient360c.anthem.com/P360Member/identityserver/connect/endsession
+  grant_types_supported: [authorization_code, client_credentials, password, refresh_token, implicit, post_login, cookie_to_token, new_token, external_token]
+  id_token_signing_alg_values_supported: [RS256]
+  code_challenge_methods_supported: [plain, S256]
+  claims_supported: [sub, role, email, email_verified, name, family_name, given_name, middle_name, nickname, preferred_username, picture, website, gender, birthdate, zoneinfo, locale, updated_at, profile, fhirUser, patientidentifier, participantidentifier, verifiedemail]
+  scopes_supported_count: 1048
+  sources:
+  - well-known/elevance-health-patient360c-openid-configuration.json

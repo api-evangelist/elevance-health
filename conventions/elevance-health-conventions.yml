@@ -1,0 +1,146 @@
+generated: '2026-09-07'
+method: probed
+source: >-
+  FHIR CapabilityStatement / Conformance documents fetched from every Elevance Health FHIR base,
+  the SMART and OpenID Connect discovery documents, live error responses observed on the TotalView
+  gateway, the Patient360 API documentation page at
+  https://patient360c.anthem.com/P360Member/fhir/documentation, and the first-party
+  "Interoperability API Endpoint Support Document" (IO105 v15.0, effective 2025-11-18).
+description: >-
+  Cross-cutting runtime semantics for Elevance Health's FHIR APIs. These are FHIR conventions, not
+  bespoke ones: an agent that knows HL7 FHIR R4 already knows how to page, filter, negotiate content
+  and read errors here. What is specific to Elevance is the tenanting (one base URL per brand), the
+  split between a read-only public CMS surface and a consented member surface, and the absence of
+  any documented rate limit or replay-protection mechanism.
+auth:
+  style: OAuth 2.0 / SMART on FHIR
+  header: 'Authorization: Bearer <access_token>'
+  detail: >-
+    Authorization code with S256 PKCE and member consent for Patient Access; client credentials
+    (HTTP Basic client id/secret against a privately issued token endpoint) for Provider Directory
+    and Formulary. See authentication/elevance-health-authentication.yml.
+  cross_ref: authentication/elevance-health-authentication.yml
+versioning:
+  style: specification-version plus URL path segment
+  detail: >-
+    The FHIR release is the version that matters and it differs by surface: the CMS Interoperability
+    endpoints are FHIR R4 (4.0.1), the legacy Patient360 endpoint is DSTU2 (1.0.2). The TotalView
+    paths additionally carry an explicit /api/v1/ segment. There is no header-based or date-based
+    API version.
+  discovery: GET <base>/metadata returns the CapabilityStatement, which states fhirVersion.
+  resource_versioning:
+    patient_access_and_provider_directory: versioned-update (vread supported on every resource)
+    patient360_dstu2: no-version, readHistory false — prior versions of a resource are not retrievable
+  cross_ref: lifecycle/elevance-health-lifecycle.yml
+tenancy:
+  style: base URL per brand
+  detail: >-
+    Patient Access production has thirteen distinct base URLs, one per Elevance brand
+    (Amerigroup, Anthem Blue Cross, Anthem Blue Cross Blue Shield, Blue Medicare Advantage,
+    Clear Health Alliance, Dell Children Health Plan, Healthy Blue, Healthy Blue Blue Choice,
+    Healthy Blue NC, Simply HealthCare, Summit, Unicare, Wellpoint), all under
+    https://totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir.
+    A client must select the right brand base for the member; there is no routing endpoint.
+  source: https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+pagination:
+  style: FHIR Bundle link relations
+  params:
+  - _count
+  - _offset (DSTU2 getPage operation)
+  response_fields:
+  - Bundle.link[relation=next]
+  - Bundle.link[relation=self]
+  - Bundle.total
+  detail: >-
+    Search responses are FHIR Bundles. Follow Bundle.link with relation "next" to page. The DSTU2
+    server declares an explicit getPage system operation for the same purpose.
+  evidence: conformance/elevance-health-patient360-dstu2-conformance.xml
+filtering:
+  style: FHIR search parameters
+  detail: >-
+    Every resource declares its own searchParam list in the CapabilityStatement — 5 to 14 parameters
+    per resource on the R4 surfaces. _id and _lastUpdated are available on every resource.
+    _include and _revinclude are supported for reference traversal.
+  evidence: conformance/elevance-health-totalview-capabilitystatement.json
+content_negotiation:
+  formats:
+  - application/fhir+json
+  - application/fhir+xml
+  - application/x-turtle
+  detail: >-
+    All three FHIR wire formats are advertised in the R4 capability statements, plus html/json,
+    html/xml and html/turtle rendering variants. The DSTU2 server advertises xml and json only.
+    The Provider Directory /metadata endpoint returns text/plain content-type with a JSON body —
+    a gateway quirk, not a FHIR-conformant content type.
+error_envelope:
+  primary: FHIR OperationOutcome
+  gateway: >-
+    The TotalView gateway returns a proprietary JSON envelope for failures it handles before FHIR:
+    {"status_code":500,"status":"failed","error":"Internal server error","error_description":"..."}.
+    Observed live on 2026-09-07. Formulary paths return a bare 403 with an empty body.
+  rfc9457: false
+  cross_ref: errors/elevance-health-problem-types.yml
+request_id_tracing:
+  supported: unknown
+  detail: No correlation or request-id header is documented, and none was observed on anonymous responses.
+rate_limit_signaling:
+  documented: false
+  headers: []
+  detail: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header is documented on any Elevance Health
+    developer surface, and none was observed. See rate-limits/elevance-health-rate-limits.yml,
+    which records limit_count 0 rather than guessing.
+  cross_ref: rate-limits/elevance-health-rate-limits.yml
+idempotency:
+  coverage: none
+  scope: []
+  mechanism: null
+  detail: >-
+    There is no replay-protection mechanism anywhere in this estate. No Idempotency-Key header is
+    documented. The Patient360 DSTU2 conformance statement explicitly declares conditionalCreate
+    false, conditionalUpdate false and conditionalDelete not-supported on all 32 resources, which is
+    FHIR's own idempotency affordance being switched off. The three CMS public surfaces are
+    read-only, so they have no mutating operations to protect — but the legacy Patient360 surface
+    does expose create, update and delete on 25 resource types with nothing guarding a retry.
+  evidence: conformance/elevance-health-patient360-dstu2-conformance.xml
+  na_reason: null
+reversibility:
+  grade: none
+  detail: >-
+    No reversal operation and no reversal window is published for any write on this estate.
+  surfaces:
+  - surface: Patient Access API (production, R4)
+    writes: false
+    status: na
+    detail: Read-only. Declared interactions are search-type, read, vread and history-instance only; no create, update or delete.
+    evidence: conformance/elevance-health-patient-access-capabilitystatement.json
+  - surface: Provider Directory API (public, R4)
+    writes: false
+    status: na
+    detail: Read-only. search-type, vread and read only across all 8 resources.
+    evidence: conformance/elevance-health-provider-directory-capabilitystatement.json
+  - surface: Formulary API (public, R4)
+    writes: false
+    status: na
+    detail: Read-only drug-coverage lookup per IO105 v15.0; contract is auth-gated (403) so this is taken from the documentation, not a retrieved capability statement.
+  - surface: Patient360 FHIR (DSTU2, legacy)
+    writes: true
+    status: undocumented
+    reversal_operation: null
+    window: null
+    detail: >-
+      25 of 32 resource types accept create, update and delete. FHIR delete is a soft delete in
+      principle, but this server declares versioning "no-version" and readHistory false, so a prior
+      version cannot be read back and there is no restore path. No cancel, undo, rollback or
+      restore operation appears among the 16 declared system operations. No window is stated
+      anywhere, and none is asserted here.
+    evidence: conformance/elevance-health-patient360-dstu2-conformance.xml
+dry_run_mode:
+  supported: partial
+  detail: >-
+    Two forms of rehearsal exist. FHIR $validate is declared as an interaction on 25 DSTU2 resource
+    types and as a system operation, letting a client check a resource before writing it. Separately,
+    Elevance publishes a full sandbox with synthetic data at
+    sbx.totalview.healthos.elevancehealth.com, which is the practical rehearsal path for the CMS
+    surfaces. There is no dry-run flag on production write calls.
+  cross_ref: sandbox/elevance-health-sandbox.yml

@@ -1,0 +1,77 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Elevance Health Access FHIR Claims Patient API
+  version: 1.0.0
+extends: elevance-health-patient-api-openapi.yml
+x-generated: '2026-09-07'
+x-method: generated
+x-source: Live FHIR conformance statement, SMART App Launch configuration and OpenID Connect discovery
+  document retrieved from the provider on 2026-09-07.
+actions:
+- target: $.info
+  description: Record that the authoritative contract for this surface is the FHIR DSTU2 Conformance statement
+    the server publishes about itself, not this OpenAPI document.
+  update:
+    x-authoritative-contract:
+      type: FHIR Conformance (DSTU2)
+      url: https://patient360.anthem.com/P360Member/api/fhir/metadata
+      http_status: 200
+      file: conformance/elevance-health-patient360-dstu2-conformance.xml
+      fhirVersion: 1.0.2
+      publisher: CareEvolution
+      software: HIEBus 32.11.4
+      note: 'This OpenAPI describes a subset of a FHIR server. FHIR servers are self-describing: GET <base>/metadata
+        returns the complete contract, including all 32 resource types, 161 interactions, 16 system operations
+        and every search parameter. Prefer it.'
+    x-fhir-version: 1.0.2
+    x-implementation-guide: Argonaut (DSTU2)
+- target: $.components.securitySchemes.oauth2.flows.authorizationCode
+  description: Correct the OAuth 2.0 endpoints. The values in the base document (/P360Member/oauth2/authorize
+    and /P360Member/oauth2/token) do not exist. The real endpoints are published by the provider in its
+    SMART App Launch configuration at https://patient360c.anthem.com/P360Member/api/fhir/.well-known/smart-configuration
+    (HTTP 200, retrieved 2026-09-07) and in the oauth-uris extension of the live conformance statement.
+  update:
+    authorizationUrl: https://patient360c.anthem.com/P360Member/identityserver/connect/authorize
+    tokenUrl: https://patient360c.anthem.com/P360Member/identityserver/connect/token
+    x-introspection-endpoint: https://patient360c.anthem.com/P360Member/api/tokenintrospection
+    x-source: https://patient360c.anthem.com/P360Member/api/fhir/.well-known/smart-configuration
+    x-scopes-advertised: 205
+    x-note: The provider advertises 205 SMART scopes on this surface; the base document lists 3. The full
+      list is in scopes/elevance-health-scopes.yml.
+- target: $.components.securitySchemes.oauth2
+  description: Record the SMART on FHIR capabilities the provider advertises for this authorization surface.
+  update:
+    x-smart-capabilities:
+    - launch-ehr
+    - launch-standalone
+    - client-public
+    - client-confidential-symmetric
+    - sso-openid-connect
+    - context-banner
+    - context-ehr-patient
+    - context-standalone-patient
+    - permission-offline
+    - permission-patient
+    - permission-user
+    x-token-endpoint-auth-methods:
+    - client_secret_post
+    - client_secret_basic
+    - private_key_jwt
+    x-cors: true
+- target: $
+  description: Record runtime semantics that the base document does not carry, all evidenced by the live
+    contract.
+  update:
+    x-conventions: conventions/elevance-health-conventions.yml
+    x-errors: errors/elevance-health-problem-types.yml
+    x-idempotency:
+      coverage: none
+      evidence: The conformance statement declares conditionalCreate false, conditionalUpdate false and
+        conditionalDelete not-supported on all 32 resources.
+    x-rate-limits:
+      documented: false
+      headers: []
+    x-error-format: FHIR OperationOutcome (not RFC 9457)
+    x-content-types:
+    - application/fhir+json
+    - application/fhir+xml

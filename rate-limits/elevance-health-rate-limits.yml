@@ -4,59 +4,45 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Elevance Health
 providerId: elevance-health
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-09-07'
+generated: '2026-09-07'
+method: searched
+source: >-
+  https://www.anthem.com/developers, the TotalView API documentation site at
+  https://totalview.healthos.elevancehealth.com/fhir/documentation, the Patient360 documentation at
+  https://patient360c.anthem.com/P360Member/fhir/documentation, IO105 v15.0, and live anonymous
+  responses from every reachable FHIR base on 2026-09-07.
+reconciled: true
 tags:
   - Rate Limiting
   - Healthcare
   - FHIR
   - Interoperability
-description: Elevance Health does not publish a single canonical rate-limit specification for its CMS
-  Interoperability FHIR APIs. Limits are enforced at the FHIR gateway and applied per registered application;
-  member-app developers should follow CMS / CARIN guidance plus the developer-portal terms. 429 responses
-  with Retry-After are expected.
-notes: No public rate-limit numbers published. Confirm thresholds via the Anthem developer portal and
-  app registration agreement.
-sources:
-  - https://www.anthem.com/developers
-  - https://patient360c.anthem.com/P360Member/fhir/documentation
-headers:
-  retryAfter: Retry-After
-responseCodes:
-  throttled: 429
-  serviceUnavailable: 503
-limits:
-  - name: Patient Access FHIR API
-    scope: app
-    metric: varies
-    limit: see Anthem developer portal
-  - name: Provider Directory FHIR API
-    scope: ip
-    metric: varies
-    limit: see Anthem developer portal
-  - name: Formulary FHIR API
-    scope: ip
-    metric: varies
-    limit: see Anthem developer portal
-  - name: Payer-to-Payer FHIR API
-    scope: partner
-    metric: varies
-    limit: per data-exchange agreement
-policies:
-  - name: SMART-on-FHIR scopes
-    description: Member-authorized endpoints require SMART-on-FHIR auth with member-consent scopes; tokens
-      are short-lived and refreshable.
-  - name: Backoff
-    description: Implement exponential backoff with jitter; honor 429 + Retry-After.
-  - name: Application registration
-    description: All apps calling Patient Access must be registered with Anthem; CMS rule prohibits
-      blocking access but allows rate-limiting and abuse mitigation.
-  - name: Public read-only endpoints
-    description: Provider Directory and Formulary are public read-only; cache aggressively to minimize
-      load.
-maintainers:
-  - FN: API Evangelist
-    email: info@apievangelist.com
+description: >-
+  Elevance Health documents no rate limits for any of its APIs, and returns no rate-limit headers.
+  This was checked against all four developer-facing documentation surfaces and against live
+  responses; the honest result is zero. A consumer cannot size a workload, cannot tell how close to
+  a ceiling they are, and cannot distinguish throttling from failure, because the runtime signal an
+  agent would need is simply not emitted.
+limit_count: 0
+limits: []
+headers_published: false
+headers: []
+headers_observed: []
+status_code_on_exhaustion: null
+retry_after: false
+notes:
+- >-
+  Probed for X-RateLimit-*, RateLimit-* and Retry-After on live anonymous responses from
+  patient360.anthem.com, patient360c.anthem.com and totalview.healthos.elevancehealth.com. None present.
+- >-
+  Supersedes the 2026-05-04 generated file, which listed four limit entries whose values were
+  "see Anthem developer portal" and "varies", and asserted a 429 + Retry-After behaviour that is
+  not documented and was not observed. Those were placeholders presented as data.
+- >-
+  A 403 with an empty body is what an unregistered caller gets on the gated surfaces; it is an
+  authorization outcome, not throttling.
+- >-
+  The CMS Interoperability and Patient Access Final Rule prohibits a payer from blocking member
+  access but does not prohibit reasonable throttling, so limits may well exist and simply be
+  unpublished. Recorded as undocumented rather than as absent.

@@ -1,0 +1,180 @@
+generated: '2026-09-07'
+method: probed
+source: >-
+  Live FHIR CapabilityStatement / Conformance documents fetched anonymously from every Elevance
+  Health FHIR base, the SMART App Launch and OpenID Connect discovery documents on the same hosts,
+  and the first-party "Interoperability API Endpoint Support Document" (IO105 v15.0, effective
+  2025-11-18) published on the Anthem developer portal.
+description: >-
+  Elevance Health's API estate is FHIR-native. Its contracts are not OpenAPI documents; they are
+  FHIR CapabilityStatements, which are self-describing machine-readable contracts that the server
+  publishes about itself at <base>/metadata. Four were retrieved without credentials and are stored
+  verbatim in this directory. Every conformance claim below is evidenced by a specific location in
+  one of those documents or by a dated first-party PDF.
+contracts:
+- file: conformance/elevance-health-provider-directory-capabilitystatement.json
+  url: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/metadata
+  http_status: 200
+  fhir_version: 4.0.1
+  publisher: Elevance Health, Inc
+  software: hos-fhir-server 1.0.0
+  resources: 8
+  interactions: 25
+  auth_required: false
+  note: Provider Directory API. The only Elevance Health FHIR contract readable with no credentials at all.
+- file: conformance/elevance-health-patient-access-capabilitystatement.json
+  url: https://totalview.healthos.elevancehealth.com/api/v1/fhir/docs
+  http_status: 200
+  fhir_version: 4.0.1
+  publisher: Elevance Health, Inc
+  resources: 27
+  interactions: 106
+  note: >-
+    Patient Access API capability statement, implementation URL
+    https://totalview.healthos.elevancehealth.com/resources/registered/BCBS/api/v1/fhir.
+    Served inside the JSON documentation feed that backs the React documentation site; the
+    /metadata endpoint for the registered tenants times out anonymously.
+- file: conformance/elevance-health-totalview-capabilitystatement.json
+  url: https://totalview.healthos.elevancehealth.com/api/v1/fhir/docs
+  http_status: 200
+  fhir_version: 4.0.1
+  publisher: Elevance Health, Inc
+  resources: 36
+  interactions: 142
+  note: Composite capability statement covering the full documented TotalView FHIR resource surface.
+- file: conformance/elevance-health-patient360-dstu2-conformance.xml
+  url: https://patient360.anthem.com/P360Member/api/fhir/metadata
+  http_status: 200
+  fhir_version: 1.0.2
+  publisher: CareEvolution
+  software: HIEBus 32.11.4
+  resources: 32
+  interactions: 161
+  system_operations: 16
+  note: >-
+    Legacy Patient360 surface. Published by the vendor CareEvolution and served from an
+    Elevance-controlled anthem.com host; the conformance statement's own implementation element
+    names http://anthem.com. This is Elevance Health's tenant of CareEvolution HIEBus, not a
+    CareEvolution product listing.
+- file: conformance/elevance-health-fhir-extensions.json
+  url: https://totalview.healthos.elevancehealth.com/api/v1/fhir/docs
+  http_status: 200
+  note: First-party documentation of Elevance Health's custom FHIR extensions across 29 resource types.
+domain_standard:
+  standard: HL7 FHIR
+  declared_in_contract: true
+  evidence: >-
+    Every retrieved contract declares itself in the standard's own vocabulary rather than claiming
+    conformance in prose: resourceType "CapabilityStatement" (R4) / root element <Conformance> (DSTU2),
+    with an explicit fhirVersion of 4.0.1 and 1.0.2 respectively, resource profiles referencing
+    hl7.org/fhir/StructureDefinition/*, and a restful-security-service coding of "SMART-on-FHIR".
+  regime: health
+  note: >-
+    FHIR is the domain standard for US payer interoperability and it is what CMS-9115-F requires.
+    An integrator who already speaks FHIR needs no bespoke connector for these endpoints.
+conformance:
+- id: fhir
+  conforms: true
+  version: 4.0.1 (R4) on the CMS Interoperability surfaces; 1.0.2 (DSTU2) on legacy Patient360
+  evidence: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/metadata
+  detail: fhirVersion "4.0.1", resourceType "CapabilityStatement", publisher "Elevance Health, Inc".
+- id: smart-on-fhir
+  conforms: true
+  version: SMART App Launch Framework 2.2.0 (Patient Access, per IO105 v15.0)
+  evidence: https://totalview.healthos.elevancehealth.com/resources/registered/AnthemBlueCross/api/v1/fhir/.well-known/smart-configuration
+  detail: >-
+    A conformant .well-known/smart-configuration is served under each FHIR base, advertising
+    capabilities launch-standalone, client-public, context-standalone-patient, permission-offline
+    and permission-patient, with S256 PKCE. The DSTU2 conformance statement additionally carries the
+    smarthealthit.org oauth-uris extension and a SMART-on-FHIR restful-security-service coding.
+- id: us-core
+  conforms: true
+  version: STU 6.1.0 (Patient Access); STU 3.1.1 (Provider Directory resources)
+  evidence: https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+  detail: Named as a governing specification in IO105 v15.0 for both surfaces.
+- id: carin-blue-button
+  conforms: true
+  version: CARIN Consumer Directed Payer Data Exchange (CARIN IG for Blue Button) STU 2.1.0
+  evidence: https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+  detail: Declared for the Patient Access API; the capability statement exposes ExplanationOfBenefit, Claim, Coverage and Patient with CARIN-shaped search parameters.
+- id: da-vinci
+  conforms: true
+  version: PDEX Plan Net 1.1.0 (Provider Directory); PDEX US Drug Formulary 2.0.1 STU2 (Formulary)
+  evidence: https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/metadata
+  detail: >-
+    The Provider Directory capability statement exposes exactly the Plan Net resource set —
+    HealthcareService, InsurancePlan, Location, Organization, OrganizationAffiliation,
+    Practitioner, PractitionerRole — read-only, and IO105 v15.0 names both implementation guides.
+- id: oauth2
+  conforms: true
+  evidence: https://patient360c.anthem.com/P360Member/identityserver/.well-known/openid-configuration
+  detail: Authorization code with PKCE for member-consented access; client credentials for the Provider Directory and Formulary APIs.
+- id: oidc
+  conforms: true
+  evidence: https://patient360c.anthem.com/P360Member/identityserver/.well-known/openid-configuration
+  detail: >-
+    Full OpenID Connect discovery document served by the Patient360 IdentityServer — issuer,
+    jwks_uri, userinfo, revocation, introspection and end_session endpoints, RS256 id tokens,
+    22 supported claims including the SMART fhirUser claim.
+- id: pkce
+  conforms: true
+  evidence: https://totalview.healthos.elevancehealth.com/resources/registered/AnthemBlueCross/api/v1/fhir/.well-known/smart-configuration
+  detail: code_challenge_methods_supported ["S256"] on the production Patient Access surface.
+- id: cms-9115-f
+  conforms: true
+  evidence: https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+  detail: >-
+    CMS Interoperability and Patient Access Final Rule. IO105 v15.0 states the Patient Access,
+    Provider Directory and Formulary APIs exist to satisfy it, and the developer portal links the
+    rule text directly.
+- id: cms-0057-f
+  conforms: false
+  evidence: https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+  detail: >-
+    Not yet implemented, and the provider says so plainly. IO105 v15.0 states the Payer-to-Payer
+    API, Prior Authorization API and Provider Access API "will be implemented as required in the
+    CMS-0057 final rule by 1/1/27", and that CMS-0057 prior-authorization data will be added to the
+    Patient Access API by the same date. Recorded as a dated commitment, not a shipped surface.
+- id: pagination
+  conforms: true
+  evidence: conformance/elevance-health-patient360-dstu2-conformance.xml
+  detail: FHIR Bundle paging. The DSTU2 server declares a getPage system operation; R4 servers use standard Bundle link relations with _count.
+- id: rfc9457
+  conforms: false
+  detail: >-
+    Errors are not RFC 9457 problem+json. The FHIR surfaces return OperationOutcome; the TotalView
+    gateway returns a proprietary JSON envelope (observed 500 and 403 responses).
+- id: idempotency
+  conforms: false
+  evidence: conformance/elevance-health-patient360-dstu2-conformance.xml
+  detail: >-
+    No replay-protection mechanism. The DSTU2 conformance statement declares conditionalCreate
+    false, conditionalUpdate false and conditionalDelete not-supported on all 32 resources; no
+    Idempotency-Key header is documented anywhere. The CMS public surfaces are read-only.
+- id: fhir-bulk-data
+  conforms: false
+  detail: No $export operation is declared in any retrieved capability statement. Patient.$everything is the only instance-level operation exposed on the R4 surfaces.
+- id: cds-hooks
+  conforms: false
+  detail: No CDS Hooks discovery endpoint found; not applicable to a payer patient-access surface.
+- id: hl7-v2
+  conforms: false
+  detail: No HL7 v2 messaging surface is published to third parties. The DSTU2 server exposes a generic FHIR process-message operation, which is not an HL7 v2 interface.
+- id: dicom
+  conforms: false
+  detail: No imaging surface published.
+compliance:
+  note: >-
+    Elevance Health publishes no trust center, no named certification list (SOC 2 / ISO 27001 /
+    HITRUST) and no vulnerability disclosure policy on any probed host. HIPAA applies to the company
+    as a covered entity by operation of law; that is a legal status, not a published attestation, so
+    it is not recorded as a compliance artifact here.
+  probed:
+  - url: https://www.elevancehealth.com/trust-center
+    status: 404
+  - url: https://www.elevancehealth.com/responsible-disclosure
+    status: 404
+  - url: https://hackerone.com/elevancehealth
+    status: 404
+  - url: https://bugcrowd.com/elevancehealth
+    status: 404

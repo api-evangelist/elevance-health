@@ -1,6 +1,38 @@
 aid: elevance-health
 name: Elevance Health
 url: https://raw.githubusercontent.com/api-evangelist/elevance-health/refs/heads/main/apis.yml
+description: >-
+  Elevance Health (formerly Anthem) is a Fortune 500 health benefits company serving members through Blue
+  Cross and Blue Shield affiliated health plans across multiple states, offering medical, pharmacy, dental,
+  vision and specialty insurance. Its entire public API surface is HL7 FHIR, published to satisfy the
+  CMS Interoperability and Patient Access Final Rule: a member-consented Patient Access API (FHIR R4,
+  CARIN Blue Button, SMART on FHIR), a read-only Provider Directory API (Da Vinci PDEX Plan Net) whose
+  CapabilityStatement is readable with no credentials, a Formulary API (Da Vinci PDEX US Drug Formulary),
+  and a legacy Patient360 FHIR DSTU2 endpoint running CareEvolution HIEBus. There is no OpenAPI, no SDK
+  and no pricing — the contracts are the FHIR CapabilityStatements the servers publish about themselves.
+  Elevance has committed in its own endpoint support document to shipping Payer-to-Payer, Prior Authorization
+  and Provider Access APIs by 1 January 2027 under CMS-0057-F; none of the three exists today.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/elevance-health.png
+tags:
+  - Fortune 500
+  - Healthcare
+  - Health Insurance
+  - FHIR
+  - Interoperability
+  - CMS Interoperability
+  - SMART on FHIR
+  - Da Vinci PDEX
+  - CARIN Blue Button
+  - Payer
+  - Provider Directory
+  - Formulary
+  - HL7
+created: '2026-03-21'
+modified: '2026-09-07'
+specificationVersion: '0.23'
+type: Index
+position: Producing
+access: 3rd-Party
 deliveryModel:
   model: saas
   open_source: false
@@ -9,162 +41,218 @@ deliveryModel:
   label: Hosted service · you call their endpoint
   confidence: high
   source:
-  - openapi
-  - pricing
-  generated: '2026-08-28'
-  method: derived
+    - fhir-capabilitystatement
+    - plans
+    - https://www.anthem.com/developers
+  generated: '2026-09-07'
+  method: probed
+  note: >-
+    Live FHIR CapabilityStatements were retrieved from Elevance-controlled hosts, confirming a callable
+    hosted service.
 accessModel:
-  pricing: unknown
-  onboarding: self-serve
-  trial: false
+  pricing: free
+  onboarding: approval-required
+  trial: true
   try_now: false
   public: false
-  label: Self-serve signup
+  label: Free, registration and approval required
   confidence: high
   source:
-  - plans
-  - authentication
-  generated: '2026-07-22'
-  method: derived
-modified: '2026-04-28'
-created: '2026-03-21'
-specificationVersion: '0.23'
-type: Index
-position: Consuming
-access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/elevance-health.png
-tags:
-  - Fortune 500
-  - Healthcare
-  - Health Insurance
-  - FHIR
-  - Interoperability
-description: >-
-  Elevance Health (formerly Anthem) is a Fortune 500 health benefits company that
-  serves members through Blue Cross and Blue Shield affiliated health plans across
-  multiple states. The company offers medical, pharmacy, dental, vision, and other
-  specialty insurance and exposes a set of CMS Interoperability and Patient Access
-  FHIR APIs to enable members, providers, and partner payers to securely exchange
-  coverage, clinical, claims, provider directory, and formulary data.
+    - plans
+    - authentication
+    - sandbox
+    - https://www.anthem.com/developers
+  generated: '2026-09-07'
+  method: searched
+  note: >-
+    CMS-9115-F requires member data access to be free of charge, and Elevance publishes no price list
+    of any kind. A self-service sandbox with synthetic data exists, which is why trial is true; production
+    access requires a request form, a documented security risk analysis and an approval Elevance says
+    can take several weeks, which is why onboarding is not self-serve.
 apis:
-- aid: elevance-health:patient-access
-  name: Elevance Health Patient Access API
-  description: >-
-    The Patient Access API enables Anthem and Elevance Health members to securely access and exchange
-    their medical, pharmacy, dental, and vision claims and clinical data through third-party applications.
-    Built on the HL7 FHIR R4 specification and aligned with the CARIN Consumer Directed Payer Data Exchange
-    Implementation Guide, the API supports up to five years of historical claims and clinical data.
-  humanURL: https://www.anthem.com/developers
-  baseURL: https://patient360.anthem.com/P360Member/fhir
-  tags:
-  - FHIR
-  - Healthcare
-  - Health Insurance
-  - Patient Access
-  - Interoperability
-  properties:
-  - type: Documentation
-    url: https://patient360c.anthem.com/P360Member/fhir/documentation
-  - type: DeveloperPortal
-    url: https://www.anthem.com/developers
-- aid: elevance-health:provider-directory
-  name: Elevance Health Provider Directory API
-  description: >-
-    The Provider Directory API exposes Elevance Health network provider information including practitioners,
-    practitioner roles, organizations, locations, and insurance plans. The API conforms to the HL7 FHIR
-    R4 specification and the DaVinci PDEX Plan Net Implementation Guide and does not require authentication
-    for public directory data.
-  humanURL: https://www.anthem.com/developers
-  tags:
-  - FHIR
-  - Provider Directory
-  - Healthcare
-  - Interoperability
-  properties:
-  - type: Documentation
-    url: https://www.anthem.com/developers
-- aid: elevance-health:formulary
-  name: Elevance Health Formulary API
-  description: >-
-    The Formulary API publishes Elevance Health drug coverage information including covered drug lists,
-    tier placement, prior authorization requirements, and step therapy rules. The API conforms to the
-    HL7 FHIR R4 specification and the DaVinci PDEX US Drug Formulary Implementation Guide.
-  humanURL: https://www.anthem.com/developers
-  tags:
-  - FHIR
-  - Formulary
-  - Pharmacy
-  - Healthcare
-  - Interoperability
-  properties:
-  - type: Documentation
-    url: https://www.anthem.com/developers
-- aid: elevance-health:payer-to-payer
-  name: Elevance Health Payer to Payer API
-  description: >-
-    The Payer to Payer API enables Elevance Health to exchange member coverage and clinical data with
-    other health plans when members move between payers, supporting the CMS Interoperability and Prior
-    Authorization rule. The API is built on the HL7 FHIR R4 specification.
-  humanURL: https://www.anthem.com/developers
-  tags:
-  - FHIR
-  - Payer to Payer
-  - Healthcare
-  - Interoperability
-  properties:
-  - type: Documentation
-    url: https://www.anthem.com/developers
-- aid: elevance-health:elevance-health-claims-api
-  name: Elevance Health Claims API
-  description: The Claims API from Elevance Health — 3 operation(s) for claims.
-  humanURL: https://www.anthem.com/developers
-  baseURL: https://patient360.anthem.com/P360Member/fhir
-  tags:
-  - Claims
-  properties:
-  - type: OpenAPI
-    url: openapi/elevance-health-claims-api-openapi.yml
-- aid: elevance-health:elevance-health-conformance-api
-  name: Elevance Health Conformance API
-  description: The Conformance API from Elevance Health — 1 operation(s) for conformance.
-  humanURL: https://www.anthem.com/developers
-  baseURL: https://patient360.anthem.com/P360Member/fhir
-  tags:
-  - Conformance
-  properties:
-  - type: OpenAPI
-    url: openapi/elevance-health-conformance-api-openapi.yml
-- aid: elevance-health:elevance-health-coverage-api
-  name: Elevance Health Coverage API
-  description: The Coverage API from Elevance Health — 2 operation(s) for coverage.
-  humanURL: https://www.anthem.com/developers
-  baseURL: https://patient360.anthem.com/P360Member/fhir
-  tags:
-  - Coverage
-  properties:
-  - type: OpenAPI
-    url: openapi/elevance-health-coverage-api-openapi.yml
-- aid: elevance-health:elevance-health-patient-api
-  name: Elevance Health Patient API
-  description: The Patient API from Elevance Health — 2 operation(s) for patient.
-  humanURL: https://www.anthem.com/developers
-  baseURL: https://patient360.anthem.com/P360Member/fhir
-  tags:
-  - Patient
-  properties:
-  - type: OpenAPI
-    url: openapi/elevance-health-patient-api-openapi.yml
-- aid: elevance-health:elevance-health-provider-directory-api
-  name: Elevance Health Provider Directory API
-  description: The Provider Directory API from Elevance Health — 2 operation(s) for provider directory.
-  humanURL: https://www.anthem.com/developers
-  baseURL: https://patient360.anthem.com/P360Member/fhir
-  tags:
-  - Provider Directory
-  properties:
-  - type: OpenAPI
-    url: openapi/elevance-health-provider-directory-api-openapi.yml
+  - aid: elevance-health:patient-access
+    name: Elevance Health Patient Access API
+    description: >-
+      The Patient Access API gives Elevance Health members, through an application they authorize, up
+      to five years of their medical, pharmacy, dental and vision claims and clinical data. It is HL7
+      FHIR R4 (4.0.1) against US Core 6.1.0 and the CARIN IG for Blue Button STU 2.1.0, authorized with
+      SMART App Launch 2.2.0 and member consent. Production is tenanted: there are thirteen brand-specific
+      base URLs under totalview.healthos.elevancehealth.com/resources/registered/{Brand}/api/v1/fhir,
+      of which AnthemBlueCross is recorded here as the representative. The capability statement declares
+      27 resource types and 106 interactions, all read-only. A public sandbox with synthetic data is available
+      on self-service registration; production access requires an approval that Elevance says takes several
+      weeks.
+    humanURL: https://www.anthem.com/developers
+    baseURL: >-
+      https://totalview.healthos.elevancehealth.com/resources/registered/AnthemBlueCross/api/v1/fhir
+    tags:
+      - FHIR
+      - Healthcare
+      - Health Insurance
+      - Patient Access
+      - Interoperability
+    properties:
+      - type: Documentation
+        url: https://totalview.healthos.elevancehealth.com/fhir/documentation
+      - type: DeveloperPortal
+        url: https://www.anthem.com/developers
+      - type: APIReference
+        url: >-
+          https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+      - type: Conformance
+        url: conformance/elevance-health-patient-access-capabilitystatement.json
+      - type: WellKnown
+        url: well-known/elevance-health-totalview-smart-configuration.json
+      - type: Sandbox
+        url: sandbox/elevance-health-sandbox.yml
+      - type: SignUp
+        url: https://www.anthem.com/developers/request-anthem-io
+  - aid: elevance-health:provider-directory
+    name: Elevance Health Provider Directory API
+    description: >-
+      The Provider Directory API exposes which practitioners and organizations are in-network for a given
+      Elevance Health insurance plan. HL7 FHIR R4 conforming to Da Vinci PDEX Plan Net 1.1.0 and US Core
+      STU 3.1.1, exposing HealthcareService, InsurancePlan, Location, Organization, OrganizationAffiliation,
+      Practitioner, PractitionerRole and Specimen — 25 interactions, all read-only. Its CapabilityStatement
+      is readable with no credentials at all, which makes it the only Elevance surface an unattended agent
+      can inspect before integrating; data access itself uses OAuth 2.0 client credentials issued by secure
+      email after registration.
+    humanURL: https://www.anthem.com/developers
+    tags:
+      - FHIR
+      - Provider Directory
+      - Healthcare
+      - Interoperability
+    properties:
+      - type: Documentation
+        url: https://totalview.healthos.elevancehealth.com/fhir/documentation
+      - type: APIReference
+        url: >-
+          https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+      - type: Conformance
+        url: conformance/elevance-health-provider-directory-capabilitystatement.json
+      - type: SignUp
+        url: https://www.anthem.com/developers/provider-directory-api-request
+    baseURL: >-
+      https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/mcd/
+  - aid: elevance-health:formulary
+    name: Elevance Health Formulary API
+    description: >-
+      The Formulary API publishes drug coverage for Elevance-affiliated Medicare, Medicaid and CHIP plans
+      — covered drug lists, tier placement, pharmacy type and cost-sharing. HL7 FHIR R4 conforming to
+      Da Vinci PDEX US Drug Formulary IG 2.0.1 STU2, carried on InsurancePlan (PayerInsurancePlan and
+      Formulary), Basic (FormularyItem) and MedicationKnowledge (FormularyDrug). Read-only, authorized
+      with OAuth 2.0 client credentials. The endpoint returns HTTP 403 with an empty body until an application
+      is registered, so its capability statement could not be retrieved; the resource and search-parameter
+      set recorded here comes from the provider’s own endpoint support document rather than from the contract.
+    humanURL: https://www.anthem.com/developers
+    tags:
+      - FHIR
+      - Formulary
+      - Pharmacy
+      - Healthcare
+      - Interoperability
+    properties:
+      - type: Documentation
+        url: https://totalview.healthos.elevancehealth.com/fhir/documentation
+      - type: APIReference
+        url: >-
+          https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+    baseURL: >-
+      https://totalview.healthos.elevancehealth.com/resources/unregistered/api/v1/fhir/cms_mandate/frmlry
+  - aid: elevance-health:elevance-health-claims-api
+    name: Elevance Health Claims API
+    description: The Claims API from Elevance Health — 3 operation(s) for claims.
+    humanURL: https://patient360c.anthem.com/P360Member/fhir/documentation
+    baseURL: https://patient360.anthem.com/P360Member/api/fhir
+    tags:
+      - Claims
+    properties:
+      - type: OpenAPI
+        url: openapi/elevance-health-claims-api-openapi.yml
+      - type: Overlay
+        url: overlays/elevance-health-claims-api-overlay.yaml
+      - type: Documentation
+        url: https://patient360c.anthem.com/P360Member/fhir/documentation
+      - type: Conformance
+        url: conformance/elevance-health-patient360-dstu2-conformance.xml
+  - aid: elevance-health:elevance-health-conformance-api
+    name: Elevance Health Conformance API
+    description: The Conformance API from Elevance Health — 1 operation(s) for conformance.
+    humanURL: https://patient360c.anthem.com/P360Member/fhir/documentation
+    baseURL: https://patient360.anthem.com/P360Member/api/fhir
+    tags:
+      - Conformance
+    properties:
+      - type: OpenAPI
+        url: openapi/elevance-health-conformance-api-openapi.yml
+      - type: Overlay
+        url: overlays/elevance-health-conformance-api-overlay.yaml
+      - type: Documentation
+        url: https://patient360c.anthem.com/P360Member/fhir/documentation
+      - type: Conformance
+        url: conformance/elevance-health-patient360-dstu2-conformance.xml
+  - aid: elevance-health:elevance-health-coverage-api
+    name: Elevance Health Coverage API
+    description: The Coverage API from Elevance Health — 2 operation(s) for coverage.
+    humanURL: https://patient360c.anthem.com/P360Member/fhir/documentation
+    baseURL: https://patient360.anthem.com/P360Member/api/fhir
+    tags:
+      - Coverage
+    properties:
+      - type: OpenAPI
+        url: openapi/elevance-health-coverage-api-openapi.yml
+      - type: Overlay
+        url: overlays/elevance-health-coverage-api-overlay.yaml
+      - type: Documentation
+        url: https://patient360c.anthem.com/P360Member/fhir/documentation
+      - type: Conformance
+        url: conformance/elevance-health-patient360-dstu2-conformance.xml
+  - aid: elevance-health:elevance-health-patient-api
+    name: Elevance Health Patient API
+    description: The Patient API from Elevance Health — 2 operation(s) for patient.
+    humanURL: https://patient360c.anthem.com/P360Member/fhir/documentation
+    baseURL: https://patient360.anthem.com/P360Member/api/fhir
+    tags:
+      - Patient
+    properties:
+      - type: OpenAPI
+        url: openapi/elevance-health-patient-api-openapi.yml
+      - type: Overlay
+        url: overlays/elevance-health-patient-api-overlay.yaml
+      - type: Documentation
+        url: https://patient360c.anthem.com/P360Member/fhir/documentation
+      - type: Conformance
+        url: conformance/elevance-health-patient360-dstu2-conformance.xml
+  - aid: elevance-health:elevance-health-provider-directory-api
+    name: Elevance Health Provider Directory API
+    description: The Provider Directory API from Elevance Health — 2 operation(s) for provider directory.
+    humanURL: https://patient360c.anthem.com/P360Member/fhir/documentation
+    baseURL: https://patient360.anthem.com/P360Member/api/fhir
+    tags:
+      - Provider Directory
+    properties:
+      - type: OpenAPI
+        url: openapi/elevance-health-provider-directory-api-openapi.yml
+      - type: Overlay
+        url: overlays/elevance-health-provider-directory-api-overlay.yaml
+      - type: Documentation
+        url: https://patient360c.anthem.com/P360Member/fhir/documentation
+      - type: Conformance
+        url: conformance/elevance-health-patient360-dstu2-conformance.xml
 common:
+  - type: GettingStarted
+    url: https://www.anthem.com/developers
+  - type: SignUp
+    url: https://www.anthem.com/developers/request-anthem-io
+  - type: Support
+    url: https://www.anthem.com/contact-us
+  - type: Blog
+    url: https://www.anthem.com/blog
+  - type: Portal
+    url: https://www.anthem.com
+  - type: GitHubOrganization
+    url: https://github.com/openanthem
   - type: CapabilityMap
     url: capabilities/elevance-health-capability-edges.yml
     name: Elevance Health Business Capability Map
@@ -186,6 +274,47 @@ common:
     url: https://patient360c.anthem.com/P360Member/fhir/documentation
   - type: Signup
     url: https://www.anthem.com/developers/request-anthem-io
+  - type: Conformance
+    url: conformance/elevance-health-conformance.yml
+  - type: WellKnown
+    url: well-known/elevance-health-well-known.yml
+  - type: Conventions
+    url: conventions/elevance-health-conventions.yml
+  - type: ErrorCatalog
+    url: errors/elevance-health-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/elevance-health-lifecycle.yml
+  - type: ChangeLog
+    url: changelog/elevance-health-changelog.yml
+  - type: DataModel
+    url: data-model/elevance-health-data-model.yml
+  - type: Sandbox
+    url: sandbox/elevance-health-sandbox.yml
+  - type: Packages
+    url: packages/elevance-health-packages.yml
+  - type: Plans
+    url: plans/elevance-health-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/elevance-health-rate-limits.yml
+  - type: LLMsTxt
+    url: llms/elevance-health-llms.txt
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: X-MCPServerCandidate
+    url: mcp/elevance-health-mcp.yml
+  - type: APIReference
+    url: >-
+      https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf
+    name: Interoperability API Endpoint Support Document (IO105 v15.0)
+  - type: TermsOfService
+    url: https://www.anthem.com/terms-of-use
+  - type: PrivacyPolicy
+    url: https://www.elevancehealth.com/privacy-policy
 maintainers:
   - FN: API Evangelist
     email: info@apievangelist.com
+x-enrichment:
+  date: '2026-09-07'
+  status: enriched
+  artifacts_added: 29
+  pass: local-v3
