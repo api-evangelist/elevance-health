@@ -23,6 +23,20 @@ tags:
   - SMART on FHIR
   - Da Vinci PDEX
   - CARIN Blue Button
+  - Payers
+  - Provider Directory
+  - Formulary
+  - HL7
+tags_raw:
+  - Fortune 500
+  - Healthcare
+  - Health Insurance
+  - FHIR
+  - Interoperability
+  - CMS Interoperability
+  - SMART on FHIR
+  - Da Vinci PDEX
+  - CARIN Blue Button
   - Payer
   - Provider Directory
   - Formulary
@@ -214,6 +228,8 @@ apis:
     humanURL: https://patient360c.anthem.com/P360Member/fhir/documentation
     baseURL: https://patient360.anthem.com/P360Member/api/fhir
     tags:
+      - Patients
+    tags_raw:
       - Patient
     properties:
       - type: OpenAPI
