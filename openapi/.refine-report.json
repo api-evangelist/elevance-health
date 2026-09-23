@@ -1,11 +1,7 @@
 {
   "provider": "elevance-health",
   "sources": [
-    "elevance-health-claims-api-openapi.yml",
-    "elevance-health-conformance-api-openapi.yml",
-    "elevance-health-coverage-api-openapi.yml",
-    "elevance-health-patient-api-openapi.yml",
-    "elevance-health-provider-directory-api-openapi.yml"
+    "_original/elevance-health-openapi.yml"
   ],
   "outputs": [
     "elevance-health-claims-api-openapi.yml",
@@ -18,12 +14,20 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "elevance-health-claims-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "elevance-health-conformance-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "elevance-health-coverage-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "elevance-health-patient-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "elevance-health-provider-directory-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "elevance-health-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "elevance-health-openapi.yml: declared missing tag: Claims",
+    "elevance-health-openapi.yml: declared missing tag: Conformance",
+    "elevance-health-openapi.yml: declared missing tag: Coverage",
+    "elevance-health-openapi.yml: declared missing tag: Patient",
+    "elevance-health-openapi.yml: declared missing tag: Provider Directory",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "elevance-health-claims-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "elevance-health-conformance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "elevance-health-coverage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "elevance-health-patient-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "elevance-health-provider-directory-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Elevance Health Patient Access FHIR Claims Coverage API
+  title: Elevance Health Patient Access FHIR Coverage API
   version: '1.0'
   description: Elevance Health (Anthem) Patient Access API exposes FHIR resources aligned with the CMS Interoperability and Patient Access rule and the CARIN Consumer Directed Payer Data Exchange Implementation Guide. Authentication is via OAuth 2.0 / SMART on FHIR.
   contact:
