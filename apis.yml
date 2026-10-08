@@ -257,6 +257,8 @@ apis:
       - type: Conformance
         url: conformance/elevance-health-patient360-dstu2-conformance.xml
 common:
+  - type: FinOps
+    url: finops/elevance-health-finops.yml
   - type: GettingStarted
     url: https://www.anthem.com/developers
   - type: SignUp
