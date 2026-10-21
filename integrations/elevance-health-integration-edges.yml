@@ -1,0 +1,101 @@
+edges:
+- partner_name: HL7 Da Vinci Project
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.hl7.org/about/davinci/members.cfm
+  category: Payer / provider FHIR accelerator (CRD, DTR, PAS, PDex)
+  contract_reference:
+    register: HL7 Da Vinci Project members (confluence.hl7.org DVP)
+    spec_file: null
+    standard: HL7 Da Vinci (payer FHIR implementation guides)
+    role: member
+    registered_name: Elevance Health
+    matched_domain: elevancehealth.com
+    matched_by: domain
+    market_fit: own apis.yml tags carry a health administration / health IT term
+    detected_by: sweep-payer-interop-caqh-core.py
+    detected: '2026-10-21'
+    identity: wikidata Q677488 'Elevance Health, Inc.' P856 https://www.elevancehealth.com
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+    org_type: Payer
+    founder: true
+    signal_note: membership = participation; member level in partner_tier
+  detected_by: sweep-payer-interop-caqh-core.py
+  first_seen: '2026-10-21'
+  partner_tier: Premier
+- partner_name: WEDI
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://members.wedi.org/website-organization-directory/FindStartsWith?term=%23%21
+  category: Health administrative data exchange (membership)
+  contract_reference:
+    register: WEDI member organizations (members.wedi.org directory)
+    spec_file: null
+    standard: WEDI (HIPAA administrative simplification)
+    role: member
+    registered_name: Elevance Health
+    matched_domain: elevancehealth.com
+    matched_by: domain
+    market_fit: own apis.yml tags carry a health administration / health IT term
+    detected_by: sweep-payer-interop-caqh-core.py
+    detected: '2026-10-21'
+    website: http://elevancehealth.com/
+    identity_source: the website the member filed on the register (no lookup)
+    signal_note: membership = participation
+  detected_by: sweep-payer-interop-caqh-core.py
+  first_seen: '2026-10-21'
+- partner_name: ASC X12
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://x12.org/membership/list-of-members
+  category: EDI standards development (membership)
+  contract_reference:
+    register: X12 members list (x12.org/membership/list-of-members)
+    spec_file: null
+    standard: ASC X12 (HIPAA EDI transactions)
+    role: member
+    registered_name: Elevance Health
+    matched_domain: elevancehealth.com
+    matched_by: domain
+    market_fit: own apis.yml tags carry a health administration / health IT term
+    detected_by: sweep-payer-interop-caqh-core.py
+    detected: '2026-10-21'
+    identity: wikidata Q677488 'Elevance Health, Inc.' P856 https://www.elevancehealth.com
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+    signal_note: membership = participation
+  detected_by: sweep-payer-interop-caqh-core.py
+  first_seen: '2026-10-21'
+generated: '2026-10-21'
+method: searched
+source:
+- https://www.caqh.org/core/core-certification
+- https://www.dataspring.com/core/core-certified-organizations-pending-and-current
+- https://www.hl7.org/about/davinci/members.cfm
+- https://confluence.hl7.org/display/DVP/Da+Vinci+Project+Members
+- https://members.wedi.org/website-organization-directory/FindStartsWith?term=%23%21
+- https://x12.org/membership/list-of-members
+- https://data.cms.gov/provider-data/dataset/6jpm-sxkc
+- https://www.caqh.org/core/certified-entities
+- https://www.cms.gov/priorities/key-initiatives/burden-reduction/interoperability
+checked:
+- https://confluence.hl7.org/display/DVP/Da+Vinci+Project+Members
+- https://data.cms.gov/provider-data/dataset/6jpm-sxkc
+- https://members.wedi.org/website-organization-directory/FindStartsWith?term=%23%21
+- https://www.caqh.org/core/certified-entities
+- https://www.caqh.org/core/core-certification
+- https://www.cms.gov/priorities/key-initiatives/burden-reduction/interoperability
+- https://www.dataspring.com/core/core-certified-organizations-pending-and-current
+- https://www.hl7.org/about/davinci/members.cfm
+- https://x12.org/membership/list-of-members
