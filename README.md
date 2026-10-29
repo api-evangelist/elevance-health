@@ -1,4 +1,4 @@
-# Elevance Health (elevance-health)
+# Elevance Health
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,120 +64,159 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Elevance Health (formerly Anthem) is a Fortune 500 health benefits company that serves members through Blue Cross and Blue Shield affiliated health plans across multiple states. The company offers medical, pharmacy, dental, vision, and other specialty insurance and exposes a set of CMS Interoperability and Patient Access FHIR APIs to enable members, providers, and partner payers to securely exchange coverage, clinical, claims, provider directory, and formulary data.
+Elevance Health (formerly Anthem) is a Fortune 500 health benefits company serving members through Blue Cross and Blue Shield affiliated health plans across multiple states, offering medical, pharmacy, dental, vision and specialty insurance. Its entire public API surface is HL7 FHIR, published to satisfy the CMS Interoperability and Patient Access Final Rule: a member-consented Patient Access API (FHIR R4, CARIN Blue Button, SMART on FHIR), a read-only Provider Directory API (Da Vinci PDEX Plan Net) whose CapabilityStatement is readable with no credentials, a Formulary API (Da Vinci PDEX US Drug Formulary), and a legacy Patient360 FHIR DSTU2 endpoint running CareEvolution HIEBus. There is no OpenAPI, no SDK and no pricing — the contracts are the FHIR CapabilityStatements the servers publish about themselves. Elevance has committed in its own endpoint support document to shipping Payer-to-Payer, Prior Authorization and Provider Access APIs by 1 January 2027 under CMS-0057-F; none of the three exists today.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/elevance-health/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/elevance-health/refs/heads/main/apis.yml)
+**Areas:** Fortune 500 · Healthcare · Health Insurance · FHIR · Interoperability · CMS Interoperability · SMART on FHIR · Da Vinci PDEX · CARIN Blue Button · Payers · Provider Directory · Formulary
 
-## Scope
+## Elevance Health on APIs.io
 
-- **Type:** Index
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Elevance Health is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/elevance-health/](https://apis.io/providers/elevance-health/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (8)
 
-- Fortune 500
-- Healthcare
-- Health Insurance
-- FHIR
-- Interoperability
+- [Elevance Health Patient Access API](https://apis.io/apis/elevance-health/patient-access/) — The Patient Access API gives Elevance Health members, through an application they authorize, up to five years of their medical, pharmacy, dental and vision…
+- [Elevance Health Provider Directory API](https://apis.io/apis/elevance-health/provider-directory/) — The Provider Directory API exposes which practitioners and organizations are in-network for a given Elevance Health insurance plan. HL7 FHIR R4 conforming…
+- [Elevance Health Formulary API](https://apis.io/apis/elevance-health/formulary/) — The Formulary API publishes drug coverage for Elevance-affiliated Medicare, Medicaid and CHIP plans — covered drug lists, tier placement, pharmacy type and…
+- [Elevance Health Claims API](https://apis.io/apis/elevance-health/elevance-health-claims-api/) — The Claims API from Elevance Health — 3 operation(s) for claims.
+- [Elevance Health Conformance API](https://apis.io/apis/elevance-health/elevance-health-conformance-api/) — The Conformance API from Elevance Health — 1 operation(s) for conformance.
+- [Elevance Health Coverage API](https://apis.io/apis/elevance-health/elevance-health-coverage-api/) — The Coverage API from Elevance Health — 2 operation(s) for coverage.
+- [Elevance Health Patient API](https://apis.io/apis/elevance-health/elevance-health-patient-api/) — The Patient API from Elevance Health — 2 operation(s) for patient.
+- [Elevance Health Provider Directory API](https://apis.io/apis/elevance-health/elevance-health-provider-directory-api/) — The Provider Directory API from Elevance Health — 2 operation(s) for provider directory.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-21
-- **Modified:** 2026-04-28
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Elevance Health Patient Access API
+Model Context Protocol servers that expose the API to agents.
 
-The Patient Access API enables Anthem and Elevance Health members to securely access and exchange their medical, pharmacy, dental, and vision claims and clinical data through third-party applications. Built on the HL7 FHIR R4 specification and aligned with the CARIN Consumer Directed Payer Data Exchange Implementation Guide, the API supports up to five years of historical claims and clinical data.
+- [elevance-health-mcp.yml](https://apis.io/servers/elevance-health/elevance-health-mcp-yml/)
 
-- **Human URL:** [https://www.anthem.com/developers](https://www.anthem.com/developers)
-- **Base URL:** `https://patient360.anthem.com/P360Member/fhir`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- FHIR
-- Healthcare
-- Health Insurance
-- Patient Access
-- Interoperability
+- [Elevance Health Agentic Access](https://apis.io/agentic-access/elevance-health/elevance-health-agentic-access/)
 
-#### Properties
+#### Collections (6)
 
-- [Documentation](https://patient360c.anthem.com/P360Member/fhir/documentation)
-- [Developer Portal](https://www.anthem.com/developers)
-- [Postman Collection](collections/elevance-health.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elevance-health.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Postman and Open Collection request collections.
 
-### Elevance Health Provider Directory API
+- [Elevance Health Patient Access FHIR API](https://apis.io/collections/elevance-health/open-elevance-health/)
+- [Elevance Health Patient Access FHIR Claims API](https://apis.io/collections/elevance-health/open-elevance-health-claims-api/)
+- [Elevance Health Patient Access FHIR Claims Conformance API](https://apis.io/collections/elevance-health/open-elevance-health-conformance-api/)
+- [Elevance Health Patient Access FHIR Claims Coverage API](https://apis.io/collections/elevance-health/open-elevance-health-coverage-api/)
+- [Elevance Health Access FHIR Claims Patient API](https://apis.io/collections/elevance-health/open-elevance-health-patient-api/)
+- [Elevance Health Patient Access FHIR Claims Provider Directory API](https://apis.io/collections/elevance-health/open-elevance-health-provider-directory-api/)
 
-The Provider Directory API exposes Elevance Health network provider information including practitioners, practitioner roles, organizations, locations, and insurance plans. The API conforms to the HL7 FHIR R4 specification and the DaVinci PDEX Plan Net Implementation Guide and does not require authentication for public directory data.
+#### Overlays (5)
 
-- **Human URL:** [https://www.anthem.com/developers](https://www.anthem.com/developers)
+OpenAPI overlays, including conversational phrasing for each operation.
 
-#### Tags
+- [Elevance Health Claims Api Overlay](https://apis.io/overlays/elevance-health/elevance-health-claims-api-overlay/)
+- [Elevance Health Conformance Api Overlay](https://apis.io/overlays/elevance-health/elevance-health-conformance-api-overlay/)
+- [Elevance Health Coverage Api Overlay](https://apis.io/overlays/elevance-health/elevance-health-coverage-api-overlay/)
+- [Elevance Health Patient Api Overlay](https://apis.io/overlays/elevance-health/elevance-health-patient-api-overlay/)
+- [Elevance Health Provider Directory Api Overlay](https://apis.io/overlays/elevance-health/elevance-health-provider-directory-api-overlay/)
 
-- FHIR
-- Provider Directory
-- Healthcare
-- Interoperability
+#### Security (2)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://www.anthem.com/developers)
-- [Postman Collection](collections/elevance-health.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elevance-health.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Elevance Health Authentication](https://apis.io/security/elevance-health/elevance-health-authentication/)
+- [Elevance Health Domain Security](https://apis.io/security/elevance-health/elevance-health-domain-security/)
 
-### Elevance Health Formulary API
+#### OAuth scopes (1)
 
-The Formulary API publishes Elevance Health drug coverage information including covered drug lists, tier placement, prior authorization requirements, and step therapy rules. The API conforms to the HL7 FHIR R4 specification and the DaVinci PDEX US Drug Formulary Implementation Guide.
+The permissions the API asks for.
 
-- **Human URL:** [https://www.anthem.com/developers](https://www.anthem.com/developers)
+- [Elevance Health Scopes](https://apis.io/scopes/elevance-health/elevance-health-scopes/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- FHIR
-- Formulary
-- Pharmacy
-- Healthcare
-- Interoperability
+Published plans, tiers and prices.
 
-#### Properties
+- [Elevance Health Plans Pricing](https://apis.io/plans/elevance-health/elevance-health-plans-pricing/)
 
-- [Documentation](https://www.anthem.com/developers)
-- [Postman Collection](collections/elevance-health.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elevance-health.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Elevance Health Payer to Payer API
+Published request limits.
 
-The Payer to Payer API enables Elevance Health to exchange member coverage and clinical data with other health plans when members move between payers, supporting the CMS Interoperability and Prior Authorization rule. The API is built on the HL7 FHIR R4 specification.
+- [Elevance Health Rate Limits](https://apis.io/rate-limits/elevance-health/elevance-health-rate-limits/)
 
-- **Human URL:** [https://www.anthem.com/developers](https://www.anthem.com/developers)
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- FHIR
-- Payer to Payer
-- Healthcare
-- Interoperability
+- [Elevance Health Finops](https://apis.io/finops/elevance-health/elevance-health-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://www.anthem.com/developers)
-- [Postman Collection](collections/elevance-health.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elevance-health.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/elevance-health)
 - [Website](https://www.elevancehealth.com)
-- [Developer Portal](https://www.anthem.com/developers)
 - [Documentation](https://patient360c.anthem.com/P360Member/fhir/documentation)
-- [Sign Up](https://www.anthem.com/developers/request-anthem-io)
+- [Getting started](https://www.anthem.com/developers)
+- [API reference](https://www.anthem.com/content/dam/digital/developers-portal/Anthem-IOProviderDirectoryAndFormulary-API-Documentation.pdf)
+- [Sign up](https://www.anthem.com/developers/request-anthem-io)
+- [Support](https://www.anthem.com/contact-us)
+- [Blog](https://www.anthem.com/blog)
+- [Terms of service](https://www.anthem.com/terms-of-use)
+- [Privacy policy](https://www.elevancehealth.com/privacy-policy)
+- [GitHub](https://github.com/openanthem)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** API Evangelist
-**Email:** info@apievangelist.com
+**Kin Score 44.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 51.3 |
+| Contract governance | 18.2 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 51.8 |
+| Access clarity | 22.4 |
+
+**Agent readiness 38.4** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | na |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 48.4** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/elevance-health/](https://apis.io/providers/elevance-health/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Elevance Health: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/elevance-health/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
